@@ -16,22 +16,22 @@
   animation: fadeIn 0.5s ease-in; /* Add fadeIn animation */
 }
 
-.filters-grid {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(200px, 1fr)
-  ); /* Three columns */
-  gap: 20px; /* Gap between filters */
-  animation: fadeIn 0.5s ease-in; /* Add fadeIn animation */
-}
-
 .campaign-grid {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr)); /* Three columns */
-  gap: 20px; /* Gap between cards */
+  grid-template-columns: repeat(3, 1fr); /* Set to 3 columns */
+  gap: 20px; /* Adjust the gap between cards as needed */
+  max-width: 100%; /* Ensure the container is not wider than the viewport */
+  padding: 20px; /* Add padding to prevent the last card from sticking to the edge */
   animation: fadeIn 0.5s ease-in; /* Add fadeIn animation */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  scrollbar-width: none; /* Hide the scrollbar */
+  -ms-overflow-style: none; /* Hide the scrollbar for Internet Explorer */
+  background-color: rgb(0, 192, 177);
+}
+
+.campaign-grid::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar for WebKit browsers */
 }
 
 .campaign-card {
@@ -47,7 +47,7 @@
 
 .filtered-results-section {
   max-height: 400px;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
   animation: fadeIn 0.5s ease-in; /* Add fadeIn animation */
 }
 

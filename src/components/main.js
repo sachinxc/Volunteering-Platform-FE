@@ -122,28 +122,37 @@ function Main() {
       ),
 
       React.createElement(
-        Text,
+        Link,
         {
-          cursor: "click",
-          css: {
-            border: "1px solid white",
-            color: "black",
-            backgroundColor: "white",
-            headline6: "600",
-            padding: "$1 $3",
-            borderRadius: "8px",
-            marginLeft: "$3",
-            "&:hover": {
-              color: "white",
-              backgroundColor: "darkgreen",
-            },
-            "&:active": {
-              boxShadow: "none",
-              color: "$onPrimary",
-            },
+          to: "/register", // Specify the path to the signupPage
+          style: {
+            textDecoration: "none",
           },
         },
-        "Register"
+        React.createElement(
+          Text,
+          {
+            cursor: "click",
+            css: {
+              border: "1px solid white",
+              color: "black",
+              backgroundColor: "white",
+              headline6: "600",
+              padding: "$1 $3",
+              borderRadius: "8px",
+              marginLeft: "$3",
+              "&:hover": {
+                color: "white",
+                backgroundColor: "darkgreen",
+              },
+              "&:active": {
+                boxShadow: "none",
+                color: "$onPrimary",
+              },
+            },
+          },
+          "Register"
+        )
       )
     ),
     React.createElement(
