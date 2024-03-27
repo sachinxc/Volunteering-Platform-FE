@@ -16,12 +16,23 @@
   animation: fadeIn 0.5s ease-in; /* Add fadeIn animation */
 }
 
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(200px, 1fr)
+  ); /* Three columns */
+  gap: 20px; /* Gap between filters */
+  animation: fadeIn 0.5s ease-in; /* Add fadeIn animation */
+}
+
 .campaign-grid {
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr)); /* Three columns */
   gap: 20px; /* Gap between cards */
   animation: fadeIn 0.5s ease-in; /* Add fadeIn animation */
+  background-color: rgb(0, 192, 177);
 }
 
 .campaign-card {
