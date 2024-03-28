@@ -50,6 +50,7 @@ function Nav() {
           cursor: "click",
           css: {
             headline4_i: "600",
+            marginLeft: "15px", //makes the logo text move from the logo graphic
           },
         },
         React.createElement(Link, { to: "/" }, "Helping Hands")

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./register.css"; // Import CSS file for styling
-import backImage from "../assets/Images/backgold.jpg"; // Import the image file
+import signUpIco from "../assets/Images/signupico.png"; // Import the image file
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -32,7 +32,7 @@ const Register = () => {
         <div className="register-form">
           <div className="avatar-container">
             {/* Custom icon or image for the avatar */}
-            <img src={backImage} alt="avatar" className="avatar" />
+            <img src={signUpIco} alt="avatar" className="avatar" />
           </div>
           <h1 className="register-heading">Sign up</h1>
           <form onSubmit={handleSubmit}>
