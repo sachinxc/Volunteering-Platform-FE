@@ -12,7 +12,7 @@
   max-width: 400px;
   width: 100%;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 20px;
   /*border: 5px solid rgb(0 192 177); /* Adjust width and color as needed */
   background-color: #e3eee7;
   animation: fadeIn 0.5s ease-in; /* Add animation */
@@ -27,6 +27,8 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .avatar-container {
@@ -34,8 +36,8 @@ h1 {
 }
 
 .avatar {
-  width: 80px;
-  height: 80px;
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
 }
 
