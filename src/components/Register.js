@@ -98,7 +98,7 @@ const Register = () => {
       // Validate if all necessary fields are filled in step 2
       if (
         (formData.accountType === "" &&
-          formData.interests.length < 6 && !formData.finalSubmit)
+          formData.interests.length < 6 && formData.finalSubmit===false)
       ) {
         alert("Please fill all required fields!");
         return;
