@@ -5,6 +5,7 @@
   height: 100vh;
   background-color: #46c882;
   animation: fadeIn 0.5s ease-in; /* Add animation */
+  margin-top: 25px;
 }
 
 .register-container {
@@ -15,7 +16,6 @@
   /*border: 5px solid rgb(0 192 177); /* Adjust width and color as needed */
   background-color: #e3eee7;
   animation: fadeIn 0.5s ease-in; /* Add animation */
-  margin-top: 50px;
 }
 
 h1 {
