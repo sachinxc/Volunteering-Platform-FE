@@ -82,7 +82,8 @@ const Register = () => {
       // Validate if all necessary fields are filled in step 2
       if (
         formData.accountType === "" || // Account type not selected
-        formData.interests.length < 1 // Less than 1 interest selected
+        formData.interests.length < 1 ||
+        formData.organizationName === "" // Less than 1 interest selected
       ) {
         alert("Please fill all required fields!");
         return false; // Return false if validation fails
