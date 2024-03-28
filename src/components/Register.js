@@ -11,6 +11,7 @@ const Register = () => {
     password: "",
     confirmPassword: "",
     receiveEmails: false,
+    finalSubmit: false,
     accountType: "", // New field for account type
     organizationName: "", // New field for organization name
     interests: [], // New field for interests
