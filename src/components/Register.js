@@ -275,9 +275,12 @@ const Register = () => {
                   ))}
                 </div>
                 <div className="button-container">
-                  <button type="submit" className="submit-button">
-                    Submit
-                  </button>
+                  
+                  <button type="submit" className={`final-submit ${formData.finalSubmit ? "selected" : ""}`}
+  onClick={() => setFormData({ ...formData, finalSubmit: true })}
+>
+  Final Submit
+</button>
 
                   <button onClick={handleBack} className="back-button">
                     Back
