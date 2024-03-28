@@ -11,7 +11,6 @@ const Register = () => {
     password: "",
     confirmPassword: "",
     receiveEmails: false,
-    finalSubmit: false,
     accountType: "", // New field for account type
     organizationName: "", // New field for organization name
     interests: [], // New field for interests
@@ -68,23 +67,6 @@ const Register = () => {
     }));
   };
 
-  /*const handleSubmit = (e) => {
-    e.preventDefault();
-    if (step === 1) {
-      // Validate the first step form data
-      if (formData.password !== formData.confirmPassword) {
-        alert("Passwords do not match!");
-        return;
-      }
-      setStep(2);
-    } else if (step === 2) {
-      // Handle submission for step 2
-      // Navigate to next page or perform other actions
-      console.log("Form submitted:", formData);
-      setStep(3); // Move to step 3 (success message)
-    }
-  };*/
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (step === 1) {
@@ -94,18 +76,21 @@ const Register = () => {
         return;
       }
       setStep(2); // Move to step 2
-    } else if (step === 2) {
+      return false; // Return false to indicate step 1 validation passed
+    }
+    if (step === 2) {
       // Validate if all necessary fields are filled in step 2
       if (
-        (formData.accountType === "" &&
-          formData.interests.length < 6 && formData.finalSubmit===false)
+        formData.accountType === "" || // Account type not selected
+        formData.interests.length < 1 // Less than 1 interest selected
       ) {
         alert("Please fill all required fields!");
-        return;
+        return false; // Return false if validation fails
       }
 
-      // If all conditions are met, move to step 3 (success message)
       setStep(3);
+
+      return true; // Return true if validation passes without moving to step 3
     }
   };
 
@@ -275,12 +260,9 @@ const Register = () => {
                   ))}
                 </div>
                 <div className="button-container">
-                  
-                  <button type="submit" className={`final-submit ${formData.finalSubmit ? "selected" : ""}`}
-  onClick={() => setFormData({ ...formData, finalSubmit: true })}
->
-  Final Submit
-</button>
+                  <button type="submit" className="submit-button">
+                    Final Submit
+                  </button>
 
                   <button onClick={handleBack} className="back-button">
                     Back
