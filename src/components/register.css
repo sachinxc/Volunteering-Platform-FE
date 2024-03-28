@@ -12,7 +12,7 @@
   width: 100%;
   padding: 20px;
   border-radius: 10px;
-  border: 5px solid rgb(0 192 177); /* Adjust width and color as needed */
+  /*border: 5px solid rgb(0 192 177); /* Adjust width and color as needed */
   background-color: #e3eee7;
   animation: fadeIn 0.5s ease-in; /* Add animation */
   margin-top: 50px;
@@ -40,7 +40,7 @@ h1 {
 }
 
 .register-heading {
-  margin-top: -15px;
+  margin-top: -16px;
   margin-bottom: 20px;
   color: #32543c;
 }
