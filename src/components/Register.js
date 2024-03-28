@@ -96,10 +96,10 @@ const Register = () => {
     } else if (step === 2) {
       // Validate if all necessary fields are filled in step 2
       if (
-        (formData.accountType === "individual" &&
-          formData.interests.length > 0) || // Individual account type
-        (formData.accountType === "organization" && // Organization account type
-          formData.interests.length > 0) // Interests selected
+        (formData.accountType !== "individual" &&
+          formData.interests.length === 0) || // Individual account type
+        (formData.accountType !== "organization" && // Organization account type
+          formData.interests.length === 0) // Interests selected
       ) {
         alert("Please fill all required fields!");
         return;
