@@ -238,17 +238,7 @@ function VolunteerExplorerPage() {
   });
 
   return (
-    <Flex
-      dir="column"
-      css={{
-        width: "100%",
-        height: "100%",
-        padding: "50px",
-        backgroundColor: "rgb(0 192 177)",
-        borderRadius: "20px",
-        //animation: "0.4s ease-in 0.4s 1 both " + fadein,
-      }}
-    >
+    <Flex dir="column" className="volunteer-explorer">
       <h2 className="spageheading">Explore Volunteering Opportunities</h2>{" "}
       {/* Heading Text */}
       {/* Filters Grid */}

@@ -89,8 +89,7 @@ const Register = () => {
                   onChange={handleChange}
                   className="checkbox-input"
                 />
-                I want to subscribe to helping hands newsletter, campaign
-                updates via email.
+                I want to subscribe to the newsletter and updates via email.
               </label>
             </div>
             <button type="submit" className="submit-button">
