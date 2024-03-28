@@ -17,8 +17,6 @@ const Register = () => {
     country: "", // New field for country
   });
 
-  const [formSubmitted, setFormSubmitted] = useState(false); // New state variable
-
   const interestsList = [
     "Art",
     "Sports",
