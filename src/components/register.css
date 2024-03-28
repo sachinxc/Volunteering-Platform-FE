@@ -5,7 +5,7 @@
   height: 100vh;
   background-color: #46c882;
   animation: fadeIn 0.5s ease-in; /* Add animation */
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .register-container {
