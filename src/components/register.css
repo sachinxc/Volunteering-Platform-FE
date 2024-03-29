@@ -116,7 +116,7 @@ h1 {
 .fsubmit-button {
   margin-top: 20px;
   margin-left: 15px;
-  width: 74%;
+  width: 65%;
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -147,7 +147,9 @@ h1 {
 }
 
 .firstacbutton {
-  width: 155px;
+  margin-left: 0px;
+  margin-bottom: 10px;
+  width: 135px;
   padding: 7px;
   border: none;
   border-radius: 5px;
@@ -162,9 +164,9 @@ h1 {
 }
 
 .secondacbutton {
-  width: 155px;
+  width: 154px;
   padding: 7px;
-  margin-left: 20px;
+  margin-left: 7px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
