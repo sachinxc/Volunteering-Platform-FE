@@ -6,8 +6,7 @@ import Nav from "./components/nav";
 import Main from "./components/main";
 import Register from "./pages/Register/Register";
 import Signin from "./pages/Signin/Signin";
-import VolunteerExplorerPage from "./components/vol"; // Assuming vol.js represents the Volunteer Explorer Page
-
+import VolunteerExplorerPage from "./pages/Volunteer/vol";
 function App() {
   globalStyle(); // Apply global styles
 

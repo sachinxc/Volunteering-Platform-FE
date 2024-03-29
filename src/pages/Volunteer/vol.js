@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Flex from "../Styles/styledComponent/Flex";
+import Flex from "../../Styles/styledComponent/Flex";
 import "./vol.css"; // Import CSS file
 
 function VolunteerExplorerPage() {
@@ -239,9 +239,7 @@ function VolunteerExplorerPage() {
 
   return (
     <Flex dir="column" className="volunteer-explorer">
-      <h2 className="spageheading">Explore Volunteering Opportunities</h2>{" "}
-      {/* Heading Text */}
-      {/* Filters Grid */}
+      <h2 className="spageheading">Explore Volunteering Opportunities</h2>
       <div className="filters-grid">
         {/* Location Filter */}
         <select
