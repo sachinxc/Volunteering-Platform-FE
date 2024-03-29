@@ -190,35 +190,43 @@ const Register = () => {
           )}
           {step === 2 && (
             <>
-              <h1 className="rstep2">Tell us more about yourself</h1>
-              <form>
-                <div className="account-type-buttons">
-                  <button
-                    type="button"
-                    className={`account-type-button ${
-                      formData.accountType === "individual" ? "selected" : ""
-                    }`}
-                    onClick={() =>
-                      setFormData({ ...formData, accountType: "individual" })
-                    }
-                  >
-                    I'm an Individual
-                  </button>
-                  <button
-                    type="button"
-                    className={`account-type-button ${
-                      formData.accountType === "organization" ? "selected" : ""
-                    }`}
-                    onClick={() =>
-                      setFormData({ ...formData, accountType: "organization" })
-                    }
-                  >
-                    I'm an Organization
-                  </button>
-                </div>
+              <form className="form2">
+                <h1 className="rstep2">Tell us more about yourself</h1>
+                <label className="f2label">
+                  Select your Account type:
+                  <div className="account-type-buttons">
+                    <button
+                      type="button"
+                      className={`account-type-button ${
+                        formData.accountType === "individual" ? "selected" : ""
+                      }`}
+                      onClick={() =>
+                        setFormData({ ...formData, accountType: "individual" })
+                      }
+                    >
+                      I'm an Individual
+                    </button>
+                    <button
+                      type="button"
+                      className={`account-type-button ${
+                        formData.accountType === "organization"
+                          ? "selected"
+                          : ""
+                      }`}
+                      onClick={() =>
+                        setFormData({
+                          ...formData,
+                          accountType: "organization",
+                        })
+                      }
+                    >
+                      I'm an Organization
+                    </button>
+                  </div>
+                </label>
                 {formData.accountType === "organization" && (
                   <div className="form-group">
-                    <label className="oname">
+                    <label className="f2label">
                       Please enter your Organization name:
                       <input
                         type="text"
@@ -233,12 +241,12 @@ const Register = () => {
                   </div>
                 )}
                 <div className="form-group">
-                  <label>Country:</label>
+                  <label className="f2label">Your Country:</label>
                   <select
                     name="country"
                     value={formData.country}
                     onChange={handleChange}
-                    className="form-input"
+                    className="form-inputc"
                     required
                   >
                     <option value="">Select Country</option>
@@ -266,7 +274,7 @@ const Register = () => {
                 <div className="button-container">
                   <button
                     type="Submit"
-                    className="submit-button"
+                    className="fsubmit-button"
                     onClick={handleSubmit}
                   >
                     Final Submit
@@ -280,9 +288,9 @@ const Register = () => {
             </>
           )}
           {step === 3 && (
-            <form>
+            <form className="form3">
               <div className="success-message">
-                <h1>Registration Successful!</h1>
+                <h1 className="successHeading">Registration Successful!</h1>
                 <p>
                   Thank you for signing up. We have sent you a confirmation
                   email!

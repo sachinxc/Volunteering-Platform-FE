@@ -64,6 +64,14 @@ h1 {
   border-radius: 5px;
 }
 
+.form-inputc {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 .checkbox {
   display: flex;
   align-items: center;
@@ -94,11 +102,40 @@ h1 {
   font-size: medium;
 }
 
+.fsubmit-button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(0, 192, 177);
+  color: white;
+  cursor: pointer;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.back-button {
+  margin-top: 20px;
+  padding: 8px;
+  background-color: lightcoral;
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: bold;
+  font-size: small;
+  border: none;
+  border-radius: 5px;
+}
+
 .account-type-button {
   background-color: #4fe287;
-  margin: 10px;
+  margin-top: 20px;
+  margin-left: 10px;
   margin-bottom: 20px;
-  padding: 6px;
+  padding: 8px;
   border: none;
   border-radius: 5px;
   background-color: rgb(0, 192, 177);
@@ -111,19 +148,33 @@ h1 {
   text-align: center;
 }
 
+/* Add margin to the second button */
+.account-type-button + .account-type-button {
+  margin-left: 15px; /* Adjust the value as needed */
+}
+
+.account-type-button.selected {
+  background-color: #4d8bff; /* Set the desired color for the selected state */
+  color: white; /* Set the text color for the selected state */
+}
+
+.interest-button {
+  background-color: light greenyellow;
+  color: black;
+  margin: 5px;
+  padding: 2px;
+}
+
 .interest-button.selected {
   background-color: #4d8bff; /* Set the desired color for the selected state */
   color: white; /* Set the text color for the selected state */
-  margin: 10px;
-  padding: 10px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .interests-heading {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: medium;
+  margin-bottom: 10px;
 }
 
 .login-link {
@@ -135,6 +186,31 @@ h1 {
   color: #32543c;
 }
 
+.success-message {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.successHeading {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: x-large;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+.form2 {
+  animation: fadeIn 0.5s ease-in; /* Add animation */
+}
+
+.form3 {
+  animation: fadeIn 0.5s ease-in; /* Add animation */
+}
+
 .login-link a {
   color: #007bff;
   text-decoration: none;
@@ -144,7 +220,7 @@ h1 {
   text-decoration: underline;
 }
 
-.oname {
+.f2label {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
