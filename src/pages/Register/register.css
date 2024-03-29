@@ -170,9 +170,9 @@ h1 {
 }
 
 .firstacbutton {
-  margin-left: 20px;
+  margin-left: 0px;
   margin-bottom: 5px;
-  width: 40%;
+  width: 46%;
   padding: 5px;
   border: none;
   border-radius: 5px;
@@ -187,9 +187,9 @@ h1 {
 }
 
 .secondacbutton {
-  width: 40%;
+  width: 45%;
   padding: 5px;
-  margin-left: 15px;
+  margin-left: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
