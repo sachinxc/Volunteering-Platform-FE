@@ -4,9 +4,9 @@ import Flex from "../Styles/styledComponent/Flex";
 import Text from "../Styles/styledComponent/Text";
 import { fadein, fadeinBottom } from "../Styles/keyframes";
 import backImage from "../assets/Images/backg.png";
-import Ico_Facebook from "../assets/Icons/Ico_facebook";
-import Ico_Instagram from "../assets/Icons/Ico_instagram";
-import Ico_Twitter from "../assets/Icons/Ico_twitter";
+import IcoFacebook from "../assets/Icons/Ico_facebook";
+import IcoInstagram from "../assets/Icons/Ico_instagram";
+import IcoTwitter from "../assets/Icons/Ico_twitter";
 
 function Main() {
   const fadeInAnimation = { animation: "0.4s ease-in 0.4s 1 both " + fadein };
@@ -94,9 +94,9 @@ function Main() {
           },
         }}
       >
-        <Ico_Facebook width="32" height="32" />
-        <Ico_Instagram width="32" height="32" />
-        <Ico_Twitter width="32" height="32" />
+        <IcoFacebook width="32" height="32" />
+        <IcoInstagram width="32" height="32" />
+        <IcoTwitter width="32" height="32" />
       </Flex>
     </Flex>
   );
