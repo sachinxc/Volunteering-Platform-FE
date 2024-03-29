@@ -197,7 +197,7 @@ const Register = () => {
                   <div className="account-type-buttons">
                     <button
                       type="button"
-                      className={`account-type-button ${
+                      className={`firstacbutton ${
                         formData.accountType === "individual" ? "selected" : ""
                       }`}
                       onClick={() =>
@@ -208,7 +208,7 @@ const Register = () => {
                     </button>
                     <button
                       type="button"
-                      className={`account-type-button ${
+                      className={`secondacbutton ${
                         formData.accountType === "organization"
                           ? "selected"
                           : ""
@@ -235,7 +235,7 @@ const Register = () => {
                         required
                         value={formData.organizationName}
                         onChange={handleChange}
-                        className="form-input"
+                        className="form-inputO"
                       />
                     </label>
                   </div>
@@ -272,16 +272,16 @@ const Register = () => {
                   ))}
                 </div>
                 <div className="button-container">
+                  <button onClick={handleBack} className="back-button">
+                    Back
+                  </button>
+
                   <button
                     type="Submit"
                     className="fsubmit-button"
                     onClick={handleSubmit}
                   >
-                    Final Submit
-                  </button>
-
-                  <button onClick={handleBack} className="back-button">
-                    Back
+                    Submit
                   </button>
                 </div>
               </form>
