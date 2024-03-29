@@ -53,7 +53,8 @@ const Register = () => {
     }));
   };
 
-  const handleInterestClick = (interest) => {
+  const handleInterestClick = (interest, e) => {
+    e.preventDefault(); // Prevent default form submission behavior
     const updatedInterests = [...formData.interests];
     const index = updatedInterests.indexOf(interest);
     if (index === -1) {
@@ -84,7 +85,8 @@ const Register = () => {
         formData.accountType === "" || // Account type not selected
         formData.interests.length < 1 ||
         (formData.accountType === "organization" &&
-          formData.organizationName === "") // Less than 1 interest selected
+          formData.organizationName === "") ||
+        formData.country === "" // Less than 1 interest selected
       ) {
         alert("Please fill all required fields!");
         return false; // Return false if validation fails
@@ -189,100 +191,104 @@ const Register = () => {
           {step === 2 && (
             <>
               <h1 className="rstep2">Tell us more about yourself</h1>
-
-              <div className="account-type-buttons">
-                <button
-                  type="button"
-                  className={`account-type-button ${
-                    formData.accountType === "individual" ? "selected" : ""
-                  }`}
-                  onClick={() =>
-                    setFormData({ ...formData, accountType: "individual" })
-                  }
-                >
-                  I'm an Individual
-                </button>
-                <button
-                  type="button"
-                  className={`account-type-button ${
-                    formData.accountType === "organization" ? "selected" : ""
-                  }`}
-                  onClick={() =>
-                    setFormData({ ...formData, accountType: "organization" })
-                  }
-                >
-                  I'm an Organization
-                </button>
-              </div>
-              {formData.accountType === "organization" && (
-                <div className="form-group">
-                  <label className="oname">
-                    Please enter your Organization name:
-                    <input
-                      type="text"
-                      name="organizationName"
-                      placeholder="Organization Name"
-                      required
-                      value={formData.organizationName}
-                      onChange={handleChange}
-                      className="form-input"
-                    />
-                  </label>
-                </div>
-              )}
-              <div className="form-group">
-                <label>Country:</label>
-                <select
-                  name="country"
-                  value={formData.country}
-                  onChange={handleChange}
-                  className="form-input"
-                  required
-                >
-                  <option value="">Select Country</option>
-                  {countries.map((country) => (
-                    <option key={country} value={country}>
-                      {country}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <h2 className="interests-heading">Select your Interests</h2>
-              <div className="interests-container">
-                {interestsList.map((interest) => (
+              <form>
+                <div className="account-type-buttons">
                   <button
-                    key={interest}
-                    className={`interest-button ${
-                      formData.interests.includes(interest) ? "selected" : ""
+                    type="button"
+                    className={`account-type-button ${
+                      formData.accountType === "individual" ? "selected" : ""
                     }`}
-                    onClick={() => handleInterestClick(interest)}
+                    onClick={() =>
+                      setFormData({ ...formData, accountType: "individual" })
+                    }
                   >
-                    {interest}
+                    I'm an Individual
                   </button>
-                ))}
-              </div>
-              <div className="button-container">
-                <button
-                  type="submit"
-                  className="submit-button"
-                  onClick={handleSubmit}
-                >
-                  Final Submit
-                </button>
+                  <button
+                    type="button"
+                    className={`account-type-button ${
+                      formData.accountType === "organization" ? "selected" : ""
+                    }`}
+                    onClick={() =>
+                      setFormData({ ...formData, accountType: "organization" })
+                    }
+                  >
+                    I'm an Organization
+                  </button>
+                </div>
+                {formData.accountType === "organization" && (
+                  <div className="form-group">
+                    <label className="oname">
+                      Please enter your Organization name:
+                      <input
+                        type="text"
+                        name="organizationName"
+                        placeholder="Organization Name"
+                        required
+                        value={formData.organizationName}
+                        onChange={handleChange}
+                        className="form-input"
+                      />
+                    </label>
+                  </div>
+                )}
+                <div className="form-group">
+                  <label>Country:</label>
+                  <select
+                    name="country"
+                    value={formData.country}
+                    onChange={handleChange}
+                    className="form-input"
+                    required
+                  >
+                    <option value="">Select Country</option>
+                    {countries.map((country) => (
+                      <option key={country} value={country}>
+                        {country}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <h2 className="interests-heading">Select your Interests</h2>
+                <div className="interests-container">
+                  {interestsList.map((interest) => (
+                    <button
+                      key={interest}
+                      className={`interest-button ${
+                        formData.interests.includes(interest) ? "selected" : ""
+                      }`}
+                      onClick={(e) => handleInterestClick(interest, e)}
+                    >
+                      {interest}
+                    </button>
+                  ))}
+                </div>
+                <div className="button-container">
+                  <button
+                    type="Submit"
+                    className="submit-button"
+                    onClick={handleSubmit}
+                  >
+                    Final Submit
+                  </button>
 
-                <button onClick={handleBack} className="back-button">
-                  Back
-                </button>
-              </div>
+                  <button onClick={handleBack} className="back-button">
+                    Back
+                  </button>
+                </div>
+              </form>
             </>
           )}
           {step === 3 && (
-            <div className="success-message">
-              <h1>Registration Successful!</h1>
-              <p>
-                Thank you for signing up. We have sent you a confirmation email!
-              </p>
-            </div>
+            <form>
+              <div className="success-message">
+                <h1>Registration Successful!</h1>
+                <p>
+                  Thank you for signing up. We have sent you a confirmation
+                  email!
+                </p>
+              </div>
+            </form>
           )}
         </div>
       </div>
