@@ -220,14 +220,14 @@ const Register = () => {
                         })
                       }
                     >
-                      I'm an Organization
+                      An Organization
                     </button>
                   </div>
                 </label>
                 {formData.accountType === "organization" && (
                   <div className="form-group">
                     <label className="f2label">
-                      Please enter your Organization name:
+                      What's your Organization name?
                       <input
                         type="text"
                         name="organizationName"
@@ -241,7 +241,7 @@ const Register = () => {
                   </div>
                 )}
                 <div className="form-group">
-                  <label className="f2label">Your Country:</label>
+                  <label className="f2label">Country:</label>
                   <select
                     name="country"
                     value={formData.country}
