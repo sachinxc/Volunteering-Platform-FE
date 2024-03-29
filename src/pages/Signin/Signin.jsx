@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import "../Signin/signin.css"; // Import CSS file for styling
 
 const Signin = () => {
   return (
@@ -26,6 +27,7 @@ const Signin = () => {
             backgroundColor: "#e3eee7",
             padding: "20px",
             borderRadius: "20px",
+            animation: "fadeIn 0.5s ease-in",
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
@@ -68,7 +70,14 @@ const Signin = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{
+                mt: 3,
+                mb: 2,
+                backgroundColor: "rgb(0, 192, 177)",
+                "&:hover": {
+                  backgroundColor: "#4d8bff",
+                },
+              }}
             >
               Sign In
             </Button>

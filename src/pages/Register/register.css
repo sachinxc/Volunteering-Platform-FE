@@ -115,6 +115,11 @@ h1 {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: bold;
   font-size: medium;
+  transition: background-color 0.3s ease; /* Add transition for smooth effect */
+}
+
+.submit-button:active {
+  background-color: #4d8bff; /* Change background color on hover */
 }
 
 .fsubmit-button {
@@ -131,6 +136,11 @@ h1 {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: bold;
   font-size: medium;
+  transition: background-color 0.3s ease; /* Add transition for smooth effect */
+}
+
+.fsubmit-button:active {
+  background-color: #4d8bff; /* Change background color on hover */
 }
 
 .back-button {
