@@ -148,8 +148,8 @@ h1 {
 
 .firstacbutton {
   margin-left: 0px;
-  margin-bottom: 10px;
-  width: 135px;
+  margin-bottom: 5px;
+  width: 40%;
   padding: 7px;
   border: none;
   border-radius: 5px;
@@ -164,9 +164,9 @@ h1 {
 }
 
 .secondacbutton {
-  width: 154px;
+  width: 50%;
   padding: 7px;
-  margin-left: 7px;
+  margin-left: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
