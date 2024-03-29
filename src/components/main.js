@@ -23,7 +23,7 @@ function Main() {
       <Text css={{ display1: "800", paddingTop: "$7" }}>
         Together we unite <br /> to make a change <br /> globally.
       </Text>
-      <Text css={{ paddingTop: "$3" }}>
+      <Text css={{ paddingTop: "$3", fontFamily: "arial", fontWeight: "bold" }}>
         All what it takes is togetherness to keep our planet healthy! <br />{" "}
         Join us With Helping hands to make a change today.
       </Text>
