@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Ico_slogo from "../assets/Icons/Ico_slogo";
-import Ico_user from "../assets/Icons/Ico_user";
-import Ico_menu from "../assets/Icons/Ico_menu";
+import IcoSlogo from "../assets/Icons/Ico_slogo";
+import IcoUser from "../assets/Icons/Ico_user";
+import IcoMenu from "../assets/Icons/Ico_menu";
 import { fadeinTop } from "../Styles/keyframes";
 import Flex from "../Styles/styledComponent/Flex";
 import Text from "../Styles/styledComponent/Text";
@@ -35,7 +35,7 @@ function Nav() {
       }}
     >
       <Flex align="center" cursor="pointer">
-        <Ico_slogo width="35" height="35" />
+        <IcoSlogo width="35" height="35" />
         <Text cursor="click" css={{ headline4_i: "600", marginLeft: "15px" }}>
           <Link to="/">Helping Hands</Link>
         </Text>
@@ -87,10 +87,10 @@ function Nav() {
             },
           }}
         >
-          <Ico_user width="35" height="35" id="userSvg" />
+          <IcoUser width="35" height="35" id="userSvg" />
         </Flex>
       </Flex>
-      <Ico_menu width="32" height="32" id="menu" />
+      <IcoMenu width="32" height="32" id="menu" />
     </Flex>
   );
 }
