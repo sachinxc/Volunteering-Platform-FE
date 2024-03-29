@@ -8,6 +8,10 @@
   margin-top: 20px;
 }
 
+.body {
+  background-color: #007bff;
+}
+
 .register-container {
   max-width: 410px;
   width: 100%;

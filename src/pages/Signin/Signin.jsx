@@ -23,6 +23,9 @@ const Signin = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            backgroundColor: "#e3eee7",
+            padding: "20px",
+            borderRadius: "20px",
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>

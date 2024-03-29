@@ -70,13 +70,6 @@ function Nav() {
       React.createElement(
         Flex,
         {
-          /*css: {
-            "& p": {
-              headline6: "700",
-              cursor: "pointer",
-              marginRight: "50px", // Add margin between menu items
-            },
-          },*/
           css: {
             "& p": {
               headline6: "700",
@@ -112,6 +105,11 @@ function Nav() {
           Link,
           { to: "/register" },
           React.createElement(Text, null, "Sign Up")
+        ),
+        React.createElement(
+          Link,
+          { to: "/signin" },
+          React.createElement(Text, null, "Sign In")
         )
       ),
       React.createElement(
