@@ -220,7 +220,7 @@ const Register = () => {
                         })
                       }
                     >
-                      An Organization
+                      Organization
                     </button>
                   </div>
                 </label>
