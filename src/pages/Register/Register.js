@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./register.css"; // Import CSS file for styling
-import signUpIco from "../assets/Images/signupico.png"; // Import the image file
+import signUpIco from "../../assets/Images/signupico.png"; // Import the image file
 
 const Register = () => {
   const [step, setStep] = useState(1);
