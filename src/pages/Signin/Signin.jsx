@@ -10,12 +10,8 @@ import {
 } from "@mui/material";
 import React from "react";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-<<<<<<< HEAD
-import "../Signin/signin.css"; // Import CSS file for styling
-=======
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
->>>>>>> 4e594711a11732e8ccedf9888158697364332ac2
 
 const Signin = () => {
   const validationSchema = Yup.object().shape({
@@ -44,56 +40,12 @@ const Signin = () => {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-<<<<<<< HEAD
-          <Box
-            component="form"
-            // onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{
-                mt: 3,
-                mb: 2,
-                backgroundColor: "rgb(0, 192, 177)",
-                "&:hover": {
-                  backgroundColor: "#4d8bff",
-                },
-=======
           <Box component="form" noValidate sx={{ mt: 1 }}>
             <Formik
               initialValues={{ email: "", password: "" }}
               validationSchema={validationSchema}
               onSubmit={(values) => {
                 console.log(values);
->>>>>>> 4e594711a11732e8ccedf9888158697364332ac2
               }}
             >
               {({ errors, touched, submitForm }) => (
