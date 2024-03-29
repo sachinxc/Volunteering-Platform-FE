@@ -51,6 +51,7 @@ h1 {
   font-size: x-large;
   margin-bottom: 20px;
   text-align: center;
+  color: #32543c;
 }
 
 .form-group {
@@ -65,11 +66,21 @@ h1 {
 }
 
 .form-inputc {
-  margin-top: 10px;
+  margin-top: 15px;
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  color: #32543c;
+}
+
+.form-inputO {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #32543c;
 }
 
 .checkbox {
@@ -103,8 +114,9 @@ h1 {
 }
 
 .fsubmit-button {
-  margin-top: 10px;
-  width: 100%;
+  margin-top: 20px;
+  margin-left: 15px;
+  width: 74%;
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -118,29 +130,30 @@ h1 {
 }
 
 .back-button {
-  margin-top: 20px;
-  padding: 8px;
+  padding: 10px;
   background-color: lightcoral;
   color: white;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: bold;
-  font-size: small;
+  font-size: medium;
   border: none;
   border-radius: 5px;
 }
 
-.account-type-button {
-  background-color: #4fe287;
+.account-type-buttons {
   margin-top: 20px;
-  margin-left: 10px;
   margin-bottom: 20px;
-  padding: 8px;
+}
+
+.firstacbutton {
+  width: 155px;
+  padding: 7px;
   border: none;
   border-radius: 5px;
-  background-color: rgb(0, 192, 177);
-  color: white;
   cursor: pointer;
+  background-color: rgb(175 201 199);
+  color: #32543c;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: bold;
@@ -148,12 +161,28 @@ h1 {
   text-align: center;
 }
 
-/* Add margin to the second button */
-.account-type-button + .account-type-button {
-  margin-left: 15px; /* Adjust the value as needed */
+.secondacbutton {
+  width: 155px;
+  padding: 7px;
+  margin-left: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgb(175, 201, 199);
+  color: #32543c;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
 }
 
-.account-type-button.selected {
+.firstacbutton.selected {
+  background-color: #4d8bff; /* Set the desired color for the selected state */
+  color: white; /* Set the text color for the selected state */
+}
+
+.secondacbutton.selected {
   background-color: #4d8bff; /* Set the desired color for the selected state */
   color: white; /* Set the text color for the selected state */
 }
@@ -162,7 +191,7 @@ h1 {
   background-color: light greenyellow;
   color: black;
   margin: 5px;
-  padding: 2px;
+  padding: 4px;
 }
 
 .interest-button.selected {
@@ -175,6 +204,8 @@ h1 {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: medium;
   margin-bottom: 10px;
+  margin-top: 20px;
+  color: #32543c;
 }
 
 .login-link {
@@ -192,6 +223,7 @@ h1 {
   text-align: center;
   font-weight: 400;
   margin-bottom: 20px;
+  color: #32543c;
 }
 
 .successHeading {
@@ -201,6 +233,7 @@ h1 {
   text-align: center;
   margin-bottom: 20px;
   margin-top: 0px;
+  color: #32543c;
 }
 
 .form2 {
@@ -223,6 +256,9 @@ h1 {
 .f2label {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease-in; /* Add animation */
+  color: #32543c;
 }
 
 /* Define the fadeIn animation */
