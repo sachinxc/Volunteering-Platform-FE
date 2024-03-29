@@ -4,8 +4,8 @@ import Flex from "./Styles/styledComponent/Flex"; // Assuming Flex component is 
 import globalStyle from "./Styles/globalCss"; // Assuming globalStyle is a function to apply global CSS
 import Nav from "./components/nav";
 import Main from "./components/main";
-import Register from "./components/Register";
-import Signin from "./components/Signin";
+import Register from "./pages/Register/Register";
+import Signin from "./pages/Signin/Signin";
 import VolunteerExplorerPage from "./components/vol"; // Assuming vol.js represents the Volunteer Explorer Page
 
 function App() {
