@@ -11,7 +11,7 @@ const globalStyle = globalCss({
     backgroundColor: "$onBg100",
   },
   body: {
-    backgroundColor: "#46c882", //main theme color
+    backgroundColor: "#01301e", //main theme color
     minHeight: "112vh",
   },
   "@import":
