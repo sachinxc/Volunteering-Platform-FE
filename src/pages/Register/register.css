@@ -215,8 +215,9 @@ h1 {
   background-color: white;
   color: black;
   margin: 5px;
-  padding: 4px;
+  padding: 6px;
   border: none;
+  border-radius: 10px;
 }
 
 .interest-button.selected {
