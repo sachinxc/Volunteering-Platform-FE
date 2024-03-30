@@ -23,7 +23,6 @@
 
 h1, .register-heading, .rstep2, .checkbox-label, .login-link, .success-message, .successHeading, .f2label {
   font-family: system-ui, sans-serif;
-  animation: fadeIn 0.5s ease-in;
 }
 
 .register-form {
@@ -158,6 +157,10 @@ h1, .register-heading, .rstep2, .checkbox-label, .login-link, .success-message, 
 
 .login-link a:hover {
   text-decoration: underline;
+}
+
+.form2, .form3 {
+  animation: fadeIn 0.5s ease-in;
 }
 
 @keyframes fadeIn {
