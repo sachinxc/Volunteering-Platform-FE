@@ -23,6 +23,7 @@
 
 h1, .register-heading, .rstep2, .checkbox-label, .login-link, .success-message, .successHeading, .f2label {
   font-family: system-ui, sans-serif;
+  animation: fadeIn 0.5s ease-in;
 }
 
 .register-form {
