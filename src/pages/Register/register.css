@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   background-color: #46c882;
-  animation: fadeIn 0.5s ease-in; /* Add animation */
+  animation: fadeIn 0.5s ease-in;
   margin-top: 50px;
 }
 
@@ -18,20 +18,18 @@
   padding: 20px;
   border-radius: 20px;
   background-color: #e3eee7;
-  animation: fadeIn 0.5s ease-in; /* Add animation */
+  animation: fadeIn 0.5s ease-in;
 }
 
 h1 {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: system-ui, sans-serif;
 }
 
 .register-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 20px;
 }
 
 .avatar-container {
@@ -45,8 +43,7 @@ h1 {
 }
 
 .register-heading {
-  margin-top: -16px;
-  margin-bottom: 20px;
+  margin: -16px 0 20px;
   color: #32543c;
 }
 
@@ -61,28 +58,15 @@ h1 {
   margin-bottom: 15px;
 }
 
-.form-input {
+.form-input, .form-inputc, .form-inputO {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.form-inputc {
+.form-inputc, .form-inputO {
   margin-top: 15px;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  color: #32543c;
-}
-
-.form-inputO {
-  margin-top: 15px;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   color: #32543c;
 }
 
@@ -94,14 +78,13 @@ h1 {
 .checkbox-label {
   margin-right: 10px;
   margin-top: 5px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: system-ui, sans-serif;
   font-weight: 400;
   color: #32543c;
   text-align: center;
 }
 
-.submit-button {
+.submit-button, .fsubmit-button {
   margin-top: 4px;
   width: 100%;
   padding: 10px;
@@ -110,48 +93,23 @@ h1 {
   background-color: rgb(0, 192, 177);
   color: white;
   cursor: pointer;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: system-ui, sans-serif;
   font-weight: bold;
   font-size: medium;
-  transition: background-color 0.3s ease; /* Add transition for smooth effect */
-}
-
-.submit-button:active {
-  background-color: #4d8bff; /* Change background color on hover */
+  transition: background-color 0.3s ease;
 }
 
 .fsubmit-button {
   margin-top: 20px;
   margin-left: 8px;
   width: 70%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: rgb(0, 192, 177);
-  color: white;
-  cursor: pointer;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-weight: bold;
-  font-size: medium;
-  transition: background-color 0.3s ease; /* Add transition for smooth effect */
-}
-
-.fsubmit-button:active {
-  background-color: #4d8bff; /* Change background color on hover */
 }
 
 .back-button {
-  margin-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-bottom: 1px;
-  padding-top: 1px;
-
+  margin: 5px 0;
+  padding: 1px 5px;
   color: #848484;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: system-ui, sans-serif;
   font-weight: bold;
   font-size: smaller;
   border: none;
@@ -164,22 +122,20 @@ h1 {
 }
 
 .account-type-buttons {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .firstacbutton {
-  margin-left: 0px;
+  margin-left: 0;
   margin-bottom: 5px;
   width: 50%;
   padding: 5px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: rgb(175 201 199);
+  background-color: rgb(175, 201, 199);
   color: #32543c;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: system-ui, sans-serif;
   font-weight: bold;
   font-size: 15px;
   text-align: center;
@@ -194,21 +150,15 @@ h1 {
   cursor: pointer;
   background-color: rgb(175, 201, 199);
   color: #32543c;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: system-ui, sans-serif;
   font-weight: bold;
   font-size: 15px;
   text-align: center;
 }
 
-.firstacbutton.selected {
-  background-color: #4d8bff; /* Set the desired color for the selected state */
-  color: white; /* Set the text color for the selected state */
-}
-
-.secondacbutton.selected {
-  background-color: #4d8bff; /* Set the desired color for the selected state */
-  color: white; /* Set the text color for the selected state */
+.firstacbutton.selected, .secondacbutton.selected {
+  background-color: #4d8bff;
+  color: white;
 }
 
 .interest-button {
@@ -217,58 +167,39 @@ h1 {
   margin: 5px;
   padding: 6px;
   border: 1px solid black;
-  /*border: none;*/
   border-radius: 10px;
 }
 
 .interest-button.selected {
-  background-color: #a258f9; /* Set the desired color for the selected state */
-  color: white; /* Set the text color for the selected state */
+  background-color: #a258f9;
+  color: white;
 }
 
 .interests-heading {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: medium;
-  margin-bottom: 10px;
-  margin-top: 20px;
+  margin: 20px 0 10px;
   color: #32543c;
 }
 
 .login-link {
   margin-top: 25px;
   text-align: justify;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: system-ui, sans-serif;
   font-weight: 500;
   color: #32543c;
 }
 
-.success-message {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+.success-message, .successHeading {
+  font-family: system-ui, sans-serif;
   text-align: center;
   font-weight: 400;
   margin-bottom: 20px;
   color: #32543c;
 }
 
-.successHeading {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: x-large;
-  text-align: center;
-  margin-bottom: 20px;
-  margin-top: 0px;
-  color: #32543c;
-}
-
-.form2 {
-  animation: fadeIn 0.5s ease-in; /* Add animation */
-}
-
-.form3 {
-  animation: fadeIn 0.5s ease-in; /* Add animation */
+.form2, .form3 {
+  animation: fadeIn 0.5s ease-in;
 }
 
 .login-link a {
@@ -281,14 +212,12 @@ h1 {
 }
 
 .f2label {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: system-ui, sans-serif;
   font-weight: 600;
-  animation: fadeIn 0.5s ease-in; /* Add animation */
+  animation: fadeIn 0.5s ease-in;
   color: #32543c;
 }
 
-/* Define the fadeIn animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
