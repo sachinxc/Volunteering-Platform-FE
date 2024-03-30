@@ -21,7 +21,7 @@
   animation: fadeIn 0.5s ease-in;
 }
 
-h1 {
+h1, .register-heading, .rstep2, .checkbox-label, .login-link, .success-message, .successHeading, .f2label {
   font-family: system-ui, sans-serif;
 }
 
@@ -32,10 +32,6 @@ h1 {
   padding: 20px;
 }
 
-.avatar-container {
-  margin-bottom: 5px;
-}
-
 .avatar {
   width: 65px;
   height: 65px;
@@ -44,13 +40,6 @@ h1 {
 
 .register-heading {
   margin: -16px 0 20px;
-  color: #32543c;
-}
-
-.rstep2 {
-  font-size: x-large;
-  margin-bottom: 20px;
-  text-align: center;
   color: #32543c;
 }
 
@@ -73,15 +62,6 @@ h1 {
 .checkbox {
   display: flex;
   align-items: center;
-}
-
-.checkbox-label {
-  margin-right: 10px;
-  margin-top: 5px;
-  font-family: system-ui, sans-serif;
-  font-weight: 400;
-  color: #32543c;
-  text-align: center;
 }
 
 .submit-button, .fsubmit-button {
@@ -125,8 +105,7 @@ h1 {
   margin: 20px 0;
 }
 
-.firstacbutton {
-  margin-left: 0;
+.firstacbutton, .secondacbutton {
   margin-bottom: 5px;
   width: 50%;
   padding: 5px;
@@ -142,18 +121,8 @@ h1 {
 }
 
 .secondacbutton {
-  width: 46%;
-  padding: 5px;
+  width: calc(50% - 8px);
   margin-left: 8px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: rgb(175, 201, 199);
-  color: #32543c;
-  font-family: system-ui, sans-serif;
-  font-weight: bold;
-  font-size: 15px;
-  text-align: center;
 }
 
 .firstacbutton.selected, .secondacbutton.selected {
@@ -176,30 +145,9 @@ h1 {
 }
 
 .interests-heading {
-  font-family: system-ui, sans-serif;
   font-size: medium;
   margin: 20px 0 10px;
   color: #32543c;
-}
-
-.login-link {
-  margin-top: 25px;
-  text-align: justify;
-  font-family: system-ui, sans-serif;
-  font-weight: 500;
-  color: #32543c;
-}
-
-.success-message, .successHeading {
-  font-family: system-ui, sans-serif;
-  text-align: center;
-  font-weight: 400;
-  margin-bottom: 20px;
-  color: #32543c;
-}
-
-.form2, .form3 {
-  animation: fadeIn 0.5s ease-in;
 }
 
 .login-link a {
@@ -209,13 +157,6 @@ h1 {
 
 .login-link a:hover {
   text-decoration: underline;
-}
-
-.f2label {
-  font-family: system-ui, sans-serif;
-  font-weight: 600;
-  animation: fadeIn 0.5s ease-in;
-  color: #32543c;
 }
 
 @keyframes fadeIn {
