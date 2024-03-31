@@ -6,8 +6,21 @@ import IcoMenu from "../assets/Icons/Ico_menu";
 import { fadeinTop } from "../Styles/keyframes";
 import Flex from "../Styles/styledComponent/Flex";
 import Text from "../Styles/styledComponent/Text";
+import { useLocation } from "react-router-dom";
+import { Typography } from "@mui/material";
 
-function Nav() {
+const Nav = () => {
+  const location = useLocation();
+  const path = location.pathname;
+
+  const navigationUrls = [
+    { paths: "/volunteer", pathName: "Volunteer" },
+    { paths: "/testimonials", pathName: "Testimonials" },
+    { paths: "/about", pathName: "About" },
+    { paths: "/register", pathName: "Sign Up" },
+    { paths: "/signin", pathName: "Sign In" },
+  ];
+
   return (
     <Flex
       align="center"
@@ -54,21 +67,18 @@ function Nav() {
             "@bp2": { marginRight: "$3" },
           }}
         >
-          <Link to="/volunteer">
-            <Text>Volunteer</Text>
-          </Link>
-          <Link to="/testimonials">
-            <Text>Testimonials</Text>
-          </Link>
-          <Link to="/about">
-            <Text>About</Text>
-          </Link>
-          <Link to="/register">
-            <Text>Sign Up</Text>
-          </Link>
-          <Link to="/signin">
-            <Text>Sign In</Text>
-          </Link>
+          {navigationUrls.map((link, index) => (
+            <Link to={link.paths} key={index}>
+              <Typography
+                sx={{
+                  textDecoration: path === link.paths ? "underline" : "none",
+                  textDecorationSkipInk: "spaces",
+                }}
+              >
+                {link.pathName}
+              </Typography>
+            </Link>
+          ))}
         </Flex>
         <Flex
           justify="around"
@@ -93,6 +103,6 @@ function Nav() {
       <IcoMenu width="32" height="32" id="menu" />
     </Flex>
   );
-}
+};
 
 export default Nav;

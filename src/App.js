@@ -29,21 +29,15 @@ function App() {
           },
         }}
       >
-        {/* Placeholder for background elements */}
         <Flex css={{ imgBg: "" }}></Flex>
         <Flex css={{ meshBg: "" }}></Flex>
 
-        {/* Nav component is always rendered */}
         <Nav />
-
-        {/* Define routes for different components */}
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/volunteer" element={<VolunteerExplorerPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/signin" element={<Signin />} />
-
-          {/* Add more routes for other components/pages */}
         </Routes>
       </Flex>
     </Router>
