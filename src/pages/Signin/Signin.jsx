@@ -3,8 +3,12 @@ import {
   Box,
   Button,
   Container,
+  FormControl,
   Grid,
+  InputLabel,
   Link,
+  MenuItem,
+  Select,
   TextField,
   Typography,
 } from "@mui/material";
@@ -12,12 +16,19 @@ import React from "react";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import { useState } from "react";
 
 const Signin = () => {
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Required"),
     password: Yup.string().required("Required"),
   });
+
+  const [userType, setUser] = useState("Volunteer");
+
+  const handleChange = (e, a) => {
+    setUser(e.target.value);
+  };
 
   return (
     <div>
@@ -50,6 +61,20 @@ const Signin = () => {
             >
               {({ errors, touched, submitForm }) => (
                 <Form>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">I am </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={userType}
+                      label="I am"
+                      onChange={handleChange}
+                    >
+                      <MenuItem value={"Organization"}>Organization</MenuItem>
+                      <MenuItem value={"Volunteer"}>Volunteer</MenuItem>
+                    </Select>
+                  </FormControl>
+
                   <Field
                     as={TextField}
                     margin="normal"
