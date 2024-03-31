@@ -270,18 +270,6 @@ const Register = () => {
               </Form>
             )}
           </Formik>
-
-          {/* {step === 3 && (
-            <form className="form3">
-              <div className="success-message">
-                <h1 className="successHeading">Registration Successful!</h1>
-                <p>
-                  Thank you for signing up. We have sent you a confirmation
-                  email!
-                </p>
-              </div>
-            </form>
-          )} */}
         </div>
       </div>
     </div>

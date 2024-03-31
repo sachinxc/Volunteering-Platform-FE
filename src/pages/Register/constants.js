@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 
 export const validationVolunteerSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
+  email: Yup.string().email("Invalid email").required("Email is Required"),
   password: Yup.string()
     .required("Password Required")
     .min(8, "Password must be at least 8 characters")
@@ -12,12 +12,12 @@ export const validationVolunteerSchema = Yup.object().shape({
   confirmPassword: Yup.string()
     .required("Confirm Password Required")
     .oneOf([Yup.ref("password"), null], "Passwords must match"),
-  firstName: Yup.string().required("Required"),
-  lastName: Yup.string().required("Required"),
+  firstName: Yup.string().required("First Name Required"),
+  lastName: Yup.string().required("Last Name Required"),
 });
 
 export const validationOrganizationSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
+  email: Yup.string().email("Invalid email").required("Email is Required"),
   organizationName: Yup.string().required("Organization Name Required"),
   password: Yup.string()
     .required("Password Required")
