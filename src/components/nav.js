@@ -27,7 +27,7 @@ const Nav = () => {
       justify="between"
       css={{
         width: "100%",
-        paddingTop: "$2",
+
         "& svg": {
           fill: "$onBg",
         },
