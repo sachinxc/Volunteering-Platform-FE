@@ -14,7 +14,7 @@ const Nav = () => {
   const path = location.pathname;
 
   const navigationUrls = [
-    { paths: "/volunteer", pathName: "Volunteer" },
+    { paths: "/explore", pathName: "Volunteer" },
     { paths: "/testimonials", pathName: "Testimonials" },
     { paths: "/about", pathName: "About" },
     { paths: "/register", pathName: "Sign Up" },
