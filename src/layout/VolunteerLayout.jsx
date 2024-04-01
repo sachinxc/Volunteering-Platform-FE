@@ -1,6 +1,5 @@
 import { AppBar, Divider, IconButton } from "@mui/material";
 import React from "react";
-import { Outlet } from "react-router-dom";
 import MuiDrawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
 import MuiAppBar from "@mui/material/AppBar";
@@ -27,41 +26,9 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import LayersIcon from "@mui/icons-material/Layers";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-
-export const mainListItems = (
-  <React.Fragment>
-    <ListItemButton>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Orders" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Customers" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Integrations" />
-    </ListItemButton>
-  </React.Fragment>
-);
+import { Outlet, useLocation } from "react-router-dom";
+import Person2Icon from "@mui/icons-material/Person2";
+import { useNavigate } from "react-router-dom";
 
 export const secondaryListItems = (
   <React.Fragment>
@@ -91,24 +58,6 @@ export const secondaryListItems = (
 
 const drawerWidth = 240;
 
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
@@ -137,9 +86,31 @@ const Drawer = styled(MuiDrawer, {
 
 const VolunteerLayout = () => {
   const [open, setOpen] = React.useState(true);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const path = location.pathname;
+  const pageList = [
+    {
+      path: "/volunteer/dashboard",
+      element: <DashboardIcon />,
+      name: "Dashboard",
+    },
+    {
+      path: "/volunteer/profile",
+      element: <Person2Icon />,
+      name: "Profile",
+    },
+  ];
+  const getActivePath = (pagePath) => {
+    return path === pagePath;
+  };
+
   const toggleDrawer = () => {
     setOpen(!open);
   };
+
   return (
     <div>
       <Box sx={{ display: "flex" }}>
@@ -191,14 +162,28 @@ const VolunteerLayout = () => {
           </Toolbar>
           <Divider />
           <List component="nav">
-            {mainListItems}
-            <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
+            <React.Fragment>
+              {pageList.map((page, index) => (
+                <ListItemButton
+                  key={index}
+                  sx={{ color: getActivePath(page.path) ? "#1976d2" : "black" }}
+                  onClick={() => navigate(page.path)}
+                >
+                  <ListItemIcon
+                    sx={{
+                      color: getActivePath(page.path) ? "#1976d2" : "black",
+                    }}
+                  >
+                    {page.element}
+                  </ListItemIcon>
+                  <ListItemText primary={page.name} />
+                </ListItemButton>
+              ))}
+            </React.Fragment>
           </List>
         </Drawer>
 
         <Box
-          component="main"
           sx={{
             backgroundColor: (theme) =>
               theme.palette.mode === "light"
@@ -207,49 +192,12 @@ const VolunteerLayout = () => {
             flexGrow: 1,
             height: "100vh",
             overflow: "auto",
+            paddingTop: "50px",
           }}
         >
-          <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    height: 240,
-                  }}
-                >
-                  {/* <Chart /> */}
-                </Paper>
-              </Grid>
-              {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    height: 240,
-                  }}
-                >
-                  {/* <Deposits /> */}
-                </Paper>
-              </Grid>
-              {/* Recent Orders */}
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  {/* <Orders /> */}
-                </Paper>
-              </Grid>
-            </Grid>
-            <Copyright sx={{ pt: 4 }} />
-          </Container>
+          <Outlet />
         </Box>
       </Box>
-      <Outlet />
     </div>
   );
 };
