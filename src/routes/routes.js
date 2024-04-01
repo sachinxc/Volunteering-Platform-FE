@@ -3,6 +3,7 @@ import Main from "../components/main";
 import Layout from "../layout/Layout";
 import VolunteerLayout from "../layout/VolunteerLayout";
 import Opportunity from "../pages/Oppertunity/Opportunity";
+import RegisterEvent from "../pages/Oppertunity/RegisterEvent";
 import Register from "../pages/Register/Register";
 import Signin from "../pages/Signin/Signin";
 import VolunteerExplorerPage from "../pages/Volunteer/VolunteerExplorerPage";
@@ -54,6 +55,10 @@ export const volunteerRoutes = createBrowserRouter([
       {
         element: <Opportunity />,
         path: "/explore/:id",
+      },
+      {
+        element: <RegisterEvent />,
+        path: "/explore/:id/register",
       },
     ],
   },
