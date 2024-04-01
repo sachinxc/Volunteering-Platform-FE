@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Flex from "../../Styles/styledComponent/Flex";
 import "./vol.css"; // Import CSS file
+import { useNavigate } from "react-router-dom";
 
 function VolunteerExplorerPage() {
+  const navigate = useNavigate();
   // Define state variables for filters
   const [locationFilter, setLocationFilter] = useState("");
   const [skillLevelFilter, setSkillLevelFilter] = useState("");
@@ -237,6 +239,10 @@ function VolunteerExplorerPage() {
     return locationMatch && skillLevelMatch && categoryMatch;
   });
 
+  const navigateToCampaign = (campaign) => {
+    navigate(`/explore/${campaign}`);
+  };
+
   return (
     <Flex dir="column" className="volunteer-explorer">
       <h2 className="spageheading">Explore Volunteering Opportunities</h2>
@@ -282,7 +288,11 @@ function VolunteerExplorerPage() {
       <div className="filtered-results-section">
         <div className="campaign-grid">
           {filteredCampaigns.map((campaign) => (
-            <div key={campaign.id} className="campaign-card">
+            <div
+              key={campaign.id}
+              className="campaign-card"
+              onClick={() => navigateToCampaign(campaign.id)}
+            >
               <h3>{campaign.title}</h3>
               <p>Location: {campaign.location}</p>
               <p>Skill Level: {campaign.skillLevel}</p>

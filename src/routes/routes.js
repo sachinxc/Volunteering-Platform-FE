@@ -2,8 +2,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "../components/main";
 import Layout from "../layout/Layout";
 import VolunteerLayout from "../layout/VolunteerLayout";
+import Opportunity from "../pages/Oppertunity/Opportunity";
 import Register from "../pages/Register/Register";
 import Signin from "../pages/Signin/Signin";
+import VolunteerExplorerPage from "../pages/Volunteer/VolunteerExplorerPage";
 import Dashboard from "../pages/Volunteers/Dashboard/Dashboard";
 import Profile from "../pages/Volunteers/Profile/Profile";
 
@@ -45,10 +47,17 @@ export const volunteerRoutes = createBrowserRouter([
         element: <Signin />,
         path: "/login",
       },
+      {
+        element: <VolunteerExplorerPage />,
+        path: "/explore",
+      },
+      {
+        element: <Opportunity />,
+        path: "/explore/:id",
+      },
     ],
   },
   {
-    path: "/volunteer",
     element: <VolunteerLayout />,
     children: [
       {
