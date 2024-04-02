@@ -7,6 +7,7 @@ import RegisterEvent from "../pages/Oppertunity/RegisterEvent";
 import Register from "../pages/Register/Register";
 import Signin from "../pages/Signin/Signin";
 import VolunteerExplorerPage from "../pages/Volunteer/VolunteerExplorerPage";
+import Calender from "../pages/Volunteers/Calender/Calender";
 import Dashboard from "../pages/Volunteers/Dashboard/Dashboard";
 import Profile from "../pages/Volunteers/Profile/Profile";
 
@@ -72,6 +73,10 @@ export const volunteerRoutes = createBrowserRouter([
       {
         path: "/volunteer/profile",
         element: <Profile />,
+      },
+      {
+        element: <Calender />,
+        path: "/volunteer/calender",
       },
     ],
   },
