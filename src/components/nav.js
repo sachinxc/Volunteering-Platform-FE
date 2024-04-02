@@ -7,11 +7,14 @@ import { fadeinTop } from "../Styles/keyframes";
 import Flex from "../Styles/styledComponent/Flex";
 import Text from "../Styles/styledComponent/Text";
 import { useLocation } from "react-router-dom";
-import { Typography } from "@mui/material";
+import { MenuItem, Typography } from "@mui/material";
+import Fade from "@mui/material/Fade";
+import Menu from "@mui/material/Menu";
 
 const Nav = () => {
   const location = useLocation();
   const path = location.pathname;
+  const getUser = JSON.parse(localStorage.getItem("user"));
 
   const navigationUrls = [
     { paths: "/explore", pathName: "Volunteer" },
@@ -20,6 +23,23 @@ const Nav = () => {
     { paths: "/register", pathName: "Sign Up" },
     { paths: "/login", pathName: "Sign In" },
   ];
+
+  const navigationUserUrls = [
+    { paths: "/explore", pathName: "Volunteer" },
+    { paths: "/testimonials", pathName: "Testimonials" },
+    { paths: "/about", pathName: "About" },
+  ];
+
+  const urls = getUser ? navigationUserUrls : navigationUrls;
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <Flex
@@ -67,7 +87,7 @@ const Nav = () => {
             "@bp2": { marginRight: "$3" },
           }}
         >
-          {navigationUrls.map((link, index) => (
+          {urls.map((link, index) => (
             <Link to={link.paths} key={index}>
               <Typography
                 sx={{
@@ -97,10 +117,9 @@ const Nav = () => {
             },
           }}
         >
-          <IcoUser width="35" height="35" id="userSvg" />
+          {getUser && <IcoUser width="35" height="35" id="userSvg" />}
         </Flex>
       </Flex>
-      <IcoMenu width="32" height="32" id="menu" />
     </Flex>
   );
 };

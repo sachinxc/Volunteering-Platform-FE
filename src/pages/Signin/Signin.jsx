@@ -17,8 +17,11 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
+  const navigate = useNavigate();
+
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Required"),
     password: Yup.string().required("Required"),
@@ -30,7 +33,16 @@ const Signin = () => {
     setUser(e.target.value);
   };
 
-  const loginAction = () => {};
+  const loginAction = () => {
+    const user = {
+      type: "volunteer",
+      firstName: "",
+      lastName: "",
+    };
+    localStorage.setItem("user", JSON.stringify(user));
+
+    navigate("/volunteer/dashboard");
+  };
 
   return (
     <div>
@@ -59,7 +71,6 @@ const Signin = () => {
               validationSchema={validationSchema}
               onSubmit={(values) => {
                 loginAction();
-                console.log(values);
               }}
             >
               {({ errors, touched, submitForm }) => (
