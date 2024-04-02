@@ -4,6 +4,7 @@ import Layout from "../layout/Layout";
 import VolunteerLayout from "../layout/VolunteerLayout";
 import Opportunity from "../pages/Oppertunity/Opportunity";
 import RegisterEvent from "../pages/Oppertunity/RegisterEvent";
+import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import Register from "../pages/Register/Register";
 import Signin from "../pages/Signin/Signin";
 import VolunteerExplorerPage from "../pages/Volunteer/VolunteerExplorerPage";
@@ -27,6 +28,10 @@ export const defaultRouter = createBrowserRouter([
       {
         element: <Signin />,
         path: "/login",
+      },
+      {
+        element: <PageNotFound />,
+        path: "*",
       },
     ],
   },
@@ -61,6 +66,10 @@ export const volunteerRoutes = createBrowserRouter([
         element: <RegisterEvent />,
         path: "/explore/:id/register",
       },
+      {
+        element: <PageNotFound />,
+        path: "*",
+      },
     ],
   },
   {
@@ -77,6 +86,10 @@ export const volunteerRoutes = createBrowserRouter([
       {
         element: <Calender />,
         path: "/volunteer/calender",
+      },
+      {
+        element: <PageNotFound />,
+        path: "*",
       },
     ],
   },

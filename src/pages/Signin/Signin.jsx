@@ -30,6 +30,8 @@ const Signin = () => {
     setUser(e.target.value);
   };
 
+  const loginAction = () => {};
+
   return (
     <div>
       <Container component="main" maxWidth="xs">
@@ -56,6 +58,7 @@ const Signin = () => {
               initialValues={{ email: "", password: "" }}
               validationSchema={validationSchema}
               onSubmit={(values) => {
+                loginAction();
                 console.log(values);
               }}
             >
@@ -122,7 +125,7 @@ const Signin = () => {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
