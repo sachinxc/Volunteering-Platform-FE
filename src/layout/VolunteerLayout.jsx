@@ -20,15 +20,12 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import PeopleIcon from "@mui/icons-material/People";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import LayersIcon from "@mui/icons-material/Layers";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Outlet, useLocation } from "react-router-dom";
 import Person2Icon from "@mui/icons-material/Person2";
 import { useNavigate } from "react-router-dom";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
 export const secondaryListItems = (
   <React.Fragment>
@@ -101,6 +98,11 @@ const VolunteerLayout = () => {
       path: "/volunteer/profile",
       element: <Person2Icon />,
       name: "Profile",
+    },
+    {
+      path: "/volunteer/calender",
+      element: <CalendarMonthIcon />,
+      name: "Calender",
     },
   ];
   const getActivePath = (pagePath) => {
