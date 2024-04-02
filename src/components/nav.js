@@ -18,7 +18,7 @@ const Nav = () => {
     { paths: "/testimonials", pathName: "Testimonials" },
     { paths: "/about", pathName: "About" },
     { paths: "/register", pathName: "Sign Up" },
-    { paths: "/signin", pathName: "Sign In" },
+    { paths: "/login", pathName: "Sign In" },
   ];
 
   return (

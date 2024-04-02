@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #46c882;
   animation: fadeIn 0.5s ease-in;
   margin-top: 50px;
 }
@@ -21,7 +20,14 @@
   animation: fadeIn 0.5s ease-in;
 }
 
-h1, .register-heading, .rstep2, .checkbox-label, .login-link, .success-message, .successHeading, .f2label {
+h1,
+.register-heading,
+.rstep2,
+.checkbox-label,
+.login-link,
+.success-message,
+.successHeading,
+.f2label {
   font-family: system-ui, sans-serif;
 }
 
@@ -47,14 +53,17 @@ h1, .register-heading, .rstep2, .checkbox-label, .login-link, .success-message, 
   margin-bottom: 15px;
 }
 
-.form-input, .form-inputc, .form-inputO {
+.form-input,
+.form-inputc,
+.form-inputO {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.form-inputc, .form-inputO {
+.form-inputc,
+.form-inputO {
   margin-top: 15px;
   color: #32543c;
 }
@@ -64,7 +73,8 @@ h1, .register-heading, .rstep2, .checkbox-label, .login-link, .success-message, 
   align-items: center;
 }
 
-.submit-button, .fsubmit-button {
+.submit-button,
+.fsubmit-button {
   margin-top: 4px;
   width: 100%;
   padding: 10px;
@@ -105,7 +115,8 @@ h1, .register-heading, .rstep2, .checkbox-label, .login-link, .success-message, 
   margin: 20px 0;
 }
 
-.firstacbutton, .secondacbutton {
+.firstacbutton,
+.secondacbutton {
   margin-bottom: 5px;
   width: 50%;
   padding: 5px;
@@ -125,7 +136,8 @@ h1, .register-heading, .rstep2, .checkbox-label, .login-link, .success-message, 
   margin-left: 8px;
 }
 
-.firstacbutton.selected, .secondacbutton.selected {
+.firstacbutton.selected,
+.secondacbutton.selected {
   background-color: #4d8bff;
   color: white;
 }
@@ -159,7 +171,8 @@ h1, .register-heading, .rstep2, .checkbox-label, .login-link, .success-message, 
   text-decoration: underline;
 }
 
-.form2, .form3 {
+.form2,
+.form3 {
   animation: fadeIn 0.5s ease-in;
 }
 

@@ -7,6 +7,8 @@ import {
   volunteerRoutes,
   organizationRoutes,
 } from "./routes/routes";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 function App() {
   // defaultRouter
@@ -16,7 +18,9 @@ function App() {
   globalStyle();
   return (
     <div style={{ width: "100%" }}>
-      <RouterProvider router={volunteerRoutes} />
+      <Provider store={store}>
+        <RouterProvider router={volunteerRoutes} />
+      </Provider>
     </div>
   );
 }

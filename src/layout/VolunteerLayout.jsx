@@ -26,6 +26,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import Person2Icon from "@mui/icons-material/Person2";
 import { useNavigate } from "react-router-dom";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import { CustomWidthTooltip } from "../components/CustomTooltip/CustomTooltip";
+import { useSelector } from "react-redux";
 
 export const secondaryListItems = (
   <React.Fragment>
@@ -83,11 +85,21 @@ const Drawer = styled(MuiDrawer, {
 
 const VolunteerLayout = () => {
   const [open, setOpen] = React.useState(true);
+  const [openLogout, setOpenLogout] = React.useState(true);
 
   const location = useLocation();
   const navigate = useNavigate();
+  const state = useSelector((state) => state);
+
+  console.log(state, "state");
 
   const path = location.pathname;
+  const lastIndex = path.lastIndexOf("/");
+
+  // Extract the text after the last "/"
+  const textAfterLastSlash =
+    lastIndex !== -1 ? path.substring(lastIndex + 1) : path;
+
   const pageList = [
     {
       path: "/volunteer/dashboard",
@@ -113,10 +125,14 @@ const VolunteerLayout = () => {
     setOpen(!open);
   };
 
+  const handleTooltipOpen = () => {
+    setOpenLogout(!openLogout);
+  };
+
   return (
     <div>
       <Box sx={{ display: "flex" }}>
-        <AppBar position="absolute" open={open}>
+        <AppBar position="absolute" sx={{ bgcolor: "#46c882" }} open={open}>
           <Toolbar
             sx={{
               pr: "24px", // keep right padding when drawer closed
@@ -139,13 +155,45 @@ const VolunteerLayout = () => {
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 }}
+              sx={{ flexGrow: 1, textTransform: "capitalize" }}
             >
-              Dashboard
+              {textAfterLastSlash}
             </Typography>
-            <IconButton color="inherit">
-              <AccountCircleIcon />
-            </IconButton>
+
+            <CustomWidthTooltip
+              placement="bottom"
+              PopperProps={{
+                disablePortal: true,
+              }}
+              arrow
+              onClose={handleTooltipOpen}
+              open={openLogout}
+              title={
+                <React.Fragment>
+                  <Divider>
+                    <Box>
+                      <Typography
+                        sx={{
+                          color: "gray",
+                          fontSize: "15px",
+                          fontWeight: 700,
+                        }}
+                      >
+                        asdasd
+                      </Typography>
+                    </Box>
+                  </Divider>
+                </React.Fragment>
+              }
+            >
+              <IconButton onClick={() => handleTooltipOpen()}>
+                {openLogout ? (
+                  <AccountCircleIcon sx={{ color: "white" }} />
+                ) : (
+                  <AccountCircleIcon />
+                )}
+              </IconButton>
+            </CustomWidthTooltip>
           </Toolbar>
         </AppBar>
 
