@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import campaignImage from "../../../assets/campaignImages/dog.jpg";
+import { Link } from "react-router-dom";
 
 function CampaignOverview() {
   return (
@@ -31,9 +32,11 @@ function CampaignOverview() {
           marginTop: "64px", // Add margin top to create space between navbar and white box
         }}
       >
-        <IconButton sx={{ color: "#493536" }}>
-          <ArrowBackIcon />
-        </IconButton>
+        <Link to="/campaignexplorer">
+          <IconButton sx={{ color: "#493536" }}>
+            <ArrowBackIcon />
+          </IconButton>
+        </Link>
         <Typography
           variant="h4"
           align="center"
