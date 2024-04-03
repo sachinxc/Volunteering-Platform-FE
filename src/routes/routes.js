@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+/*import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "../components/main";
 import Layout from "../layout/Layout";
 import VolunteerLayout from "../layout/VolunteerLayout";
@@ -115,4 +115,4 @@ export const organizationRoutes = createBrowserRouter([
       },
     ],
   },
-]);
+]);*/
