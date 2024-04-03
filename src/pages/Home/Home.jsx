@@ -3,6 +3,8 @@ import { Container, Typography, Grid } from "@mui/material";
 import BannerImage1 from "../../assets/LandingPageImages/background1.jpg";
 import BannerImage2 from "../../assets/LandingPageImages/background2.jpg";
 import BannerImage3 from "../../assets/LandingPageImages/background3.jpg";
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -45,7 +47,7 @@ const Home = () => {
               gutterBottom
               sx={{
                 fontWeight: "bold",
-                color: "rgb(0 219 154)",
+                color: "white",
                 marginTop: "150px",
               }}
             >
@@ -53,11 +55,30 @@ const Home = () => {
             </Typography>
           </Grid>
           <Grid item>
-            <Typography variant="body1" gutterBottom sx={{ color: "white" }}>
+            <Typography
+              variant="body1"
+              gutterBottom
+              sx={{ color: "white", marginTop: "20px", marginBottom: "50px" }}
+            >
               All what it takes is togetherness to keep our planet healthy! Join
               us With Helping hands to make a change today.
             </Typography>
           </Grid>
+          <Link to="/signup">
+            <Button
+              variant="outlined"
+              size="large"
+              sx={{
+                marginTop: "50px",
+                color: "white",
+                fontWeight: "bold",
+                border: "3.5px solid white",
+                backdropFilter: "blur(20px)", // Apply backdrop filter to blur background
+              }}
+            >
+              Join Us Today!
+            </Button>
+          </Link>
         </Grid>
       </Container>
     </Grid>
