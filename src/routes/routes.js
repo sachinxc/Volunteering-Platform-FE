@@ -6,7 +6,7 @@ import Opportunity from "../pages/Oppertunity/Opportunity";
 import RegisterEvent from "../pages/Oppertunity/RegisterEvent";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import Register from "../pages/Register/Register";
-import Signin from "../pages/Signin/Signin";
+import Signin from "../pages/SignIn/SignIn";
 import VolunteerExplorerPage from "../pages/Volunteer/VolunteerExplorerPage";
 import Calender from "../pages/Volunteers/Calender/Calender";
 import Dashboard from "../pages/Volunteers/Dashboard/Dashboard";
