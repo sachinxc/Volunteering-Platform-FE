@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import logo from "./../../assets/Avatar/logo.png";
+import logo from "./../../assets/Avatar/userPanelicon.png";
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
 
@@ -103,7 +103,7 @@ function Signin() {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ width: 100, height: 100 }} src={logo} />
+            <Avatar sx={{ width: 50, height: 50 }} src={logo} />
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>

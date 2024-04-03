@@ -17,14 +17,11 @@ const About = () => {
           marginTop: "100px",
           marginBottom: "100px",
           padding: "20px",
+          textAlign: "center",
         }}
       >
         <Grid item xs={12}>
-          <Typography
-            variant="h4"
-            gutterBottom
-            sx={{ textAlign: "center", fontWeight: "bold" }}
-          >
+          <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
             Our Story
           </Typography>
         </Grid>

@@ -11,13 +11,14 @@ import {
   TextField,
   Typography,
   Grid,
+  ToggleButton,
+  ToggleButtonGroup,
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import CorporateFareIcon from "@mui/icons-material/CorporateFare";
 import { Field, Form, Formik } from "formik";
 import {
   countries,
-  interestsList,
   validationOrganizationSchema,
   validationVolunteerSchema,
 } from "./constants";
@@ -31,7 +32,6 @@ const Signup = () => {
     firstName: "",
     lastName: "",
     confirmPassword: "",
-    interest: "",
     country: "",
   };
 
@@ -40,7 +40,6 @@ const Signup = () => {
     password: "",
     organizationName: "",
     confirmPassword: "",
-    interest: "",
     country: "",
   };
 
@@ -52,8 +51,8 @@ const Signup = () => {
       ? validationVolunteerSchema
       : validationOrganizationSchema;
 
-  const changeUserType = (e, a) => {
-    setUser(e.target.value);
+  const changeUserType = (value) => {
+    setUser(value);
   };
 
   return (
@@ -73,12 +72,29 @@ const Signup = () => {
         }}
       >
         <Stack spacing={3}>
-          <Avatar sx={{ m: "auto", bgcolor: "secondary.main" }}>
-            {userType === "Volunteer" ? <PersonIcon /> : <CorporateFareIcon />}
-          </Avatar>
-          <Typography variant="h5" align="center">
-            Sign up
-          </Typography>
+          <grid>
+            <Avatar
+              sx={{
+                width: 50,
+                height: 50,
+                m: "auto",
+                bgcolor: "secondary.main",
+                textAlign: "center",
+                mb: 1, // Add margin bottom
+              }}
+            >
+              {userType === "Volunteer" ? (
+                <PersonIcon />
+              ) : (
+                <CorporateFareIcon />
+              )}
+            </Avatar>
+            <Typography variant="h5" align="center" sx={{ mb: 1 }}>
+              {" "}
+              {/* Add margin bottom */}
+              Sign up
+            </Typography>
+          </grid>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -95,19 +111,22 @@ const Signup = () => {
               handleBlur,
             }) => (
               <Form>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">I am </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={userType}
-                    label="I am"
-                    onChange={changeUserType}
-                  >
-                    <MenuItem value={"Organization"}>Organization</MenuItem>
-                    <MenuItem value={"Volunteer"}>Volunteer</MenuItem>
-                  </Select>
+                <FormControl fullWidth sx={{ marginBottom: 7 }}>
+                  <InputLabel id="demo-simple-select-label">
+                    Choose your Account Type, I'm a
+                  </InputLabel>
                 </FormControl>
+
+                <ToggleButtonGroup
+                  value={userType}
+                  exclusive
+                  onChange={(event, value) => changeUserType(value)}
+                  aria-label="user-type"
+                  fullWidth
+                >
+                  <ToggleButton value="Volunteer">Volunteer</ToggleButton>
+                  <ToggleButton value="Organization">Organization</ToggleButton>
+                </ToggleButtonGroup>
 
                 {userType === "Volunteer" ? (
                   <>
@@ -116,10 +135,10 @@ const Signup = () => {
                       margin="normal"
                       required
                       fullWidth
-                      id="email"
+                      id="firstName"
                       name="firstName"
                       label="First Name"
-                      autoComplete="name"
+                      autoComplete="given-name"
                       autoFocus
                       error={touched.firstName && errors.firstName}
                       helperText={touched.firstName && errors.firstName}
@@ -130,10 +149,10 @@ const Signup = () => {
                       margin="normal"
                       required
                       fullWidth
-                      id="email"
+                      id="lastName"
                       name="lastName"
                       label="Last Name"
-                      autoComplete="name"
+                      autoComplete="family-name"
                       autoFocus
                       error={touched.lastName && errors.lastName}
                       helperText={touched.lastName && errors.lastName}
@@ -145,10 +164,10 @@ const Signup = () => {
                     margin="normal"
                     required
                     fullWidth
-                    id="email"
+                    id="organizationName"
                     name="organizationName"
                     label="Organization's Name"
-                    autoComplete="name"
+                    autoComplete="organization"
                     autoFocus
                     error={touched.organizationName && errors.organizationName}
                     helperText={
@@ -177,30 +196,6 @@ const Signup = () => {
                     ))}
                   </Field>
                 </FormControl>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">
-                    Interest
-                  </InputLabel>
-                  <Field
-                    as={Select}
-                    name="interest"
-                    label="Interest"
-                    value={values?.interest}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={touched.interest && errors.interest}
-                    helperText={touched.interest && errors.interest}
-                  >
-                    <MenuItem value="" disabled>
-                      Select Interest
-                    </MenuItem>
-                    {interestsList.map((interest, index) => (
-                      <MenuItem key={index} value={interest}>
-                        {interest}
-                      </MenuItem>
-                    ))}
-                  </Field>
-                </FormControl>
 
                 <Field
                   as={TextField}
@@ -225,7 +220,7 @@ const Signup = () => {
                   label="Password"
                   type="password"
                   id="password"
-                  autoComplete="current-password"
+                  autoComplete="new-password"
                   error={touched.password && errors.password}
                   helperText={touched.password && errors.password}
                 />
@@ -238,8 +233,8 @@ const Signup = () => {
                   name="confirmPassword"
                   label="Confirm Password"
                   type="password"
-                  id="password"
-                  autoComplete="current-password"
+                  id="confirmPassword"
+                  autoComplete="new-password"
                   error={touched.confirmPassword && errors.confirmPassword}
                   helperText={touched.confirmPassword && errors.confirmPassword}
                 />
@@ -248,9 +243,9 @@ const Signup = () => {
                   onClick={() => submitForm()}
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
+                  sx={{ mt: 3, mb: 2, backgroundColor: "#2ab6bb" }}
                 >
-                  Create
+                  Submit
                 </Button>
               </Form>
             )}
