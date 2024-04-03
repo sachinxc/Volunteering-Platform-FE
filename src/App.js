@@ -1,7 +1,6 @@
 import React from "react";
 import { RouterProvider } from "react-router-dom";
-import globalStyle from "./Styles/globalCss";
-import { Box, Container } from "@mui/material";
+// import globalStyle from "./Styles/globalCss";
 import {
   defaultRouter,
   volunteerRoutes,
@@ -20,11 +19,11 @@ function App() {
       ? organizationRoutes
       : defaultRouter;
 
-  globalStyle();
+  // globalStyle();
   return (
     <div style={{ width: "100%" }}>
       <Provider store={store}>
-        <RouterProvider router={getRoutes} />
+        <RouterProvider router={volunteerRoutes} />
       </Provider>
     </div>
   );

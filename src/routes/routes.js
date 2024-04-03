@@ -1,16 +1,17 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Main from "../components/main";
+import { createBrowserRouter } from "react-router-dom";
+import Home from "../pages/Home/Home";
 import Layout from "../layout/Layout";
 import VolunteerLayout from "../layout/VolunteerLayout";
-import Opportunity from "../pages/Oppertunity/Opportunity";
-import RegisterEvent from "../pages/Oppertunity/RegisterEvent";
+import Opportunity from "../pages/Opportunity/Opportunity";
+import RegisterEvent from "../pages/Opportunity/RegisterEvent";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
-import Register from "../pages/Register/Register";
+import Register from "../pages/SignUp/SignUp";
 import Signin from "../pages/SignIn/SignIn";
-import VolunteerExplorerPage from "../pages/Volunteer/VolunteerExplorerPage";
-import Calender from "../pages/Volunteers/Calender/Calender";
-import Dashboard from "../pages/Volunteers/Dashboard/Dashboard";
-import Profile from "../pages/Volunteers/Profile/Profile";
+import VolunteerExplorerPage from "../pages/CampaignExplorer/CampaignExplorer";
+import Calender from "../pages/VolunteersPanel/Calendar/Calendar";
+import Dashboard from "../pages/VolunteersPanel/Dashboard/Dashboard";
+import Profile from "../pages/VolunteersPanel/Profile/Profile";
+import PasswordReset from "../pages/PasswordReset/PasswordReset";
 
 // un-authenticated
 export const defaultRouter = createBrowserRouter([
@@ -19,7 +20,7 @@ export const defaultRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Main />,
+        element: <Home />,
       },
       {
         element: <Register />,
@@ -44,7 +45,7 @@ export const volunteerRoutes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Main />,
+        element: <Home />,
       },
       {
         element: <Register />,
@@ -53,6 +54,10 @@ export const volunteerRoutes = createBrowserRouter([
       {
         element: <Signin />,
         path: "/login",
+      },
+      {
+        element: <PasswordReset />,
+        path: "/resetpassword/:id",
       },
       {
         element: <VolunteerExplorerPage />,
@@ -80,6 +85,10 @@ export const volunteerRoutes = createBrowserRouter([
         element: <Dashboard />,
       },
       {
+        element: <PasswordReset />,
+        path: "/resetpassword/:id",
+      },
+      {
         path: "/volunteer/profile",
         element: <Profile />,
       },
@@ -102,7 +111,7 @@ export const organizationRoutes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Main />,
+        element: <Home />,
       },
       {
         path: "/organization",
