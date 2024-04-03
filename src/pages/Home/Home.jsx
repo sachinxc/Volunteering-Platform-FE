@@ -27,7 +27,11 @@ const Home = () => {
               variant="h2"
               component="h1"
               gutterBottom
-              sx={{ fontWeight: "bold", color: "#46c882", marginTop: "150px" }}
+              sx={{
+                fontWeight: "bold",
+                color: "rgb(0 219 154)",
+                marginTop: "150px",
+              }}
             >
               Together we unite to make a change globally
             </Typography>
