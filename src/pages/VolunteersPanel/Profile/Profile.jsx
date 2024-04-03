@@ -15,7 +15,7 @@ import {
   countries,
   interestsList,
   validationVolunteerSchema,
-} from "../../Register/constants";
+} from "../../SignUp/constants";
 
 const Profile = () => {
   const initialValues = {

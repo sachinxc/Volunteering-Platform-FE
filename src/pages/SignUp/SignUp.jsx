@@ -1,17 +1,20 @@
-import React, { useState } from "react";
-import "./register.css"; // Import CSS file for styling Import the image file
+import React from "react";
 import {
   Avatar,
   Button,
   FormControl,
   InputLabel,
   MenuItem,
+  Paper,
   Select,
   Stack,
   TextField,
   Typography,
+  Box,
+  Grid,
 } from "@mui/material";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import PersonIcon from "@mui/icons-material/Person";
+import CorporateFareIcon from "@mui/icons-material/CorporateFare";
 import { Field, Form, Formik } from "formik";
 import {
   countries,
@@ -19,11 +22,9 @@ import {
   validationOrganizationSchema,
   validationVolunteerSchema,
 } from "./constants";
-import PersonIcon from "@mui/icons-material/Person";
-import CorporateFareIcon from "@mui/icons-material/CorporateFare";
 
-const Register = () => {
-  const [userType, setUser] = useState("Volunteer");
+const Signup = () => {
+  const [userType, setUser] = React.useState("Volunteer");
 
   const volunteerValues = {
     email: "",
@@ -57,28 +58,28 @@ const Register = () => {
   };
 
   return (
-    <div className="registermain">
-      <div className="register-container">
-        <div className="register-form">
-          <Stack
-            sx={{
-              alignItems: "center",
-              padding: "20px",
-              justifyContent: "center",
-            }}
-          >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              {userType === "Volunteer" ? (
-                <PersonIcon />
-              ) : (
-                <CorporateFareIcon />
-              )}
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign up
-            </Typography>
-          </Stack>
-
+    <Grid
+      container
+      justifyContent="center"
+      alignItems="center"
+      sx={{ height: "100vh", marginTop: "100px", marginBottom: "200px" }}
+    >
+      <Paper
+        elevation={6}
+        sx={{
+          padding: 3,
+          maxWidth: 500,
+          backgroundColor: "#ddeee4",
+          borderRadius: "20px",
+        }}
+      >
+        <Stack spacing={3}>
+          <Avatar sx={{ m: "auto", bgcolor: "secondary.main" }}>
+            {userType === "Volunteer" ? <PersonIcon /> : <CorporateFareIcon />}
+          </Avatar>
+          <Typography variant="h5" align="center">
+            Sign up
+          </Typography>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -147,7 +148,7 @@ const Register = () => {
                     fullWidth
                     id="email"
                     name="organizationName"
-                    label="organization's Name"
+                    label="Organization's Name"
                     autoComplete="name"
                     autoFocus
                     error={touched.organizationName && errors.organizationName}
@@ -157,54 +158,50 @@ const Register = () => {
                   />
                 )}
 
-                <Stack gap={2}>
-                  <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">
-                      Country
-                    </InputLabel>
-                    <Field
-                      as={Select}
-                      name="country"
-                      label="Country"
-                      value={values.country}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    >
-                      <MenuItem value="" disabled>
-                        Select Country
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">Country</InputLabel>
+                  <Field
+                    as={Select}
+                    name="country"
+                    label="Country"
+                    value={values.country}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  >
+                    <MenuItem value="" disabled>
+                      Select Country
+                    </MenuItem>
+                    {countries.map((country, index) => (
+                      <MenuItem key={index} value={country}>
+                        {country}
                       </MenuItem>
-                      {countries.map((country, index) => (
-                        <MenuItem key={index} value={country}>
-                          {country}
-                        </MenuItem>
-                      ))}
-                    </Field>
-                  </FormControl>
-                  <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">
-                      Interest
-                    </InputLabel>
-                    <Field
-                      as={Select}
-                      name="interest"
-                      label="Interest"
-                      value={values?.interest}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      error={touched.interest && errors.interest}
-                      helperText={touched.interest && errors.interest}
-                    >
-                      <MenuItem value="" disabled>
-                        Select Interest
+                    ))}
+                  </Field>
+                </FormControl>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">
+                    Interest
+                  </InputLabel>
+                  <Field
+                    as={Select}
+                    name="interest"
+                    label="Interest"
+                    value={values?.interest}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={touched.interest && errors.interest}
+                    helperText={touched.interest && errors.interest}
+                  >
+                    <MenuItem value="" disabled>
+                      Select Interest
+                    </MenuItem>
+                    {interestsList.map((interest, index) => (
+                      <MenuItem key={index} value={interest}>
+                        {interest}
                       </MenuItem>
-                      {interestsList.map((interest, index) => (
-                        <MenuItem key={index} value={interest}>
-                          {interest}
-                        </MenuItem>
-                      ))}
-                    </Field>
-                  </FormControl>
-                </Stack>
+                    ))}
+                  </Field>
+                </FormControl>
 
                 <Field
                   as={TextField}
@@ -248,17 +245,6 @@ const Register = () => {
                   helperText={touched.confirmPassword && errors.confirmPassword}
                 />
 
-                {/* <label className="checkbox-label">
-                  <input
-                    type="checkbox"
-                    name="receiveEmails"
-                    checked={formData.receiveEmails}
-                    onChange={handleChange}
-                    className="checkbox-input"
-                  />
-                  Subscribe me for updates and news via email!
-                </label> */}
-
                 <Button
                   onClick={() => submitForm()}
                   fullWidth
@@ -270,10 +256,10 @@ const Register = () => {
               </Form>
             )}
           </Formik>
-        </div>
-      </div>
-    </div>
+        </Stack>
+      </Paper>
+    </Grid>
   );
 };
 
-export default Register;
+export default Signup;
