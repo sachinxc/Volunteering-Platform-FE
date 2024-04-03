@@ -60,7 +60,7 @@ const defaultTheme = createTheme({
   },
 });
 
-export default function SignIn() {
+export default function Signin() {
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleSubmit = (event, { setSubmitting }) => {
