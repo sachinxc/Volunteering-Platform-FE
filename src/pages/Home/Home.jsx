@@ -18,7 +18,7 @@ const Home = () => {
     }, 6000); // Change the image every 5 seconds (5000 milliseconds)
 
     return () => clearInterval(interval);
-  }, []);
+  }, [bannerImages.length]);
 
   return (
     <Grid
