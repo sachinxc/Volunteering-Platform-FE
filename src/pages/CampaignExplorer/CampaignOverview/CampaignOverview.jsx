@@ -46,7 +46,6 @@ function CampaignOverview() {
         </Typography>
         <img
           src={campaignImage}
-          alt="Campaign Image"
           style={{
             height: "250px",
             width: "50%",
