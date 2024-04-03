@@ -23,6 +23,7 @@ const navItems = [
   {
     title: "Explore Volunteering",
     routLink: "/campaignexplorer",
+    isButton: true, // Add a property to specify if the item is a button
   },
 
   {
@@ -112,13 +113,27 @@ function DrawerAppBar(props) {
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Link to={item.routLink}>
-                <Button
-                  key={item}
-                  sx={{ mr: 2, ml: 2, fontWeight: "bold", color: "#ffffff" }} //nav bar menu text colors
-                >
-                  {item.title}
-                </Button>
+              <Link to={item.routLink} key={item.title}>
+                {item.isButton ? (
+                  <Button
+                    variant="outlined"
+                    sx={{
+                      mr: 2,
+                      ml: 2,
+                      fontWeight: "bold",
+                      color: "#ffffff",
+                      border: "1px solid white",
+                    }}
+                  >
+                    {item.title}
+                  </Button>
+                ) : (
+                  <Button
+                    sx={{ mr: 2, ml: 2, fontWeight: "bold", color: "#ffffff" }}
+                  >
+                    {item.title}
+                  </Button>
+                )}
               </Link>
             ))}
           </Box>

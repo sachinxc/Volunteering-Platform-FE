@@ -305,7 +305,7 @@ const CampaignExplorer = () => {
           sx={{ color: "white", fontWeight: "bold", marginBottom: "50px" }}
           gutterBottom
         >
-          Explore Volunteer Opportunities
+          Explore Volunteering Opportunities
         </Typography>
 
         <Grid

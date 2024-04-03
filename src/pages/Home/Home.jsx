@@ -64,21 +64,22 @@ const Home = () => {
               us With Helping hands to make a change today.
             </Typography>
           </Grid>
-          <Link to="/signup">
-            <Button
-              variant="outlined"
-              size="large"
-              sx={{
-                marginTop: "50px",
-                color: "white",
-                fontWeight: "bold",
-                border: "3.5px solid white",
-                backdropFilter: "blur(20px)", // Apply backdrop filter to blur background
-              }}
-            >
-              Join Us Today!
-            </Button>
-          </Link>
+          <grid>
+            <Link to="/signup">
+              <Button
+                variant="outlined"
+                size="large"
+                sx={{
+                  color: "white",
+                  fontWeight: "bold",
+                  border: "2px solid white",
+                  backdropFilter: "blur(20px)", // Apply backdrop filter to blur background
+                }}
+              >
+                Join Us Today
+              </Button>
+            </Link>
+          </grid>
         </Grid>
       </Container>
     </Grid>
