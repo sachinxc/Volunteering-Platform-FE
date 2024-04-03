@@ -47,6 +47,7 @@ function CampaignOverview() {
         <img
           src={campaignImage}
           style={{
+            alt: "dog",
             height: "250px",
             width: "50%",
             borderRadius: 20,

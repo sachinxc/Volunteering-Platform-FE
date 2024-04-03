@@ -10,7 +10,6 @@ import {
   Stack,
   TextField,
   Typography,
-  Box,
   Grid,
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
