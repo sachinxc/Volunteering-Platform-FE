@@ -11,6 +11,11 @@ import VolunteerExplorerPage from "../pages/Volunteer/VolunteerExplorerPage";
 import Calender from "../pages/Volunteers/Calender/Calender";
 import Dashboard from "../pages/Volunteers/Dashboard/Dashboard";
 import Profile from "../pages/Volunteers/Profile/Profile";
+import OrganizationLayout from "../layout/OrganizationLayout";
+import OrganizationDashboard from "../pages/Organization/OrganizationDashboard/OrganizationDashboard";
+import OrganizationProfile from "../pages/Organization/OrganizationProfile/OrganizationProfile";
+import CampaignCreate from "../pages/Organization/Campaing/CampaingCreate/CampaingCreate";
+import CampaignList from "../pages/Organization/Campaing/CampaignList/CampaignList";
 
 // un-authenticated
 export const defaultRouter = createBrowserRouter([
@@ -104,14 +109,43 @@ export const organizationRoutes = createBrowserRouter([
         path: "/",
         element: <Main />,
       },
+      // {
+      //   path: "/organization",
+      //   children: [
+      //     {
+      //       path: "/organization/dashboard",
+      //       element: <Dashboard />,
+      //     },
+      //   ],
+      // },
+    ],
+  },
+  {
+    element: <OrganizationLayout />,
+    children: [
       {
-        path: "/organization",
-        children: [
-          {
-            path: "/organization/dashboard",
-            element: <Dashboard />,
-          },
-        ],
+        path: "/organization/dashboard",
+        element: <OrganizationDashboard />,
+      },
+      {
+        path: "/organization/profile",
+        element: <OrganizationProfile />,
+      },
+      {
+        path: "/organization/campaign",
+        element: <CampaignList />,
+      },
+      {
+        path: "/organization/create-campaign",
+        element: <CampaignCreate />,
+      },
+      {
+        element: <Calender />,
+        path: "/volunteer/calender",
+      },
+      {
+        element: <PageNotFound />,
+        path: "*",
       },
     ],
   },

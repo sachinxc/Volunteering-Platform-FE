@@ -19,7 +19,7 @@ function App() {
   return (
     <div style={{ width: "100%" }}>
       <Provider store={store}>
-        <RouterProvider router={volunteerRoutes} />
+        <RouterProvider router={organizationRoutes} />
       </Provider>
     </div>
   );
