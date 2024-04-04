@@ -94,7 +94,12 @@ function CampaignOverview() {
             }}
           >
             <Card
-              sx={{ borderRadius: "20px", height: "400px", color: "#493536" }}
+              sx={{
+                borderRadius: "20px",
+                height: "400px",
+                color: "#493536",
+                backgroundColor: "#d1ebe0",
+              }}
             >
               <CardContent>
                 <Typography variant="body1" gutterBottom fontWeight="bold">
