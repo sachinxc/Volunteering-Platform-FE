@@ -42,13 +42,14 @@ const Home = () => {
         >
           <Grid item>
             <Typography
-              variant="h2"
+              variant="h1"
               component="h1"
               gutterBottom
               sx={{
                 fontWeight: "bold",
                 color: "white",
-                marginTop: "250px",
+                marginTop: "150px",
+                fontSize: "65px",
               }}
             >
               Together we unite to make a change globally
