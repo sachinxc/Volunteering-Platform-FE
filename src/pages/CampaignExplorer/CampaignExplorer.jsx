@@ -42,7 +42,7 @@ const OpportunityCard = (props) => {
             size="small"
             sx={{
               fontSize: "12px",
-              color: "#49353",
+              color: "black",
               fontWeight: "bold",
               border: "1px solid #5bb55b",
               borderRadius: "10px",
