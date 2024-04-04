@@ -45,11 +45,12 @@ function CampaignOverview() {
             sx={{
               color: "#493536",
               position: "absolute",
-              top: "5px",
-              left: "5px",
+              top: "35px",
+              left: "30px",
+              fontSize: "100px",
             }}
           >
-            <ArrowBackIcon />
+            <ArrowBackIcon sx={{ fontSize: "50px" }} />
           </IconButton>
         </Link>
         <Typography
