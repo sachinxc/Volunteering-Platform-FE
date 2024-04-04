@@ -1,0 +1,8 @@
+src/layout/VolunteerLayout.jsx
+src/pages/Opportunity/Opportunity.jsx
+src/pages/Opportunity/RegisterEvent.jsx
+src/pages/SignIn/SignIn.jsx
+src/pages/VolunteersPanel/EventCalendar/EventCalendar.jsx
+src/routes/routes.js
+src/store/slices/layoutSlice.js
+src/store/store.js

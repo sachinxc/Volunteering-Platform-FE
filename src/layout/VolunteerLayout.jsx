@@ -91,8 +91,6 @@ const VolunteerLayout = () => {
   const navigate = useNavigate();
   const state = useSelector((state) => state);
 
-  console.log(state, "state");
-
   const path = location.pathname;
   const lastIndex = path.lastIndexOf("/");
 
