@@ -37,15 +37,15 @@ function Signin() {
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleSubmit = (event, { setSubmitting }) => {
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-    setTimeout(() => {
-      alert("Form submitted successfully!");
-      setSubmitting(false);
-    }, 1000);
+    // const data = new FormData(event.currentTarget);
+    // console.log({
+    //   email: data.get("email"),
+    //   password: data.get("password"),
+    // });
+    // setTimeout(() => {
+    //   alert("Form submitted successfully!");
+    //   setSubmitting(false);
+    // }, 1000);
   };
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
