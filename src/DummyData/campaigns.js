@@ -1,5 +1,5 @@
-import Avatar01 from "./../assets/Images/Avatar01.jpg";
-import RescueDogBanner from "./../assets/Images/RescueDogBanner.jpg";
+import Avatar01 from "./../assets/Avatar/Avatar01.jpg";
+import RescueDogBanner from "./../assets/Avatar/RescueDogBanner.jpg";
 
 // Dummy data for volunteer campaigns
 export const campaigns = [

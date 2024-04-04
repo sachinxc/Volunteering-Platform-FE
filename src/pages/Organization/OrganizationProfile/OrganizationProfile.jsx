@@ -6,20 +6,9 @@ import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import {
-  FormControl,
-  IconButton,
-  Input,
-  InputAdornment,
-  InputLabel,
-} from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import * as Yup from "yup";
-import { Formik, Form, Field } from "formik";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { styled } from "@mui/material/styles";
-import Avatar01 from "./../../../assets/Images/Avatar01.jpg";
+import Avatar01 from "./../../../assets/Avatar/Avatar01.jpg";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",

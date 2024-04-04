@@ -5,9 +5,9 @@ import VolunteerLayout from "../layout/VolunteerLayout";
 import Opportunity from "../pages/Opportunity/Opportunity";
 import RegisterEvent from "../pages/Opportunity/RegisterEvent";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
-import Calender from "../pages/Volunteers/Calender/Calender";
-import Dashboard from "../pages/Volunteers/Dashboard/Dashboard";
-import Profile from "../pages/Volunteers/Profile/Profile";
+import Calender from "../pages/VolunteersPanel/EventCalendar/EventCalendar";
+import Dashboard from "../pages/VolunteersPanel/Dashboard/Dashboard";
+import Profile from "../pages/VolunteersPanel/Profile/Profile";
 import OrganizationLayout from "../layout/OrganizationLayout";
 import OrganizationDashboard from "../pages/Organization/OrganizationDashboard/OrganizationDashboard";
 import OrganizationProfile from "../pages/Organization/OrganizationProfile/OrganizationProfile";
@@ -17,12 +17,11 @@ import CampaignList from "../pages/Organization/Campaing/CampaignList/CampaignLi
 import SignUp from "../pages/SignUp/SignUp";
 import CampaignExplorer from "../pages/CampaignExplorer/CampaignExplorer";
 import EventCalendar from "../pages/VolunteersPanel/EventCalendar/EventCalendar";
-import Dashboard from "../pages/VolunteersPanel/Dashboard/Dashboard";
-import Profile from "../pages/VolunteersPanel/Profile/Profile";
 import PasswordReset from "../pages/PasswordReset/PasswordReset";
 import CampaignOverview from "../pages/CampaignExplorer/CampaignOverview/CampaignOverview";
 import About from "../pages/About/About";
 import MainLayout from "../layout/MainLayout";
+import Signin from './../pages/SignIn/SignIn';
 // un-authenticated
 export const defaultRouter = createBrowserRouter([
   {
@@ -42,7 +41,7 @@ export const defaultRouter = createBrowserRouter([
         path: "/signup",
       },
       {
-        element: <SignIn />,
+        element: <Signin/>,
         path: "/signin",
       },
       {
@@ -84,7 +83,7 @@ export const volunteerRoutes = createBrowserRouter([
         path: "/signup",
       },
       {
-        element: <SignIn />,
+        element: <Signin />,
         path: "/signin",
       },
       {
@@ -143,29 +142,7 @@ export const volunteerRoutes = createBrowserRouter([
 // organization's routes
 export const organizationRoutes = createBrowserRouter([
   {
-    element: <Layout />,
-    element: <MainLayout />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        element: <Home />,
-        path: "/home",
-      },
-      // {
-      //   path: "/organization",
-      //   children: [
-      //     {
-      //       path: "/organization/dashboard",
-      //       element: <Dashboard />,
-      //     },
-      //   ],
-      // },
-    ],
-  },
-  {
+    path: "/organization",
     element: <OrganizationLayout />,
     children: [
       {

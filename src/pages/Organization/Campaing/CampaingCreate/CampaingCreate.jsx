@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { styled } from "@mui/material/styles";
-import Avatar01 from "./../../../../assets/Images/Avatar01.jpg";
+import Avatar01 from "./../../../../assets/Avatar/Avatar01.jpg";
 import { FormControl, InputLabel, MenuItem, Select, TextareaAutosize } from "@mui/material";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
