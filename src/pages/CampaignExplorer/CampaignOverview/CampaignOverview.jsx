@@ -8,7 +8,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import campaignImage from "../../../assets/campaignImages/dog.jpg";
+import campaignImage from "../../../assets/CampaignImages/dog.jpg";
 import { Link } from "react-router-dom";
 
 function CampaignOverview() {

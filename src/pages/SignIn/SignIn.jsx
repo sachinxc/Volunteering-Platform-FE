@@ -11,7 +11,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { IconButton, InputAdornment } from "@mui/material";
+import { IconButton, InputAdornment, Stack } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import logo from "./../../assets/Avatar/userPanelicon.png";
 import * as Yup from "yup";
@@ -55,58 +55,50 @@ function Signin() {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <CssBaseline />
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
       <Grid
         container
-        component="main"
         justifyContent="center"
+        alignItems="center"
         sx={{
-          [defaultTheme.breakpoints.down("sm")]: {
-            height: "100vh", // small screens
-            marginTop: 0,
-          },
-          [defaultTheme.breakpoints.up("sm")]: {
-            height: "90vh", // for large screens
-            marginTop: 4,
-          },
-
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          height: "100%",
+          padding: "20px",
         }}
       >
-        <Grid
-          item
-          xs={12}
-          sm={8}
-          md={4}
-          component={Paper}
+        <Paper
           elevation={6}
-          square
           sx={{
-            [defaultTheme.breakpoints.down("sm")]: {
-              borderRadius: "0",
-            },
-            [defaultTheme.breakpoints.up("sm")]: {
-              borderRadius: "20px",
-            },
-            backgroundColor: "#ddeee4", //color of the sign in box
+            //marginTop: 5,
+            padding: 3,
+            maxWidth: 500,
+            backgroundColor: "#ddeee4",
+            borderRadius: "20px",
           }}
         >
-          <Box
-            sx={{
-              my: 8,
-              mx: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Avatar sx={{ width: 50, height: 50 }} src={logo} />
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
+          <Stack spacing={3}>
+            <grid>
+              <Avatar
+                sx={{
+                  width: 50,
+                  height: 50,
+                  m: "auto",
+                  bgcolor: "secondary.main",
+                  textAlign: "center",
+                  mb: 1, // Add margin bottom
+                }}
+              ></Avatar>
+              <Typography variant="h5" align="center" sx={{ mb: 1 }}>
+                {" "}
+                {/* Add margin bottom */}
+                Sign In
+              </Typography>
+            </grid>
             <Formik
               initialValues={{
                 email: "",
@@ -193,10 +185,10 @@ function Signin() {
                 </Form>
               )}
             </Formik>
-          </Box>
-        </Grid>
+          </Stack>
+        </Paper>
       </Grid>
-    </ThemeProvider>
+    </div>
   );
 }
 
