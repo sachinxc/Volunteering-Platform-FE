@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom"; // Importing necessary components fro
 import CssBaseline from "@mui/material/CssBaseline";
 import { Box } from "@mui/material";
 import DrawerAppBar from "../components/Navbar/DrawerAppBar";
+import Footer from "../components/Footer/Footer"; // Import your Footer component
 
 const MainLayout = () => {
   return (
@@ -14,6 +15,7 @@ const MainLayout = () => {
         sx={{ width: "100%", background: "rgb(56, 158, 127)" }}
       >
         <Outlet />
+        <Footer />
       </Box>
     </Box>
   );
