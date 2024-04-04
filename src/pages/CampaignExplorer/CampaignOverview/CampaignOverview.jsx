@@ -297,7 +297,7 @@ function CampaignOverview() {
             <Card
               sx={{
                 borderRadius: "20px",
-                height: "200px",
+                height: "400px",
                 color: "#493536",
                 backgroundColor: "#cce5db",
                 boxShadow: "none", // Remove the shadow
