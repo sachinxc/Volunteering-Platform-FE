@@ -42,14 +42,14 @@ const OpportunityCard = (props) => {
             size="small"
             sx={{
               fontSize: "12px",
-              color: "black",
+              color: "#49353",
               fontWeight: "bold",
-              border: "2px solid #5bb55b",
+              border: "1px solid #5bb55b",
               borderRadius: "10px",
-              padding: "6px",
+              padding: "5px",
             }}
           >
-            Learn More
+            View
           </Button>
         </Link>
       </CardActions>
@@ -469,7 +469,7 @@ const CampaignExplorer = () => {
                 page={page}
                 onChange={handleChangePage}
                 variant="outlined"
-                color="secondary"
+                color="primary"
                 sx={{ mt: 2 }}
               />
             </Grid>
