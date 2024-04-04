@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Typography, Grid } from "@mui/material";
 import BannerImage1 from "../../assets/LandingPageImages/background1.jpg";
-import BannerImage2 from "../../assets/LandingPageImages/background2.jpg";
+import BannerImage2 from "../../assets/LandingPageImages/background2.png";
 import BannerImage3 from "../../assets/LandingPageImages/background3.jpg";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
@@ -48,7 +48,7 @@ const Home = () => {
               sx={{
                 fontWeight: "bold",
                 color: "white",
-                marginTop: "150px",
+                marginTop: "250px",
               }}
             >
               Together we unite to make a change globally

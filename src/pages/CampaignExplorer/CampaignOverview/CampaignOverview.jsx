@@ -395,7 +395,7 @@ function CampaignOverview() {
           variant="contained"
           color="primary"
           sx={{
-            marginTop: "20px",
+            marginTop: "10px",
             alignSelf: "center",
             color: "#493536",
             fontWeight: "bold",
