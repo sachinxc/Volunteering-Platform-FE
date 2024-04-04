@@ -8,7 +8,7 @@ import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import SignUp from "../pages/SignUp/SignUp";
 import SignIn from "../pages/SignIn/SignIn";
 import CampaignExplorer from "../pages/CampaignExplorer/CampaignExplorer";
-import Calendar from "../pages/VolunteersPanel/Calendar/Calendar";
+import EventCalendar from "../pages/VolunteersPanel/EventCalendar/EventCalendar";
 import Dashboard from "../pages/VolunteersPanel/Dashboard/Dashboard";
 import Profile from "../pages/VolunteersPanel/Profile/Profile";
 import PasswordReset from "../pages/PasswordReset/PasswordReset";
@@ -121,8 +121,8 @@ export const volunteerRoutes = createBrowserRouter([
         element: <Profile />,
       },
       {
-        element: <Calendar />,
-        path: "/volunteer/calendar",
+        element: <EventCalendar />,
+        path: "/volunteer/eventcalendar",
       },
       {
         element: <PageNotFound />,

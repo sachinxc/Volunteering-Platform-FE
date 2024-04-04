@@ -6,7 +6,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const localizer = momentLocalizer(moment);
 
-const Calender = () => {
+const EventCalendar = () => {
   const myEventsList = [
     {
       id: 1,
@@ -48,4 +48,4 @@ const Calender = () => {
   );
 };
 
-export default Calender;
+export default EventCalendar;

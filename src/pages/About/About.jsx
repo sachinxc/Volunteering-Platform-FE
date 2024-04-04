@@ -10,14 +10,14 @@ const About = () => {
         spacing={3}
         sx={{
           alignItems: "center",
-          width: "60%",
+          width: "80%",
           color: "#493536",
           backgroundColor: "#ddeee4",
           borderRadius: "20px",
           marginTop: "100px",
           marginBottom: "100px",
           padding: "20px",
-          textAlign: "center",
+          //textAlign: "center",
         }}
       >
         <Grid item xs={12}>
