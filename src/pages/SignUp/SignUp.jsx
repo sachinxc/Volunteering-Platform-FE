@@ -124,7 +124,7 @@ const Signup = () => {
         <Box
           sx={{
             width: "80%",
-            height: "120vh",
+            height: "130vh",
             borderRadius: "20px",
             overflow: "hidden",
           }}
@@ -156,11 +156,7 @@ const Signup = () => {
               elevation={6}
               square
               sx={{
-                borderRadius: userType === "Organization" ? "20px" : 0,
-                boxShadow:
-                  userType === "Organization"
-                    ? "4px 4px 10px rgba(0, 0, 0, 0.1)"
-                    : "none",
+                boxShadow: "none",
               }}
             >
               <Box
