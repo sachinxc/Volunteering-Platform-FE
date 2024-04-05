@@ -52,7 +52,7 @@ function CampaignOverview() {
               color: "#493536",
               position: "absolute",
               top: "40px", // Adjust top position for responsiveness
-              left: "60px", // Adjust left position for responsiveness
+              left: "25px", // Adjust left position for responsiveness
               //fontSize: "40px", // Adjust font size for responsiveness
             }}
           >
@@ -65,7 +65,7 @@ function CampaignOverview() {
             color: "red", // Set color to red
             position: "absolute",
             top: "40px", // Adjust top position for responsiveness
-            right: "60px", // Adjust right position for responsiveness
+            right: "25px", // Adjust right position for responsiveness
             //fontSize: "40px", // Adjust font size for responsiveness
           }}
         >
@@ -76,6 +76,7 @@ function CampaignOverview() {
         </IconButton>
         <Typography
           variant="h4"
+          width="50%"
           align="center"
           gutterBottom
           fontWeight="bold"
