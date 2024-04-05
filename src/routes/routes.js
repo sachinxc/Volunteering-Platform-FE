@@ -162,10 +162,6 @@ export const organizationRoutes = createBrowserRouter([
         element: <CampaignCreate />,
       },
       {
-        element: <Calender />,
-        path: "/volunteer/calender",
-      },
-      {
         element: <PageNotFound />,
         path: "*",
       },
