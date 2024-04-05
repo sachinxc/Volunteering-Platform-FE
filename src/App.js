@@ -13,6 +13,7 @@ import { ORGANIZATION, VOLUNTEER } from "./constants";
 function App() {
   // Retrieve user data from localStorage
   const getUser = JSON.parse(localStorage.getItem("user"));
+  // const getUser = JSON.parse(localStorage.getItem("user"));
 
   // Determine which routes to use based on user type
   const getRoutes = getUser

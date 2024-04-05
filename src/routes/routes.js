@@ -5,16 +5,23 @@ import VolunteerLayout from "../layout/VolunteerLayout";
 import Opportunity from "../pages/Opportunity/Opportunity";
 import RegisterEvent from "../pages/Opportunity/RegisterEvent";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
-import SignUp from "../pages/SignUp/SignUp";
-import SignIn from "../pages/SignIn/SignIn";
-import CampaignExplorer from "../pages/CampaignExplorer/CampaignExplorer";
-import EventCalendar from "../pages/VolunteersPanel/EventCalendar/EventCalendar";
+import Calender from "../pages/VolunteersPanel/EventCalendar/EventCalendar";
 import Dashboard from "../pages/VolunteersPanel/Dashboard/Dashboard";
 import Profile from "../pages/VolunteersPanel/Profile/Profile";
+import OrganizationLayout from "../layout/OrganizationLayout";
+import OrganizationDashboard from "../pages/Organization/OrganizationDashboard/OrganizationDashboard";
+import OrganizationProfile from "../pages/Organization/OrganizationProfile/OrganizationProfile";
+import CampaignCreate from "../pages/Organization/Campaing/CampaingCreate/CampaingCreate";
+import CampaignList from "../pages/Organization/Campaing/CampaignList/CampaignList";
+
+import SignUp from "../pages/SignUp/SignUp";
+import CampaignExplorer from "../pages/CampaignExplorer/CampaignExplorer";
+import EventCalendar from "../pages/VolunteersPanel/EventCalendar/EventCalendar";
 import PasswordReset from "../pages/PasswordReset/PasswordReset";
 import CampaignOverview from "../pages/CampaignExplorer/CampaignOverview/CampaignOverview";
 import About from "../pages/About/About";
 import MainLayout from "../layout/MainLayout";
+import Signin from './../pages/SignIn/SignIn';
 // un-authenticated
 export const defaultRouter = createBrowserRouter([
   {
@@ -34,7 +41,7 @@ export const defaultRouter = createBrowserRouter([
         path: "/signup",
       },
       {
-        element: <SignIn />,
+        element: <Signin/>,
         path: "/signin",
       },
       {
@@ -76,7 +83,7 @@ export const volunteerRoutes = createBrowserRouter([
         path: "/signup",
       },
       {
-        element: <SignIn />,
+        element: <Signin />,
         path: "/signin",
       },
       {
@@ -135,25 +142,28 @@ export const volunteerRoutes = createBrowserRouter([
 // organization's routes
 export const organizationRoutes = createBrowserRouter([
   {
-    element: <Layout />,
-    element: <MainLayout />,
+    path: "/organization",
+    element: <OrganizationLayout />,
     children: [
       {
-        path: "/",
-        element: <Home />,
+        path: "/organization/dashboard",
+        element: <OrganizationDashboard />,
       },
       {
-        element: <Home />,
-        path: "/home",
+        path: "/organization/profile",
+        element: <OrganizationProfile />,
       },
       {
-        path: "/organization",
-        children: [
-          {
-            path: "/organization/dashboard",
-            element: <Dashboard />,
-          },
-        ],
+        path: "/organization/campaign",
+        element: <CampaignList />,
+      },
+      {
+        path: "/organization/create-campaign",
+        element: <CampaignCreate />,
+      },
+      {
+        element: <PageNotFound />,
+        path: "*",
       },
     ],
   },
