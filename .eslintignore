@@ -6,3 +6,9 @@ src/pages/VolunteersPanel/EventCalendar/EventCalendar.jsx
 src/routes/routes.js
 src/store/slices/layoutSlice.js
 src/store/store.js
+src/pages/Organization/Campaing/CampaingCreate/CampaingCreate.jsx
+src/pages/Organization/OrganizationProfile/OrganizationProfile.jsx
+src/pages/Organization/Campaing/CampaignList/CampaignList.jsx
+src/components/OrganizationComponents/TopVolunteer.jsx
+src/components/Modal/Modal.jsx
+src/components/DateInput/DateInput.jsx
