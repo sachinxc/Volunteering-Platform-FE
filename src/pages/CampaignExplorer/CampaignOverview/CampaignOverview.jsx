@@ -268,7 +268,7 @@ function CampaignOverview() {
         sx={{
           backgroundColor: "#ddeee4",
           borderRadius: 8,
-          p: 4, // Adjust padding
+          p: 2, // Adjust padding
           width: "60%", // Adjust width of the box
           marginTop: "100px", // Add margin top to create space between navbar and white box
           position: "relative", // Position relative for absolute positioning of grid container
