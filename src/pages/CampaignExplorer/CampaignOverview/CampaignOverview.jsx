@@ -23,7 +23,6 @@ function CampaignOverview() {
     <div
       style={{
         backgroundColor: "#389e7f",
-        minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -35,14 +34,14 @@ function CampaignOverview() {
           backgroundColor: "#ddeee4",
           borderRadius: 8,
           p: 2, // Adjust padding
-          width: "60%", // Adjust width of the box
+          width: "50%", // Adjust width of the box
           marginTop: "100px", // Add margin top to create space between navbar and white box
           position: "relative", // Position relative for absolute positioning of grid container
           display: "flex", // Ensure flex display to control child elements
           flexDirection: "column", // Arrange children in column layout
           alignItems: "center", // Align items to the center horizontally
           marginBottom: "100px",
-          "@media (max-width: 600px)": {
+          "@media (max-width: 1000px)": {
             width: "90%", // Adjust width to 90% on mobile screens
           },
         }}
@@ -52,9 +51,9 @@ function CampaignOverview() {
             sx={{
               color: "#493536",
               position: "absolute",
-              top: "80px", // Adjust top position for responsiveness
+              top: "40px", // Adjust top position for responsiveness
               left: "60px", // Adjust left position for responsiveness
-              fontSize: "40px", // Adjust font size for responsiveness
+              //fontSize: "40px", // Adjust font size for responsiveness
             }}
           >
             <ArrowBackIcon />
@@ -65,9 +64,9 @@ function CampaignOverview() {
           sx={{
             color: "red", // Set color to red
             position: "absolute",
-            top: "80px", // Adjust top position for responsiveness
+            top: "40px", // Adjust top position for responsiveness
             right: "60px", // Adjust right position for responsiveness
-            fontSize: "40px", // Adjust font size for responsiveness
+            //fontSize: "40px", // Adjust font size for responsiveness
           }}
         >
           <FavoriteIcon />
@@ -80,12 +79,12 @@ function CampaignOverview() {
           align="center"
           gutterBottom
           fontWeight="bold"
-          fontSize="35px"
           color="#493536"
           sx={{ marginBottom: "40px", marginTop: "40px" }} // Adding margin bottom to create space
         >
           Rescue Street Dogs
         </Typography>
+
         <Box
           sx={{
             display: "flex",

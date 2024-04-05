@@ -172,7 +172,12 @@ export default function SignInSide() {
                           type="submit"
                           fullWidth
                           variant="contained"
-                          sx={{ mt: 3, mb: 3, backgroundColor: "#2ab6bb" }}
+                          sx={{
+                            mt: 3,
+                            mb: 3,
+                            backgroundColor: "#2ab6bb",
+                            boxShadow: "none",
+                          }}
                           disabled={isSubmitting}
                         >
                           {isSubmitting ? "Submitting..." : "Sign In"}

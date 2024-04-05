@@ -343,7 +343,12 @@ const Signup = () => {
                         onClick={submitForm}
                         fullWidth
                         variant="contained"
-                        sx={{ mt: 3, mb: 2, backgroundColor: "#2ab6bb" }}
+                        sx={{
+                          mt: 3,
+                          mb: 2,
+                          backgroundColor: "#2ab6bb",
+                          boxShadow: "none",
+                        }}
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? "Submitting..." : "Submit"}
