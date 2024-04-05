@@ -192,10 +192,7 @@ const Signup = () => {
                     handleBlur,
                   }) => (
                     <Form>
-                      <FormControl
-                        fullWidth
-                        sx={{ marginBottom: 7, marginLeft: "-15px" }}
-                      >
+                      <FormControl fullWidth sx={{ marginBottom: 7 }}>
                         <InputLabel id="demo-simple-select-label">
                           Choose your Account Type, I'm a
                         </InputLabel>
