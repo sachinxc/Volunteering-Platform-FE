@@ -57,9 +57,12 @@ export default function SignInSide() {
       >
         <Box
           sx={{
-            width: "80%",
+            width: "70%",
             borderRadius: "20px",
             overflow: "hidden",
+            "@media (max-width: 1200px)": {
+              width: "90%", // Adjust width to 90% on mobile screens
+            },
           }}
         >
           <Grid container component="main">

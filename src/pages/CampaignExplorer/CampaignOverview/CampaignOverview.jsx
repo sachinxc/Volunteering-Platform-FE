@@ -34,14 +34,14 @@ function CampaignOverview() {
           backgroundColor: "#ddeee4",
           borderRadius: 8,
           p: 2, // Adjust padding
-          width: "50%", // Adjust width of the box
+          width: "55%", // Adjust width of the box
           marginTop: "100px", // Add margin top to create space between navbar and white box
           position: "relative", // Position relative for absolute positioning of grid container
           display: "flex", // Ensure flex display to control child elements
           flexDirection: "column", // Arrange children in column layout
           alignItems: "center", // Align items to the center horizontally
           marginBottom: "100px",
-          "@media (max-width: 1000px)": {
+          "@media (max-width: 1200px)": {
             width: "90%", // Adjust width to 90% on mobile screens
           },
         }}

@@ -121,9 +121,12 @@ const Signup = () => {
       >
         <Box
           sx={{
-            width: "90%",
+            width: "70%",
             overflow: "hidden",
             borderRadius: "20px",
+            "@media (max-width: 1200px)": {
+              width: "90%", // Adjust width to 90% on mobile screens
+            },
           }}
         >
           <Grid container component="main">
