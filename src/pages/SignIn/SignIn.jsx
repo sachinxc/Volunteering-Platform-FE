@@ -93,6 +93,7 @@ export default function SignInSide() {
                 sx={{
                   my: 8,
                   mx: 4,
+                  p: 1,
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
@@ -171,20 +172,30 @@ export default function SignInSide() {
                           type="submit"
                           fullWidth
                           variant="contained"
-                          sx={{ mt: 3, mb: 2, backgroundColor: "#2ab6bb" }}
+                          sx={{ mt: 3, mb: 3, backgroundColor: "#2ab6bb" }}
                           disabled={isSubmitting}
                         >
                           {isSubmitting ? "Submitting..." : "Sign In"}
                         </Button>
-                        <Grid container>
+                        <Grid container sx={{ color: "gray" }}>
                           <Grid item xs>
-                            <Link href="#" variant="body2">
+                            <Link
+                              href="/resetpassword/:id"
+                              variant="body2"
+                              color="inherit"
+                              underline="none"
+                            >
                               Forgot password?
                             </Link>
                           </Grid>
                           <Grid item>
-                            <Link href="#" variant="body2">
-                              {"Don't have an account? Sign Up"}
+                            <Link
+                              href="/signup"
+                              variant="body2"
+                              color="inherit"
+                              underline="none"
+                            >
+                              {"No Account? Sign Up"}
                             </Link>
                           </Grid>
                         </Grid>

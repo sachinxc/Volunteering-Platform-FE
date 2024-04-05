@@ -121,7 +121,7 @@ const Signup = () => {
       >
         <Box
           sx={{
-            width: "80%",
+            width: "90%",
             overflow: "hidden",
             borderRadius: "20px",
           }}
@@ -175,7 +175,7 @@ const Signup = () => {
                   )}
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                  Sign up
+                  Create an Account
                 </Typography>
                 <Formik
                   initialValues={initialValues}
@@ -192,7 +192,10 @@ const Signup = () => {
                     handleBlur,
                   }) => (
                     <Form>
-                      <FormControl fullWidth sx={{ marginBottom: 7 }}>
+                      <FormControl
+                        fullWidth
+                        sx={{ marginBottom: 7, marginLeft: "-15px" }}
+                      >
                         <InputLabel id="demo-simple-select-label">
                           Choose your Account Type, I'm a
                         </InputLabel>

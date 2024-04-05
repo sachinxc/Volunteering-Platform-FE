@@ -16,7 +16,7 @@ const About = () => {
         spacing={3}
         sx={{
           alignItems: "center",
-          width: "80%",
+          width: "90%",
           color: "#493536",
           backgroundColor: "#ddeee4",
           borderRadius: "20px",
