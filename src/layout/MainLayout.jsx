@@ -12,7 +12,7 @@ const MainLayout = () => {
       <DrawerAppBar />
       <Box
         component="main"
-        sx={{ width: "100%", background: "rgb(56, 158, 127)" }}
+        sx={{ width: "100%", height: "100%", background: "rgb(56, 158, 127)" }}
       >
         <Outlet />
         <Footer />

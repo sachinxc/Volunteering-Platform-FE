@@ -50,7 +50,7 @@ export default function SignInSide() {
           justifyContent: "center",
           alignItems: "center",
           width: "100vw",
-          height: "100vh",
+          //height: "100vh",
           marginTop: "100px",
           marginBottom: "100px",
         }}
@@ -62,7 +62,7 @@ export default function SignInSide() {
             overflow: "hidden",
           }}
         >
-          <Grid container component="main" sx={{ height: "100vh" }}>
+          <Grid container component="main">
             <CssBaseline />
             <Grid
               item
