@@ -8,7 +8,6 @@ import {
   MenuItem,
   Paper,
   Select,
-  Stack,
   TextField,
   Typography,
   Grid,
@@ -116,7 +115,7 @@ const Signup = () => {
           justifyContent: "center",
           alignItems: "center",
           width: "100vw",
-          //height: "100vh",
+          height: "130vh",
           marginTop: "100px",
           marginBottom: "100px",
         }}
@@ -124,12 +123,12 @@ const Signup = () => {
         <Box
           sx={{
             width: "80%",
-            height: "130vh",
-            borderRadius: "20px",
+            height: "100%",
             overflow: "hidden",
+            borderRadius: "20px",
           }}
         >
-          <Grid container component="main" sx={{ height: "100vh" }}>
+          <Grid container component="main" sx={{ height: "130vh" }}>
             <CssBaseline />
             <Grid
               item
@@ -145,6 +144,7 @@ const Signup = () => {
                     : t.palette.grey[900],
                 backgroundSize: "cover",
                 backgroundPosition: "center",
+                //borderRadius: "20px", //for the img
               }}
             />
             <Grid
@@ -157,6 +157,7 @@ const Signup = () => {
               square
               sx={{
                 boxShadow: "none",
+                //borderRadius: "20px", //for the form
               }}
             >
               <Box
