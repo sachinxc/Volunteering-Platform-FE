@@ -115,7 +115,6 @@ const Signup = () => {
           justifyContent: "center",
           alignItems: "center",
           width: "100vw",
-          height: "130vh",
           marginTop: "100px",
           marginBottom: "100px",
         }}
@@ -123,12 +122,11 @@ const Signup = () => {
         <Box
           sx={{
             width: "80%",
-            height: "100%",
             overflow: "hidden",
             borderRadius: "20px",
           }}
         >
-          <Grid container component="main" sx={{ height: "130vh" }}>
+          <Grid container component="main">
             <CssBaseline />
             <Grid
               item
