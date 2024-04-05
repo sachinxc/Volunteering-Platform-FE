@@ -16,7 +16,7 @@ const About = () => {
         spacing={3}
         sx={{
           alignItems: "center",
-          width: "90%",
+          width: "70%",
           color: "#493536",
           backgroundColor: "#ddeee4",
           borderRadius: "20px",
@@ -26,6 +26,9 @@ const About = () => {
           marginRight: 0,
           padding: "40px",
           textAlign: "left",
+          "@media (max-width: 1200px)": {
+            width: "90%", // Adjust width to 90% on mobile screens
+          },
         }}
       >
         <Grid item xs={12}>
