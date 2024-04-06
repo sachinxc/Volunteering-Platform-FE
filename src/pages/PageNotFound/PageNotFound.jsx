@@ -1,33 +1,28 @@
-/*import { useRouteError } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import "./PageNotFound.css";
+import React from "react";
 
 export default function PageNotFound() {
-  const error = useRouteError();
-  console.error(error);
-
+  const navigate = useNavigate();
   return (
-    <div id="error-page">
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
-      <p>
-        <i>{error.statusText || error.message}</i>
-      </p>
-    </div>
-  );
-}*/
-
-import { useRouteError } from "react-router-dom";
-
-export default function PageNotFound() {
-  const error = useRouteError();
-  console.error(error);
-
-  return (
-    <div id="error-page">
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
-      <p>
-        <i>{error && error.message ? error.message : "Unknown error"}</i>
-      </p>
+    <div class="flex-container">
+      <div class="text-center">
+        <h1>
+          <span class="fade-in" id="digit1">
+            4
+          </span>
+          <span class="fade-in" id="digit2">
+            0
+          </span>
+          <span class="fade-in" id="digit3">
+            4
+          </span>
+        </h1>
+        <h3 class="fadeIn">PAGE NOT FOUND</h3>
+        <button type="button" name="button" onClick={() => navigate("/")}>
+          Return To Home
+        </button>
+      </div>
     </div>
   );
 }
