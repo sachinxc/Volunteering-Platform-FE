@@ -4,20 +4,31 @@ import Grid from "@mui/material/Grid";
 
 const About = () => {
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <Grid
         container
         spacing={3}
         sx={{
           alignItems: "center",
-          width: "80%",
+          width: "70%",
           color: "#493536",
           backgroundColor: "#ddeee4",
           borderRadius: "20px",
           marginTop: "100px",
           marginBottom: "100px",
-          padding: "20px",
-          //textAlign: "center",
+          marginLeft: 0,
+          marginRight: 0,
+          padding: "40px",
+          textAlign: "left",
+          "@media (max-width: 1200px)": {
+            width: "90%", // Adjust width to 90% on mobile screens
+          },
         }}
       >
         <Grid item xs={12}>
@@ -102,8 +113,10 @@ const About = () => {
           <Typography variant="body1">
             Have questions or feedback? We'd love to hear from you! Get in touch
             with our team at{" "}
-            <a href="mailto:contact@email.com">contact@email.com</a> or connect
-            with us on social media.
+            <a href="mailto:contact@email.com" style={{ color: "#389e7f" }}>
+              helpinghands@bytehogs.com
+            </a>{" "}
+            or connect with us on social media.
           </Typography>
         </Grid>
       </Grid>

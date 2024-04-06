@@ -9,43 +9,31 @@ import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { IconButton, InputAdornment, Stack } from "@mui/material";
+import { IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import logo from "./../../assets/Avatar/userPanelicon.png";
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
+import formImage from "../../assets/LandingPageImages/background3.jpg"; // Import the background image
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string().required("Password is required"),
 });
 
-// TODO remove, this demo shouldn't need to reset the theme.
+const defaultTheme = createTheme();
 
-// Create a theme with custom background color
-const defaultTheme = createTheme({
-  palette: {
-    background: {
-      default: "rgb(56, 158, 127)", // Change this color to your desired background color
-    },
-  },
-});
+export default function SignInSide() {
+  const [showPassword, setShowPassword] = React.useState(false); // Define showPassword state
 
-function Signin() {
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const handleSubmit = (event, { setSubmitting }) => {
-    // const data = new FormData(event.currentTarget);
-    // console.log({
-    //   email: data.get("email"),
-    //   password: data.get("password"),
-    // });
-    // setTimeout(() => {
-    //   alert("Form submitted successfully!");
-    //   setSubmitting(false);
-    // }, 1000);
+  const handleSubmit = (values, { setSubmitting }) => {
+    console.log(values);
+    setTimeout(() => {
+      alert("Form submitted successfully!");
+      setSubmitting(false);
+    }, 1000);
   };
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -55,141 +43,179 @@ function Signin() {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        height: "100vh",
-      }}
-    >
-      <Grid
-        container
-        justifyContent="center"
-        alignItems="center"
+    <ThemeProvider theme={defaultTheme}>
+      <Box
         sx={{
-          height: "100%",
-          padding: "20px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100vw",
+          //height: "100vh",
+          marginTop: "100px",
+          marginBottom: "100px",
         }}
       >
-        <Paper
-          elevation={6}
+        <Box
           sx={{
-            //marginTop: 5,
-            padding: 3,
-            maxWidth: 500,
-            backgroundColor: "#ddeee4",
+            width: "70%",
             borderRadius: "20px",
+            overflow: "hidden",
+            "@media (max-width: 1200px)": {
+              width: "90%", // Adjust width to 90% on mobile screens
+            },
           }}
         >
-          <Stack spacing={3}>
-            <grid>
-              <Avatar
-                sx={{
-                  width: 50,
-                  height: 50,
-                  m: "auto",
-                  bgcolor: "secondary.main",
-                  textAlign: "center",
-                  mb: 1, // Add margin bottom
-                }}
-              ></Avatar>
-              <Typography variant="h5" align="center" sx={{ mb: 1 }}>
-                {" "}
-                {/* Add margin bottom */}
-                Sign In
-              </Typography>
-            </grid>
-            <Formik
-              initialValues={{
-                email: "",
-                password: "",
-                remember: false,
+          <Grid container component="main">
+            <CssBaseline />
+            <Grid
+              item
+              xs={false}
+              sm={4}
+              md={7}
+              sx={{
+                backgroundImage: `url(${formImage})`, // Use the imported formImage
+                backgroundRepeat: "no-repeat",
+                backgroundColor: (t) =>
+                  t.palette.mode === "light"
+                    ? t.palette.grey[50]
+                    : t.palette.grey[900],
+                backgroundSize: "cover",
+                backgroundPosition: "center",
               }}
-              validationSchema={validationSchema}
-              onSubmit={handleSubmit}
+            />
+            <Grid
+              item
+              xs={12}
+              sm={8}
+              md={5}
+              component={Paper}
+              elevation={6}
+              square
             >
-              {({ isSubmitting, errors, touched }) => (
-                <Form>
-                  <Box component="div" noValidate sx={{ mt: 1 }}>
-                    <Field
-                      as={TextField}
-                      margin="normal"
-                      required
-                      fullWidth
-                      id="email"
-                      label="Email Address"
-                      name="email"
-                      autoComplete="email"
-                      autoFocus
-                      variant="standard"
-                      error={touched.email && Boolean(errors.email)}
-                      helperText={touched.email && errors.email}
-                    />
-                    <Field
-                      as={TextField}
-                      margin="normal"
-                      required
-                      fullWidth
-                      name="password"
-                      label="Password"
-                      type={showPassword ? "text" : "password"}
-                      id="password"
-                      autoComplete="current-password"
-                      variant="standard"
-                      error={touched.password && Boolean(errors.password)}
-                      helperText={touched.password && errors.password}
-                      InputProps={{
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <IconButton
-                              aria-label="toggle password visibility"
-                              onClick={handleClickShowPassword}
-                              onMouseDown={handleMouseDownPassword}
+              <Box
+                sx={{
+                  my: 8,
+                  mx: 4,
+                  p: 1,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+                  <LockOutlinedIcon />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                  Sign in
+                </Typography>
+                <Formik
+                  initialValues={{
+                    email: "",
+                    password: "",
+                    remember: false,
+                  }}
+                  validationSchema={validationSchema}
+                  onSubmit={handleSubmit}
+                >
+                  {({ isSubmitting, errors, touched }) => (
+                    <Form>
+                      <Box component="div" noValidate sx={{ mt: 1 }}>
+                        <Field
+                          as={TextField}
+                          margin="normal"
+                          required
+                          fullWidth
+                          id="email"
+                          label="Email Address"
+                          name="email"
+                          autoComplete="email"
+                          autoFocus
+                          variant="standard"
+                          error={touched.email && Boolean(errors.email)}
+                          helperText={touched.email && errors.email}
+                        />
+                        <Field
+                          as={TextField}
+                          margin="normal"
+                          required
+                          fullWidth
+                          name="password"
+                          label="Password"
+                          type={showPassword ? "text" : "password"}
+                          id="password"
+                          autoComplete="current-password"
+                          variant="standard"
+                          error={touched.password && Boolean(errors.password)}
+                          helperText={touched.password && errors.password}
+                          InputProps={{
+                            endAdornment: (
+                              <InputAdornment position="end">
+                                <IconButton
+                                  aria-label="toggle password visibility"
+                                  onClick={handleClickShowPassword}
+                                  onMouseDown={handleMouseDownPassword}
+                                >
+                                  {showPassword ? (
+                                    <VisibilityOff />
+                                  ) : (
+                                    <Visibility />
+                                  )}
+                                </IconButton>
+                              </InputAdornment>
+                            ),
+                          }}
+                        />
+                        <FormControlLabel
+                          control={
+                            <Checkbox value="remember" color="primary" />
+                          }
+                          label="Remember me"
+                        />
+                        <Button
+                          type="submit"
+                          fullWidth
+                          variant="contained"
+                          sx={{
+                            mt: 3,
+                            mb: 3,
+                            backgroundColor: "#2ab6bb",
+                            boxShadow: "none",
+                          }}
+                          disabled={isSubmitting}
+                        >
+                          {isSubmitting ? "Submitting..." : "Sign In"}
+                        </Button>
+                        <Grid container sx={{ color: "gray" }}>
+                          <Grid item xs>
+                            <Link
+                              href="/resetpassword/:id"
+                              variant="body2"
+                              color="inherit"
+                              underline="none"
                             >
-                              {showPassword ? (
-                                <VisibilityOff />
-                              ) : (
-                                <Visibility />
-                              )}
-                            </IconButton>
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-                    <FormControlLabel
-                      control={<Checkbox value="remember" color="primary" />}
-                      label="Remember me"
-                    />
-                    <Button
-                      type="submit"
-                      fullWidth
-                      variant="contained"
-                      sx={{ mt: 3, mb: 2 }}
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "Submitting..." : "Sign In"}
-                    </Button>
-                    <Grid container>
-                      <Grid item xs>
-                        <Link href="#" variant="body2">
-                          Forgot password?
-                        </Link>
-                      </Grid>
-                      <Grid item>
-                        <Link href="#" variant="body2">
-                          {"Don't have an account? Sign Up"}
-                        </Link>
-                      </Grid>
-                    </Grid>
-                  </Box>
-                </Form>
-              )}
-            </Formik>
-          </Stack>
-        </Paper>
-      </Grid>
-    </div>
+                              Forgot password?
+                            </Link>
+                          </Grid>
+                          <Grid item>
+                            <Link
+                              href="/signup"
+                              variant="body2"
+                              color="inherit"
+                              underline="none"
+                            >
+                              {"No Account? Sign Up"}
+                            </Link>
+                          </Grid>
+                        </Grid>
+                      </Box>
+                    </Form>
+                  )}
+                </Formik>
+              </Box>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+    </ThemeProvider>
   );
 }
-
-export default Signin;
