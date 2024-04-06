@@ -110,7 +110,7 @@ const VolunteerLayout = () => {
       name: "Profile",
     },
     {
-      path: "/volunteer/calender",
+      path: "/volunteer/eventcalendar",
       element: <CalendarMonthIcon />,
       name: "Calender",
     },
