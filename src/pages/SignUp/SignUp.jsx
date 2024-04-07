@@ -179,7 +179,7 @@ const Signup = () => {
                 <Typography
                   component="h1"
                   variant="h5"
-                  sx={{ fontWeight: "bold" }}
+                  sx={{ marginBottom: "10px" }}
                 >
                   Create an Account
                 </Typography>
