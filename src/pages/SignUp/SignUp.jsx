@@ -303,7 +303,11 @@ const Signup = () => {
                           sx={{ height: "56px" }} // Increase bottom margin
                         />
                       </Grid>
-                      <Grid container spacing={1} sx={{ marginBottom: "15px" }}>
+                      <Grid
+                        container
+                        spacing={1}
+                        sx={{ marginBottom: "46px", height: "56px" }}
+                      >
                         <Grid item xs={6}>
                           <Field
                             as={TextField}
