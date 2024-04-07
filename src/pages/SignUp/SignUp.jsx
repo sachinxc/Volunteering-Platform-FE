@@ -34,24 +34,24 @@ const countries = [
 ];
 
 const validationVolunteerSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Email required"),
-  password: Yup.string().required("Password required"),
-  firstName: Yup.string().required("First name required"),
-  lastName: Yup.string().required("Last name required"),
+  email: Yup.string().email("Invalid email").required("required"),
+  password: Yup.string().required("required"),
+  firstName: Yup.string().required("required"),
+  lastName: Yup.string().required("required"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
-    .required("Password required"),
-  country: Yup.string().required("Country required"),
+    .required("required"),
+  country: Yup.string().required("required"),
 });
 
 const validationOrganizationSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Email required"),
-  password: Yup.string().required("Password required"),
-  organizationName: Yup.string().required("Organization name required"),
+  email: Yup.string().email("Invalid email").required("required"),
+  password: Yup.string().required("required"),
+  organizationName: Yup.string().required("required"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
-    .required("Password required"),
-  country: Yup.string().required("Country required"),
+    .required("required"),
+  country: Yup.string().required("required"),
 });
 
 const defaultTheme = createTheme();
@@ -176,7 +176,11 @@ const Signup = () => {
                     <CorporateFareIcon />
                   )}
                 </Avatar>
-                <Typography component="h1" variant="h5">
+                <Typography
+                  component="h1"
+                  variant="h5"
+                  sx={{ fontWeight: "bold" }}
+                >
                   Create an Account
                 </Typography>
                 <Formik
@@ -385,6 +389,8 @@ const Signup = () => {
                           mb: 2,
                           backgroundColor: "#2ab6bb",
                           boxShadow: "none",
+                          borderRadius: "10px",
+                          fontWeight: "bold",
                         }}
                         disabled={isSubmitting}
                       >
