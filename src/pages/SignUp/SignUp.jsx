@@ -212,7 +212,7 @@ const Signup = () => {
                         size="small" // Set size to small
                         sx={{
                           "& .MuiToggleButton-root.Mui-selected": {
-                            backgroundColor: "#646464" !important,
+                            backgroundColor: "#646464 !important",
                             color: "white",
                             fontWeight: "bold",
                           },
