@@ -7,12 +7,23 @@ import Footer from "../components/Footer/Footer"; // Import your Footer componen
 
 const MainLayout = () => {
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box
+      sx={{
+        display: "flex", // Change "0" to "flex"
+        flexDirection: "column", // Add flexDirection property
+        width: "100%", // Set width to fill horizontal space
+        minHeight: "100vh", // Add minHeight property to fill the height
+        backgroundColor: "rgb(56, 158, 127)",
+      }}
+    >
       <CssBaseline />
       <DrawerAppBar />
       <Box
         component="main"
-        sx={{ width: "100%", height: "100%", background: "rgb(56, 158, 127)" }}
+        sx={{
+          flex: "1", // Add flex property to fill remaining space
+          width: "100%", // Set width to fill horizontal space
+        }}
       >
         <Outlet />
         <Footer />
