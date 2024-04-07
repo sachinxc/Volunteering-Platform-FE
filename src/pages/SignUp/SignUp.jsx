@@ -212,11 +212,11 @@ const Signup = () => {
                         size="small" // Set size to small
                         sx={{
                           "& .MuiToggleButton-root.Mui-selected": {
-                            backgroundColor: "darkgreen",
+                            backgroundColor: "#646464",
                             color: "white",
                             fontWeight: "bold",
                           },
-                          marginBottom: "5px", // Increase bottom margin
+                          marginBottom: "10px",
                         }}
                       >
                         <ToggleButton value="Volunteer">Volunteer</ToggleButton>
@@ -243,7 +243,7 @@ const Signup = () => {
                                   touched.firstName && errors.firstName
                                 }
                                 size="small" // Set size to small
-                                sx={{ height: "56px" }} // Increase bottom margin
+                                sx={{ height: "50px" }} // Increase bottom margin
                               />
                             </Grid>
                             <Grid item xs={6}>
@@ -260,7 +260,7 @@ const Signup = () => {
                                 error={touched.lastName && errors.lastName}
                                 helperText={touched.lastName && errors.lastName}
                                 size="small" // Set size to small
-                                sx={{ height: "56px" }} // Increase bottom margin
+                                sx={{ height: "50px" }} // Increase bottom margin
                               />
                             </Grid>
                           </Grid>
@@ -283,7 +283,7 @@ const Signup = () => {
                             touched.organizationName && errors.organizationName
                           }
                           size="small" // Set size to small
-                          sx={{ height: "56px" }} // Increase bottom margin
+                          sx={{ height: "50px" }} // Increase bottom margin
                         />
                       )}
                       <Grid item xs={12}>
@@ -300,13 +300,13 @@ const Signup = () => {
                           error={touched.email && errors.email}
                           helperText={touched.email && errors.email}
                           size="small" // Set size to small
-                          sx={{ height: "56px" }} // Increase bottom margin
+                          sx={{ height: "50px" }} // Increase bottom margin
                         />
                       </Grid>
                       <Grid
                         container
                         spacing={1}
-                        sx={{ marginBottom: "46px", height: "56px" }}
+                        sx={{ marginBottom: "46px", height: "50px" }}
                       >
                         <Grid item xs={6}>
                           <Field
