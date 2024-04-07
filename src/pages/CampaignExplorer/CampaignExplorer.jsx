@@ -419,24 +419,25 @@ const CampaignExplorer = () => {
                   <MenuItem value={30}>Upcoming</MenuItem>
                 </Select>
               </FormControl>
-              {/* Add more filter components as needed */}
-              {/* Search bar */}
-              <FormControl sx={{ m: 1, minWidth: 125 }}>
+              <FormControl sx={{ m: 1, minWidth: 125 }} size="small">
                 <InputLabel id="search-select-label" sx={{ color: "black" }}>
                   Search
                 </InputLabel>
                 <InputBase
                   sx={{
                     backgroundColor: "white",
+                    padding: "5px",
                   }}
                   placeholder="Search by keywords"
                   inputProps={{ "aria-label": "Search by keywords" }}
                 />
               </FormControl>
-            </Grid>
-            {/* Button */}
-            <Grid>
-              <Button variant="contained" color="primary">
+              {/* Add more filter components as needed */}
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{ m: 1, backgroundColor: "#2ab6bb" }}
+              >
                 Search
               </Button>
             </Grid>
