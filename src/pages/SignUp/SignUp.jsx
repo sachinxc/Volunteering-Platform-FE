@@ -217,6 +217,10 @@ const Signup = () => {
                             fontWeight: "bold",
                           },
                           marginBottom: "10px",
+                          "& .css-1xgjc5y-MuiButtonBase-root-MuiToggleButton-root.Mui-selected:hover":
+                            {
+                              backgroundColor: "#646464",
+                            },
                         }}
                       >
                         <ToggleButton value="Volunteer">Volunteer</ToggleButton>
