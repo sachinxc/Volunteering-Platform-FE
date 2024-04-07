@@ -49,8 +49,6 @@ export default function SignInSide() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          width: "100%",
-          //height: "100vh",
           marginTop: "100px",
           marginBottom: "100px",
         }}
