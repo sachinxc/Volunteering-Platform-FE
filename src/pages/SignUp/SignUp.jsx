@@ -211,9 +211,11 @@ const Signup = () => {
                         size="small" // Set size to small
                         sx={{
                           "& .MuiToggleButton-root.Mui-selected": {
-                            backgroundColor: "#2ab6bb",
-                            color: "black",
+                            backgroundColor: "darkgreen",
+                            color: "white",
+                            fontWeight: "bold",
                           },
+                          marginBottom: "10px", // Increase bottom margin
                         }}
                       >
                         <ToggleButton value="Volunteer">Volunteer</ToggleButton>
@@ -223,7 +225,7 @@ const Signup = () => {
                       </ToggleButtonGroup>
                       {userType === "Volunteer" ? (
                         <>
-                          <Grid container spacing={2}>
+                          <Grid container spacing={1}>
                             <Grid item xs={6}>
                               <Field
                                 as={TextField}
@@ -240,6 +242,7 @@ const Signup = () => {
                                   touched.firstName && errors.firstName
                                 }
                                 size="small" // Set size to small
+                                sx={{ marginBottom: "10px", height: "56px" }} // Increase bottom margin
                               />
                             </Grid>
                             <Grid item xs={6}>
@@ -256,6 +259,7 @@ const Signup = () => {
                                 error={touched.lastName && errors.lastName}
                                 helperText={touched.lastName && errors.lastName}
                                 size="small" // Set size to small
+                                sx={{ marginBottom: "10px", height: "56px" }} // Increase bottom margin
                               />
                             </Grid>
                           </Grid>
@@ -278,6 +282,7 @@ const Signup = () => {
                             touched.organizationName && errors.organizationName
                           }
                           size="small" // Set size to small
+                          sx={{ marginBottom: "10px", height: "56px" }} // Increase bottom margin
                         />
                       )}
                       <Grid item xs={12}>
@@ -294,9 +299,10 @@ const Signup = () => {
                           error={touched.email && errors.email}
                           helperText={touched.email && errors.email}
                           size="small" // Set size to small
+                          sx={{ marginBottom: "10px", height: "56px" }} // Increase bottom margin
                         />
                       </Grid>
-                      <Grid container spacing={2}>
+                      <Grid container spacing={1}>
                         <Grid item xs={6}>
                           <Field
                             as={TextField}
