@@ -178,6 +178,11 @@ export default function SignInSide() {
                             mb: 3,
                             backgroundColor: "#2ab6bb",
                             boxShadow: "none",
+                            borderRadius: "10px",
+                            fontWeight: "bold",
+                            "&:hover": {
+                              backgroundColor: "#087478", // Change the color on hover
+                            },
                           }}
                           disabled={isSubmitting}
                         >

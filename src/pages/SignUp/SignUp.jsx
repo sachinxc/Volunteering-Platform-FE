@@ -395,6 +395,9 @@ const Signup = () => {
                           boxShadow: "none",
                           borderRadius: "10px",
                           fontWeight: "bold",
+                          "&:hover": {
+                            backgroundColor: "#087478", // Change the color on hover
+                          },
                         }}
                         disabled={isSubmitting}
                       >
