@@ -75,6 +75,7 @@ const Home = () => {
                   fontWeight: "bold",
                   border: "2px solid white",
                   backdropFilter: "blur(20px)", // Apply backdrop filter to blur background
+                  marginBottom: "40px",
                 }}
               >
                 Join Us Today

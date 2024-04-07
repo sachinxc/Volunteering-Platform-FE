@@ -49,7 +49,7 @@ export default function SignInSide() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          width: "100vw",
+          width: "100%",
           //height: "100vh",
           marginTop: "100px",
           marginBottom: "100px",
@@ -203,7 +203,7 @@ export default function SignInSide() {
                               color="inherit"
                               underline="none"
                             >
-                              {"No Account? Sign Up"}
+                              {"Don't have an Account? Sign Up"}
                             </Link>
                           </Grid>
                         </Grid>

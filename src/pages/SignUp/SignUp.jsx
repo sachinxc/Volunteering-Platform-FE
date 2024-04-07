@@ -114,7 +114,7 @@ const Signup = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          width: "100vw",
+          width: "100%",
           marginTop: "100px",
           marginBottom: "100px",
         }}
