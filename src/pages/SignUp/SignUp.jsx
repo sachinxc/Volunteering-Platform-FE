@@ -34,24 +34,24 @@ const countries = [
 ];
 
 const validationVolunteerSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  password: Yup.string().required("Password is required"),
-  firstName: Yup.string().required("First name is required"),
-  lastName: Yup.string().required("Last name is required"),
+  email: Yup.string().email("Invalid email").required("Email required"),
+  password: Yup.string().required("Password required"),
+  firstName: Yup.string().required("First name required"),
+  lastName: Yup.string().required("Last name required"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
-    .required("Confirm Password is required"),
-  country: Yup.string().required("Country is required"),
+    .required("Password required"),
+  country: Yup.string().required("Country required"),
 });
 
 const validationOrganizationSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  password: Yup.string().required("Password is required"),
-  organizationName: Yup.string().required("Organization name is required"),
+  email: Yup.string().email("Invalid email").required("Email required"),
+  password: Yup.string().required("Password required"),
+  organizationName: Yup.string().required("Organization name required"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
-    .required("Confirm Password is required"),
-  country: Yup.string().required("Country is required"),
+    .required("Password required"),
+  country: Yup.string().required("Country required"),
 });
 
 const defaultTheme = createTheme();
@@ -154,9 +154,6 @@ const Signup = () => {
               square
               sx={{
                 boxShadow: "none",
-                //marginTop: "-30px",
-                //marginBottom: "-30px",
-                height: "640px",
                 "& .css-1y8ugea": {
                   marginTop: "30px",
                   marginBottom: "30px",
@@ -215,7 +212,7 @@ const Signup = () => {
                             color: "white",
                             fontWeight: "bold",
                           },
-                          marginBottom: "10px", // Increase bottom margin
+                          marginBottom: "5px", // Increase bottom margin
                         }}
                       >
                         <ToggleButton value="Volunteer">Volunteer</ToggleButton>
@@ -242,7 +239,7 @@ const Signup = () => {
                                   touched.firstName && errors.firstName
                                 }
                                 size="small" // Set size to small
-                                sx={{ marginBottom: "10px", height: "56px" }} // Increase bottom margin
+                                sx={{ height: "56px" }} // Increase bottom margin
                               />
                             </Grid>
                             <Grid item xs={6}>
@@ -259,7 +256,7 @@ const Signup = () => {
                                 error={touched.lastName && errors.lastName}
                                 helperText={touched.lastName && errors.lastName}
                                 size="small" // Set size to small
-                                sx={{ marginBottom: "10px", height: "56px" }} // Increase bottom margin
+                                sx={{ height: "56px" }} // Increase bottom margin
                               />
                             </Grid>
                           </Grid>
@@ -282,7 +279,7 @@ const Signup = () => {
                             touched.organizationName && errors.organizationName
                           }
                           size="small" // Set size to small
-                          sx={{ marginBottom: "10px", height: "56px" }} // Increase bottom margin
+                          sx={{ height: "56px" }} // Increase bottom margin
                         />
                       )}
                       <Grid item xs={12}>
@@ -299,10 +296,10 @@ const Signup = () => {
                           error={touched.email && errors.email}
                           helperText={touched.email && errors.email}
                           size="small" // Set size to small
-                          sx={{ marginBottom: "10px", height: "56px" }} // Increase bottom margin
+                          sx={{ height: "56px" }} // Increase bottom margin
                         />
                       </Grid>
-                      <Grid container spacing={1}>
+                      <Grid container spacing={1} sx={{ marginBottom: "15px" }}>
                         <Grid item xs={6}>
                           <Field
                             as={TextField}
