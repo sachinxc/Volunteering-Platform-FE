@@ -15,7 +15,7 @@ import {
   ToggleButtonGroup,
   IconButton,
   InputAdornment,
-  Box, // Add this import statement for Box component
+  Box,
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import CorporateFareIcon from "@mui/icons-material/CorporateFare";
@@ -23,16 +23,14 @@ import { Field, Form, Formik } from "formik";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import * as Yup from "yup";
-import formImage from "../../assets/LandingPageImages/background3.jpg"; // Import the background image
+import formImage from "../../assets/LandingPageImages/background3.jpg";
 
-// Define the countries array
 const countries = [
   "Sri Lanka",
   "United States",
   "United Kingdom",
   "Canada",
   "Australia",
-  // Add more countries as needed
 ];
 
 const validationVolunteerSchema = Yup.object().shape({
@@ -124,7 +122,7 @@ const Signup = () => {
             overflow: "hidden",
             borderRadius: "20px",
             "@media (max-width: 1200px)": {
-              width: "90%", // Adjust width to 90% on mobile screens
+              width: "90%",
             },
           }}
         >
@@ -144,7 +142,6 @@ const Signup = () => {
                     : t.palette.grey[900],
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                //borderRadius: "20px", //for the img
               }}
             />
             <Grid
@@ -157,7 +154,13 @@ const Signup = () => {
               square
               sx={{
                 boxShadow: "none",
-                //borderRadius: "20px", //for the form
+                //marginTop: "-30px",
+                //marginBottom: "-30px",
+                height: "640px",
+                "& .css-1y8ugea": {
+                  marginTop: "30px",
+                  marginBottom: "30px",
+                },
               }}
             >
               <Box
@@ -205,6 +208,13 @@ const Signup = () => {
                         onChange={(event, value) => changeUserType(value)}
                         aria-label="user-type"
                         fullWidth
+                        size="small" // Set size to small
+                        sx={{
+                          "& .MuiToggleButton-root.Mui-selected": {
+                            backgroundColor: "#2ab6bb",
+                            color: "black",
+                          },
+                        }}
                       >
                         <ToggleButton value="Volunteer">Volunteer</ToggleButton>
                         <ToggleButton value="Organization">
@@ -213,32 +223,42 @@ const Signup = () => {
                       </ToggleButtonGroup>
                       {userType === "Volunteer" ? (
                         <>
-                          <Field
-                            as={TextField}
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="firstName"
-                            name="firstName"
-                            label="First Name"
-                            autoComplete="given-name"
-                            autoFocus
-                            error={touched.firstName && errors.firstName}
-                            helperText={touched.firstName && errors.firstName}
-                          />
-                          <Field
-                            as={TextField}
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="lastName"
-                            name="lastName"
-                            label="Last Name"
-                            autoComplete="family-name"
-                            autoFocus
-                            error={touched.lastName && errors.lastName}
-                            helperText={touched.lastName && errors.lastName}
-                          />
+                          <Grid container spacing={2}>
+                            <Grid item xs={6}>
+                              <Field
+                                as={TextField}
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="firstName"
+                                name="firstName"
+                                label="First Name"
+                                autoComplete="given-name"
+                                autoFocus
+                                error={touched.firstName && errors.firstName}
+                                helperText={
+                                  touched.firstName && errors.firstName
+                                }
+                                size="small" // Set size to small
+                              />
+                            </Grid>
+                            <Grid item xs={6}>
+                              <Field
+                                as={TextField}
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="lastName"
+                                name="lastName"
+                                label="Last Name"
+                                autoComplete="family-name"
+                                autoFocus
+                                error={touched.lastName && errors.lastName}
+                                helperText={touched.lastName && errors.lastName}
+                                size="small" // Set size to small
+                              />
+                            </Grid>
+                          </Grid>
                         </>
                       ) : (
                         <Field
@@ -257,9 +277,81 @@ const Signup = () => {
                           helperText={
                             touched.organizationName && errors.organizationName
                           }
+                          size="small" // Set size to small
                         />
                       )}
-                      <FormControl fullWidth>
+                      <Grid item xs={12}>
+                        <Field
+                          as={TextField}
+                          margin="normal"
+                          required
+                          fullWidth
+                          id="email"
+                          name="email"
+                          label="Email Address"
+                          autoComplete="email"
+                          autoFocus
+                          error={touched.email && errors.email}
+                          helperText={touched.email && errors.email}
+                          size="small" // Set size to small
+                        />
+                      </Grid>
+                      <Grid container spacing={2}>
+                        <Grid item xs={6}>
+                          <Field
+                            as={TextField}
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Password"
+                            type={showPassword ? "text" : "password"}
+                            id="password"
+                            autoComplete="new-password"
+                            error={touched.password && errors.password}
+                            helperText={touched.password && errors.password}
+                            size="small" // Set size to small
+                            InputProps={{
+                              endAdornment: (
+                                <InputAdornment position="end">
+                                  <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                  >
+                                    {showPassword ? (
+                                      <VisibilityOff />
+                                    ) : (
+                                      <Visibility />
+                                    )}
+                                  </IconButton>
+                                </InputAdornment>
+                              ),
+                            }}
+                          />
+                        </Grid>
+                        <Grid item xs={6}>
+                          <Field
+                            as={TextField}
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="confirmPassword"
+                            label="Confirm Password"
+                            type="password"
+                            id="confirmPassword"
+                            autoComplete="new-password"
+                            error={
+                              touched.confirmPassword && errors.confirmPassword
+                            }
+                            helperText={
+                              touched.confirmPassword && errors.confirmPassword
+                            }
+                            size="small" // Set size to small
+                          />
+                        </Grid>
+                      </Grid>
+                      <FormControl fullWidth size="small">
                         <InputLabel id="demo-simple-select-label">
                           Country
                         </InputLabel>
@@ -281,66 +373,6 @@ const Signup = () => {
                           ))}
                         </Field>
                       </FormControl>
-                      <Field
-                        as={TextField}
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="email"
-                        name="email"
-                        label="Email Address"
-                        autoComplete="email"
-                        autoFocus
-                        error={touched.email && errors.email}
-                        helperText={touched.email && errors.email}
-                      />
-                      <Field
-                        as={TextField}
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="password"
-                        label="Password"
-                        type={showPassword ? "text" : "password"}
-                        id="password"
-                        autoComplete="new-password"
-                        error={touched.password && errors.password}
-                        helperText={touched.password && errors.password}
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <IconButton
-                                aria-label="toggle password visibility"
-                                onClick={handleClickShowPassword}
-                                onMouseDown={handleMouseDownPassword}
-                              >
-                                {showPassword ? (
-                                  <VisibilityOff />
-                                ) : (
-                                  <Visibility />
-                                )}
-                              </IconButton>
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
-                      <Field
-                        as={TextField}
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="confirmPassword"
-                        label="Confirm Password"
-                        type="password"
-                        id="confirmPassword"
-                        autoComplete="new-password"
-                        error={
-                          touched.confirmPassword && errors.confirmPassword
-                        }
-                        helperText={
-                          touched.confirmPassword && errors.confirmPassword
-                        }
-                      />
                       <Button
                         onClick={submitForm}
                         fullWidth
