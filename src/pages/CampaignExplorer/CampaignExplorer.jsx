@@ -484,6 +484,11 @@ const CampaignExplorer = () => {
                     border: "solid 1px black",
                     background: "rgb(25 210 140)",
                   },
+                  ".css-74dvln .css-1b5ei7m.Mui-selected": {
+                    color: "black",
+                    border: "solid 1px black",
+                    background: "rgb(25 210 140)",
+                  },
                 }}
               />
             </Grid>
