@@ -65,7 +65,7 @@ const Home = () => {
               us With Helping hands to make a change today.
             </Typography>
           </Grid>
-          <grid>
+          <Grid item>
             <Link to="/signup">
               <Button
                 variant="outlined"
@@ -81,7 +81,7 @@ const Home = () => {
                 Join Us Today
               </Button>
             </Link>
-          </grid>
+          </Grid>
         </Grid>
       </Container>
     </Grid>
