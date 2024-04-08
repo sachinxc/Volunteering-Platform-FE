@@ -481,8 +481,14 @@ const CampaignExplorer = () => {
                   ".css-1y7coo4-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected":
                     {
                       color: "black",
-                      border: "1px solid black",
+                      border: "solid 1px black",
                       backgroundColor: "rgb(25 210 140)",
+                    },
+                  ".css-1pymfbf-MuiPagination-root .css-1y7coo4-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected":
+                    {
+                      color: "black",
+                      border: "solid 1px black",
+                      background: "rgb(25 210 140)",
                     },
                 }}
               />
