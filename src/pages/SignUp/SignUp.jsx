@@ -121,6 +121,7 @@ const Signup = () => {
             width: "70%",
             overflow: "hidden",
             borderRadius: "20px",
+            //border: "solid 3px lightgray",
             "@media (max-width: 1200px)": {
               width: "90%",
             },
@@ -169,7 +170,7 @@ const Signup = () => {
                   alignItems: "center",
                 }}
               >
-                <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+                <Avatar sx={{ m: 1, bgcolor: "rgb(211 0 176)" }}>
                   {userType === "Volunteer" ? (
                     <PersonIcon />
                   ) : (
