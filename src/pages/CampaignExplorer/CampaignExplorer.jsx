@@ -4,6 +4,7 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
+import SearchIcon from "@mui/icons-material/Search";
 import Typography from "@mui/material/Typography";
 import {
   CssBaseline,
@@ -16,8 +17,7 @@ import {
   Select,
   Stack,
 } from "@mui/material";
-//import SearchIcon from "@mui/icons-material/Search";
-//import Divider from "@mui/material/Divider";
+
 import Pagination from "@mui/material/Pagination";
 import { Link } from "react-router-dom";
 
@@ -44,7 +44,7 @@ const OpportunityCard = (props) => {
               fontSize: "12px",
               color: "black",
               fontWeight: "bold",
-              border: "1px solid #5bb55b",
+              border: "1px solid black",
               borderRadius: "10px",
               padding: "5px",
             }}
@@ -436,9 +436,14 @@ const CampaignExplorer = () => {
               <Button
                 variant="contained"
                 color="primary"
-                sx={{ m: 1, backgroundColor: "#2ab6bb" }}
+                sx={{
+                  m: 1,
+                  backgroundColor: "#2ab6bb",
+
+                  boxShadow: "none",
+                }}
               >
-                Search
+                <SearchIcon sx={{ color: "black" }} />
               </Button>
             </Grid>
           </Grid>
@@ -471,7 +476,15 @@ const CampaignExplorer = () => {
                 onChange={handleChangePage}
                 variant="outlined"
                 color="primary"
-                sx={{ mt: 2 }}
+                sx={{
+                  mt: 2,
+                  ".css-1y7coo4-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected":
+                    {
+                      color: "black",
+                      border: "1px solid black",
+                      backgroundColor: "rgb(25 210 140)",
+                    },
+                }}
               />
             </Grid>
           </Stack>
