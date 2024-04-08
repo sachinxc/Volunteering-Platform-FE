@@ -211,20 +211,31 @@ const Signup = () => {
                         fullWidth
                         size="small" // Set size to small
                         sx={{
-                          "& .MuiToggleButton-root.Mui-selected": {
-                            backgroundColor: "#646464",
-                            color: "white",
-                            fontWeight: "bold",
-                          },
                           marginBottom: "10px",
-                          "& .css-1xgjc5y-MuiButtonBase-root-MuiToggleButton-root.Mui-selected:hover":
-                            {
-                              backgroundColor: "#646464",
-                            },
                         }}
                       >
-                        <ToggleButton value="Volunteer">Volunteer</ToggleButton>
-                        <ToggleButton value="Organization">
+                        <ToggleButton
+                          value="Volunteer"
+                          sx={{
+                            "&.MuiToggleButton-root.Mui-selected": {
+                              color: "white",
+                              backgroundColor: "#646464",
+                              fontWeight: "bold",
+                            },
+                          }}
+                        >
+                          Volunteer
+                        </ToggleButton>
+                        <ToggleButton
+                          value="Organization"
+                          sx={{
+                            "&.MuiToggleButton-root.Mui-selected": {
+                              color: "white",
+                              backgroundColor: "#646464",
+                              fontWeight: "bold",
+                            },
+                          }}
+                        >
                           Organization
                         </ToggleButton>
                       </ToggleButtonGroup>
