@@ -479,13 +479,13 @@ const CampaignExplorer = () => {
                 sx={{
                   mt: 2,
                   ".css-1b5ei7m.Mui-selected": {
-                    backgroundColor: "green",
+                    backgroundColor: "rgb(56, 158, 127)",
                     color: "white",
                     border: "solid 1px black",
                   },
 
                   ".css-1b5ei7m.Mui-selected:hover": {
-                    backgroundColor: "green",
+                    backgroundColor: "rgb(56, 158, 127)",
                     color: "white",
                     border: "solid 1px black",
                   },
