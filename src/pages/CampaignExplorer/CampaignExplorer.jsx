@@ -478,18 +478,12 @@ const CampaignExplorer = () => {
                 color="primary"
                 sx={{
                   mt: 2,
-                  ".css-1y7coo4-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected":
-                    {
-                      color: "black",
-                      border: "solid 1px black",
-                      backgroundColor: "rgb(25 210 140)",
-                    },
-                  ".css-1pymfbf-MuiPagination-root .css-1y7coo4-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected":
-                    {
-                      color: "black",
-                      border: "solid 1px black",
-                      background: "rgb(25 210 140)",
-                    },
+
+                  ".css-1b5ei7m.Mui-selected": {
+                    color: "black",
+                    border: "solid 1px black",
+                    background: "rgb(25 210 140)",
+                  },
                 }}
               />
             </Grid>
