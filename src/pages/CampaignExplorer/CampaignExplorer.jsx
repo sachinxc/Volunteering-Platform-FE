@@ -37,7 +37,7 @@ const OpportunityCard = (props) => {
         <Typography variant="body2">{props.cardData.skillLevel}</Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: "center" }}>
-        <Link to="/campaignoverview">
+        <Link to={`/campaignoverview/${props.cardData.id}`}>
           <Button
             size="small"
             sx={{

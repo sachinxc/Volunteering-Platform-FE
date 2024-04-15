@@ -1,4 +1,4 @@
-import { Container, Grid, Paper, Typography } from "@mui/material";
+import { Container, Grid, Paper, Stack, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -24,37 +24,52 @@ const Dashboard = () => {
     <div>
       <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
         <Grid container spacing={3}>
-          {/* Chart */}
-          <Grid item xs={12} md={8} lg={9}>
+          <Grid item xs={12} md={3} lg={3}>
             <Paper
               sx={{
                 p: 2,
                 display: "flex",
                 flexDirection: "column",
-                height: 240,
+                alignItems: "center",
+                justifyContent: "center",
+                height: 200,
               }}
             >
-              {/* <Chart /> */}
+              <Stack>
+                <Typography sx={{}}>25H</Typography>
+                <Typography>Volunteer Hours</Typography>
+              </Stack>
             </Paper>
           </Grid>
-          {/* Recent Deposits */}
-          <Grid item xs={12} md={4} lg={3}>
+          <Grid item xs={12} md={3} lg={3}>
             <Paper
               sx={{
                 p: 2,
                 display: "flex",
                 flexDirection: "column",
-                height: 240,
+                height: 200,
               }}
-            >
-              {/* <Deposits /> */}
-            </Paper>
+            ></Paper>
           </Grid>
-          {/* Recent Orders */}
-          <Grid item xs={12}>
-            <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-              {/* <Orders /> */}
-            </Paper>
+          <Grid item xs={12} md={3} lg={3}>
+            <Paper
+              sx={{
+                p: 2,
+                display: "flex",
+                flexDirection: "column",
+                height: 200,
+              }}
+            ></Paper>
+          </Grid>
+          <Grid item xs={12} md={3} lg={3}>
+            <Paper
+              sx={{
+                p: 2,
+                display: "flex",
+                flexDirection: "column",
+                height: 200,
+              }}
+            ></Paper>
           </Grid>
         </Grid>
         <Copyright sx={{ pt: 4 }} />

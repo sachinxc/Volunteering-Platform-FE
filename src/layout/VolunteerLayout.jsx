@@ -28,6 +28,8 @@ import { useNavigate } from "react-router-dom";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { CustomWidthTooltip } from "../components/CustomTooltip/CustomTooltip";
 import { useSelector } from "react-redux";
+import Events from "../pages/VolunteersPanel/Events/Events";
+import StadiumIcon from "@mui/icons-material/Stadium";
 
 export const secondaryListItems = (
   <React.Fragment>
@@ -113,6 +115,11 @@ const VolunteerLayout = () => {
       path: "/volunteer/eventcalendar",
       element: <CalendarMonthIcon />,
       name: "Calender",
+    },
+    {
+      path: "/volunteer/events",
+      element: <StadiumIcon />,
+      name: "Events",
     },
   ];
   const getActivePath = (pagePath) => {
