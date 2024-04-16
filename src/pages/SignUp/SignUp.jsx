@@ -56,11 +56,12 @@ const validationVolunteerSchema = Yup.object().shape({
 const validationOrganizationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("required"),
   password: Yup.string().required("required"),
-  organizationName: Yup.string().required("required"),
+  organization_name: Yup.string().required("required"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("required"),
-  country: Yup.string().required("required"),
+  address: Yup.string().required("required"),
+  contact_no: Yup.string().required("required"),
 });
 
 const defaultTheme = createTheme();
@@ -100,9 +101,10 @@ const Signup = () => {
   const organizationValues = {
     email: "",
     password: "",
-    organizationName: "",
+    organization_name: "",
     confirmPassword: "",
-    country: "",
+    address: "",
+    contact_no: "",
   };
 
   const initialValues =
@@ -114,7 +116,7 @@ const Signup = () => {
       : validationOrganizationSchema;
 
   const handleSubmit = (values) => {
-    registerUser(values);
+    userType === "Volunteer" ? registerUser(values) : registerVolunteer(values);
   };
 
   const registerUser = async (values) => {
@@ -122,6 +124,24 @@ const Signup = () => {
     await http
       .post("volunteer/register", values)
       .then((res) => {
+        localStorage.setItem("User", JSON.stringify(res.data.user));
+        console.log(res.data.user);
+        setLoading(false);
+        navigate("/signin");
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+  };
+
+  const registerVolunteer = async (values) => {
+    setLoading(true);
+    await http
+      .post("organization/register", values)
+      .then((res) => {
+        localStorage.setItem("User", JSON.stringify(res.data.user));
+        console.log(res.data.user);
         setLoading(false);
         navigate("/signin");
       })
@@ -314,16 +334,18 @@ const Signup = () => {
                           margin="normal"
                           required
                           fullWidth
-                          id="organizationName"
-                          name="organizationName"
+                          id="organization_name"
+                          name="organization_name"
                           label="Organization's Name"
                           autoComplete="organization"
                           autoFocus
                           error={
-                            touched.organizationName && errors.organizationName
+                            touched.organization_name &&
+                            errors.organization_name
                           }
                           helperText={
-                            touched.organizationName && errors.organizationName
+                            touched.organization_name &&
+                            errors.organization_name
                           }
                           size="small" // Set size to small
                         />
@@ -405,89 +427,107 @@ const Signup = () => {
                         </Grid>
                       </Box>
 
-                      <Box sx={{ margin: "3px 0" }}>
-                        {" "}
-                        <Grid container spacing={1}>
-                          <Grid item xs={12} md={6}>
-                            <Field
-                              as={TextField}
-                              margin="normal"
-                              required
-                              fullWidth
-                              name="nic"
-                              label="NIC"
-                              id="nic"
-                              autoComplete="nic"
-                              error={touched.nic && errors.nic}
-                              helperText={touched.nic && errors.nic}
-                              size="small"
-                            />
-                          </Grid>
-                          <Grid item xs={12} md={6}>
-                            <Field
-                              as={TextField}
-                              margin="normal"
-                              required
-                              fullWidth
-                              name="mobile"
-                              label="Mobile"
-                              type="number"
-                              id="mobile"
-                              autoComplete="new-password"
-                              error={touched.mobile && errors.mobile}
-                              helperText={touched.mobile && errors.mobile}
-                              size="small"
-                            />
-                          </Grid>
-                        </Grid>
-                      </Box>
-
-                      <Box sx={{ margin: "15px 0" }}>
-                        <Grid container spacing={1}>
-                          <Grid item xs={12} md={6}>
-                            <FormControl fullWidth size="small">
-                              <InputLabel id="demo-simple-select-label">
-                                Select Gender
-                              </InputLabel>
+                      {userType === "Volunteer" ? (
+                        <Box sx={{ margin: "3px 0" }}>
+                          <Grid container spacing={1}>
+                            <Grid item xs={12} md={6}>
                               <Field
-                                as={Select}
-                                name="gender"
-                                label="Select Gender"
-                                value={values.gender}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                              >
-                                <MenuItem value="" disabled>
-                                  Select Gender
-                                </MenuItem>
-                                <MenuItem value={1}>Male</MenuItem>
-                                <MenuItem value={2}>Female</MenuItem>
-                              </Field>
-                            </FormControl>
+                                as={TextField}
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="nic"
+                                label="NIC"
+                                id="nic"
+                                autoComplete="nic"
+                                error={touched.nic && errors.nic}
+                                helperText={touched.nic && errors.nic}
+                                size="small"
+                              />
+                            </Grid>
+                            <Grid item xs={12} md={6}>
+                              <Field
+                                as={TextField}
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="mobile"
+                                label="Mobile"
+                                type="number"
+                                id="mobile"
+                                autoComplete="new-password"
+                                error={touched.mobile && errors.mobile}
+                                helperText={touched.mobile && errors.mobile}
+                                size="small"
+                              />
+                            </Grid>
                           </Grid>
+                        </Box>
+                      ) : (
+                        <Field
+                          as={TextField}
+                          margin="normal"
+                          required
+                          fullWidth
+                          name="contact_no"
+                          label="Mobile"
+                          type="number"
+                          id="mobile"
+                          autoComplete="new-password"
+                          error={touched.contact_no && errors.contact_no}
+                          helperText={touched.contact_no && errors.contact_no}
+                          size="small"
+                        />
+                      )}
 
-                          <Grid item xs={12} md={6}>
-                            <Field
-                              as={TextField}
-                              // margin="normal"
-                              required
-                              fullWidth
-                              name="birth_of_date"
-                              label="Date of Birth"
-                              id="birth_of_date"
-                              autoComplete="new-password"
-                              error={
-                                touched.birth_of_date && errors.birth_of_date
-                              }
-                              helperText={
-                                touched.birth_of_date && errors.birth_of_date
-                              }
-                              size="small" // Set size to small
-                              type="date"
-                            />
+                      {userType === "Volunteer" && (
+                        <Box sx={{ margin: "15px 0" }}>
+                          <Grid container spacing={1}>
+                            <Grid item xs={12} md={6}>
+                              <FormControl fullWidth size="small">
+                                <InputLabel id="demo-simple-select-label">
+                                  Select Gender
+                                </InputLabel>
+                                <Field
+                                  as={Select}
+                                  name="gender"
+                                  label="Select Gender"
+                                  value={values.gender}
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                >
+                                  <MenuItem value="" disabled>
+                                    Select Gender
+                                  </MenuItem>
+                                  <MenuItem value={1}>Male</MenuItem>
+                                  <MenuItem value={2}>Female</MenuItem>
+                                </Field>
+                              </FormControl>
+                            </Grid>
+
+                            <Grid item xs={12} md={6}>
+                              <Field
+                                as={TextField}
+                                // margin="normal"
+                                required
+                                fullWidth
+                                name="birth_of_date"
+                                label="Date of Birth"
+                                id="birth_of_date"
+                                autoComplete="new-password"
+                                error={
+                                  touched.birth_of_date && errors.birth_of_date
+                                }
+                                helperText={
+                                  touched.birth_of_date && errors.birth_of_date
+                                }
+                                size="small" // Set size to small
+                                type="date"
+                              />
+                            </Grid>
                           </Grid>
-                        </Grid>
-                      </Box>
+                        </Box>
+                      )}
 
                       <Stack sx={{ margin: { md: "20px 0" } }}>
                         <FormControl fullWidth size="small">
