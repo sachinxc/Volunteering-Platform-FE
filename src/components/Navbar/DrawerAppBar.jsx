@@ -48,6 +48,10 @@ const navItems = [
 ];
 
 function DrawerAppBar(props) {
+  const getUser = JSON.parse(localStorage.getItem("user"));
+
+  console.log(getUser, "getUser");
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -137,11 +141,13 @@ function DrawerAppBar(props) {
               </Link>
             ))}
           </Box>
-          <Avatar
-            alt="UserPanelIcon"
-            src={UserPanelIcon}
-            sx={{ mr: 2, ml: 2 }}
-          />
+          {getUser?.type && (
+            <Avatar
+              alt="UserPanelIcon"
+              src={UserPanelIcon}
+              sx={{ mr: 2, ml: 2 }}
+            />
+          )}
         </Toolbar>
       </AppBar>
       <nav>

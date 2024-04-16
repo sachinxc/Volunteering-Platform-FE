@@ -21,7 +21,8 @@ import PasswordReset from "../pages/PasswordReset/PasswordReset";
 import CampaignOverview from "../pages/CampaignExplorer/CampaignOverview/CampaignOverview";
 import About from "../pages/About/About";
 import MainLayout from "../layout/MainLayout";
-import Signin from './../pages/SignIn/SignIn';
+import Signin from "./../pages/SignIn/SignIn";
+import Events from "../pages/VolunteersPanel/Events/Events";
 // un-authenticated
 export const defaultRouter = createBrowserRouter([
   {
@@ -41,7 +42,7 @@ export const defaultRouter = createBrowserRouter([
         path: "/signup",
       },
       {
-        element: <Signin/>,
+        element: <Signin />,
         path: "/signin",
       },
       {
@@ -58,7 +59,7 @@ export const defaultRouter = createBrowserRouter([
       },
       {
         element: <CampaignOverview />,
-        path: "/campaignoverview",
+        path: "/campaignoverview/:id",
       },
     ],
   },
@@ -96,7 +97,7 @@ export const volunteerRoutes = createBrowserRouter([
       },
       {
         element: <CampaignOverview />,
-        path: "/campaignoverview",
+        path: "/campaignoverview/:id",
       },
       {
         element: <Opportunity />,
@@ -106,6 +107,7 @@ export const volunteerRoutes = createBrowserRouter([
         element: <RegisterEvent />,
         path: "/campaignexplorer/:id/register",
       },
+
       {
         element: <PageNotFound />,
         path: "*",
@@ -130,6 +132,10 @@ export const volunteerRoutes = createBrowserRouter([
       {
         element: <EventCalendar />,
         path: "/volunteer/eventcalendar",
+      },
+      {
+        element: <Events />,
+        path: "/volunteer/events",
       },
       {
         element: <PageNotFound />,

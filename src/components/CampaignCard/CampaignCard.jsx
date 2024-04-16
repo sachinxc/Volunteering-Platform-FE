@@ -28,9 +28,7 @@ const CampaignCard = (props) => {
         alt="Paella dish"
       />
       <CardContent>
-        <Chip
-              label={props.skillLevel}
-            />
+        <Chip label={props.skillLevel} />
         <Typography variant="body2" sx={{ color: "black" }}>
           {props.description}
         </Typography>
