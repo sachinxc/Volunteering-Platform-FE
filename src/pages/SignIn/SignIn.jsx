@@ -41,10 +41,6 @@ export default function SignInSide() {
   const [userType, setUser] = React.useState("Volunteer");
   const [setError, setErrorList] = React.useState(false);
 
-  const handleSubmit = (values) => {
-    loginUser(values);
-  };
-
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
@@ -64,6 +60,26 @@ export default function SignInSide() {
         setLoading(false);
         setErrorList(true);
       });
+  };
+
+  const registerOrg = async (values) => {
+    setLoading(true);
+    await http
+      .post("organization/login", values)
+      .then((res) => {
+        setLoading(false);
+        setErrorList(false);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        window.location.href = "/organization/dashboard";
+      })
+      .catch((error) => {
+        setLoading(false);
+        setErrorList(true);
+      });
+  };
+
+  const handleSubmit = (values) => {
+    userType === "Volunteer" ? loginUser(values) : registerOrg(values);
   };
 
   const changeUserType = (value) => {
