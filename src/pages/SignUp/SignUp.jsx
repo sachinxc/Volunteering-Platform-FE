@@ -126,10 +126,10 @@ const Signup = () => {
       : validationOrganizationSchema;
 
   const handleSubmit = (values) => {
-    userType === "Volunteer" ? registerUser(values) : registerVolunteer(values);
+    userType === "Volunteer" ? registerVolunteer(values) : registerOrg(values);
   };
 
-  const registerUser = async (values) => {
+  const registerVolunteer = async (values) => {
     setLoading(true);
     await http
       .post("volunteer/register", values)
@@ -143,18 +143,17 @@ const Signup = () => {
       });
   };
 
-  const registerVolunteer = async (values) => {
+  const registerOrg = async (values) => {
     setLoading(true);
     await http
       .post("organization/register", values)
       .then((res) => {
-        localStorage.setItem("User", JSON.stringify(res.data.user));
         setLoading(false);
         navigate("/signin");
-        window.location.reload();
       })
       .catch((error) => {
         setLoading(false);
+        setErrorList(error.response.data.errors);
       });
   };
 
