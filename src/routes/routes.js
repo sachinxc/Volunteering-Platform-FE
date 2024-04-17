@@ -19,6 +19,8 @@ import CampaignExplorer from "../pages/CampaignExplorer/CampaignExplorer";
 import EventCalendar from "../pages/VolunteersPanel/EventCalendar/EventCalendar";
 import PasswordReset from "../pages/PasswordReset/PasswordReset";
 import CampaignOverview from "../pages/CampaignExplorer/CampaignOverview/CampaignOverview";
+import Testimonials from "../pages/CampaignExplorer/Testimonials/Testimonials";
+import CampaignRegistrationForm from "../pages/CampaignExplorer/CampaignRegistrationForm/CampaignRegistrationForm";
 import About from "../pages/About/About";
 import MainLayout from "../layout/MainLayout";
 import Signin from "./../pages/SignIn/SignIn";
@@ -59,7 +61,15 @@ export const defaultRouter = createBrowserRouter([
       },
       {
         element: <CampaignOverview />,
-        path: "/campaignoverview/:id",
+        path: "/campaignoverview/",
+      },
+      {
+        element: <Testimonials />,
+        path: "/testimonials/",
+      },
+      {
+        element: <CampaignRegistrationForm />,
+        path: "/campaignregistrationform/",
       },
     ],
   },

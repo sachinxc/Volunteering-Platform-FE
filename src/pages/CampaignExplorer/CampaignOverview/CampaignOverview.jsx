@@ -213,22 +213,43 @@ function CampaignOverview() {
           </List>
         </Box>
         {/* Button */}
-        <Button
-          variant="contained"
-          color="primary"
-          sx={{
-            marginTop: "10px",
-            marginBottom: "40px",
-            color: "#493536",
-            fontWeight: "bold",
-            fontSize: "17px",
-            backgroundColor: "#42ce9f",
-            width: "200px", // Adjust the width as needed
-            height: "45px", // Adjust the height as needed
-          }}
-        >
-          I want to join!
-        </Button>
+
+        <Link to="/campaignregistrationform">
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              marginTop: "10px",
+              marginBottom: "40px",
+              color: "#493536",
+              fontWeight: "bold",
+              fontSize: "17px",
+              backgroundColor: "#42ce9f",
+              width: "200px", // Adjust the width as needed
+              height: "45px", // Adjust the height as needed
+            }}
+          >
+            I want to join!
+          </Button>
+        </Link>
+        <Link to="/testimonials">
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              marginTop: "10px",
+              marginBottom: "40px",
+              color: "#493536",
+              fontWeight: "bold",
+              fontSize: "17px",
+              backgroundColor: "#42ce9f",
+              width: "200px", // Adjust the width as needed
+              height: "45px", // Adjust the height as needed
+            }}
+          >
+            View Testimonials!
+          </Button>
+        </Link>
       </Box>
     </div>
   );
