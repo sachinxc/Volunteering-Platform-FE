@@ -135,14 +135,12 @@ const Signup = () => {
       .post("volunteer/register", values)
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res.data.user));
-        console.log(res.data.user);
         setLoading(false);
-        navigate("/volunteer/dashboard");
+        navigate("/signin");
       })
       .catch((error) => {
         setLoading(false);
         setErrorList(error.response.data.errors);
-        console.log(error);
       });
   };
 
@@ -152,13 +150,12 @@ const Signup = () => {
       .post("organization/register", values)
       .then((res) => {
         localStorage.setItem("User", JSON.stringify(res.data.user));
-        console.log(res.data.user);
         setLoading(false);
         navigate("/signin");
+        window.location.reload();
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   };
 
@@ -260,7 +257,6 @@ const Signup = () => {
                     handleBlur,
                   }) => (
                     <Form>
-                      {console.log(errors)}
                       <FormControl fullWidth sx={{ marginBottom: 7 }}>
                         <InputLabel id="demo-simple-select-label">
                           Choose your Account Type, I'm a

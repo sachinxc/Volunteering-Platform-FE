@@ -68,6 +68,35 @@ export const defaultRouter = createBrowserRouter([
 // volunteer's routes
 export const volunteerRoutes = createBrowserRouter([
   {
+    element: <VolunteerLayout />,
+    children: [
+      {
+        path: "/volunteer/dashboard",
+        element: <Dashboard />,
+      },
+      {
+        element: <PasswordReset />,
+        path: "/resetpassword/:id",
+      },
+      {
+        path: "/volunteer/profile",
+        element: <Profile />,
+      },
+      {
+        element: <EventCalendar />,
+        path: "/volunteer/eventcalendar",
+      },
+      {
+        element: <Events />,
+        path: "/volunteer/events",
+      },
+      {
+        element: <PageNotFound />,
+        path: "*",
+      },
+    ],
+  },
+  {
     element: <Layout />,
     element: <MainLayout />,
     children: [
@@ -108,35 +137,6 @@ export const volunteerRoutes = createBrowserRouter([
         path: "/campaignexplorer/:id/register",
       },
 
-      {
-        element: <PageNotFound />,
-        path: "*",
-      },
-    ],
-  },
-  {
-    element: <VolunteerLayout />,
-    children: [
-      {
-        path: "/volunteer/dashboard",
-        element: <Dashboard />,
-      },
-      {
-        element: <PasswordReset />,
-        path: "/resetpassword/:id",
-      },
-      {
-        path: "/volunteer/profile",
-        element: <Profile />,
-      },
-      {
-        element: <EventCalendar />,
-        path: "/volunteer/eventcalendar",
-      },
-      {
-        element: <Events />,
-        path: "/volunteer/events",
-      },
       {
         element: <PageNotFound />,
         path: "*",
