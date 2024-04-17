@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { RouterProvider } from "react-router-dom";
 // import globalStyle from "./Styles/globalCss";
 import {
@@ -11,23 +11,36 @@ import { store } from "./store/store";
 import { ORGANIZATION, VOLUNTEER } from "./constants";
 
 function App() {
-  // Retrieve user data from localStorage
-  const getUser = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = useState(() =>
+    JSON.parse(localStorage.getItem("user"))
+  );
+
+  useEffect(() => {
+    const updateUser = () => {
+      console.log("updates");
+      setUser(JSON.parse(localStorage.getItem("user")));
+    };
+
+    window.addEventListener("storage", updateUser);
+
+    return () => {
+      window.removeEventListener("storage", updateUser);
+    };
+  }, []);
 
   // Determine which routes to use based on user type
-  const getRoutes = getUser
-    ? getUser.user_type === VOLUNTEER
+  const getRoutes = user
+    ? user.user_type === VOLUNTEER
       ? volunteerRoutes
-      : getUser.user_type === ORGANIZATION
+      : user.user_type === ORGANIZATION
       ? organizationRoutes
       : defaultRouter
-    : defaultRouter; // Fallback to default routes if user data is not available
+    : defaultRouter;
+  // Fallback to default routes if user data is not available
 
   // globalStyle();
 
-  useEffect(() => {
-    console.log(getUser, "volunteer");
-  }, [getUser]);
+  console.log(user?.user_type);
 
   return (
     <div style={{ width: "100%" }}>

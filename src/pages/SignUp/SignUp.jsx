@@ -134,7 +134,6 @@ const Signup = () => {
     await http
       .post("volunteer/register", values)
       .then((res) => {
-        localStorage.setItem("user", JSON.stringify(res.data.user));
         setLoading(false);
         navigate("/signin");
       })
@@ -298,6 +297,7 @@ const Signup = () => {
                           Organization
                         </ToggleButton>
                       </ToggleButtonGroup>
+
                       {userType === "Volunteer" ? (
                         <>
                           <Grid container spacing={1}>

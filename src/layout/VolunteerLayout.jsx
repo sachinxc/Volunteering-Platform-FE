@@ -30,6 +30,7 @@ import { CustomWidthTooltip } from "../components/CustomTooltip/CustomTooltip";
 import { useSelector } from "react-redux";
 import Events from "../pages/VolunteersPanel/Events/Events";
 import StadiumIcon from "@mui/icons-material/Stadium";
+import UserDrop from "../components/ProfileDrop/UserDrop";
 
 export const secondaryListItems = (
   <React.Fragment>
@@ -165,40 +166,7 @@ const VolunteerLayout = () => {
               {textAfterLastSlash}
             </Typography>
 
-            <CustomWidthTooltip
-              placement="bottom"
-              PopperProps={{
-                disablePortal: true,
-              }}
-              arrow
-              onClose={handleTooltipOpen}
-              open={openLogout}
-              title={
-                <React.Fragment>
-                  <Divider>
-                    <Box>
-                      <Typography
-                        sx={{
-                          color: "gray",
-                          fontSize: "15px",
-                          fontWeight: 700,
-                        }}
-                      >
-                        asdasd
-                      </Typography>
-                    </Box>
-                  </Divider>
-                </React.Fragment>
-              }
-            >
-              <IconButton onClick={() => handleTooltipOpen()}>
-                {openLogout ? (
-                  <AccountCircleIcon sx={{ color: "white" }} />
-                ) : (
-                  <AccountCircleIcon />
-                )}
-              </IconButton>
-            </CustomWidthTooltip>
+            <UserDrop />
           </Toolbar>
         </AppBar>
 

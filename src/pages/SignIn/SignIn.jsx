@@ -12,12 +12,21 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { IconButton, InputAdornment } from "@mui/material";
+import {
+  FormControl,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  ToggleButton,
+  ToggleButtonGroup,
+} from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
 import formImage from "../../assets/LandingPageImages/background3.jpg";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../components/Loading/Loading";
+import http from "../../http";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -28,16 +37,37 @@ const defaultTheme = createTheme();
 
 export default function SignInSide() {
   const [showPassword, setShowPassword] = React.useState(false); // Define showPassword state
-  const navigate = useNavigate();
+  const [loading, setLoading] = React.useState(false);
+  const [userType, setUser] = React.useState("Volunteer");
+  const [setError, setErrorList] = React.useState(false);
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    navigate("/volunteer/dashboard");
+  const handleSubmit = (values) => {
+    loginUser(values);
   };
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
+  };
+
+  const loginUser = async (values) => {
+    setLoading(true);
+    await http
+      .post("volunteer/login", values)
+      .then((res) => {
+        setLoading(false);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        window.location.href = "/volunteer/dashboard";
+      })
+      .catch((error) => {
+        setLoading(false);
+        setErrorList(true);
+      });
+  };
+
+  const changeUserType = (value) => {
+    setUser(value);
   };
 
   return (
@@ -115,6 +145,48 @@ export default function SignInSide() {
                 >
                   {({ isSubmitting, errors, touched }) => (
                     <Form>
+                      <FormControl fullWidth sx={{ marginBottom: 7 }}>
+                        <InputLabel id="demo-simple-select-label">
+                          Choose your Account Type, I'm a
+                        </InputLabel>
+                      </FormControl>
+                      <ToggleButtonGroup
+                        value={userType}
+                        exclusive
+                        onChange={(event, value) => changeUserType(value)}
+                        aria-label="user-type"
+                        fullWidth
+                        size="small" // Set size to small
+                        sx={{
+                          marginBottom: "10px",
+                        }}
+                      >
+                        <ToggleButton
+                          value="Volunteer"
+                          sx={{
+                            "&.MuiToggleButton-root.Mui-selected": {
+                              color: "white",
+                              backgroundColor: "#646464",
+                              fontWeight: "bold",
+                            },
+                          }}
+                        >
+                          Volunteer
+                        </ToggleButton>
+                        <ToggleButton
+                          value="Organization"
+                          sx={{
+                            "&.MuiToggleButton-root.Mui-selected": {
+                              color: "white",
+                              backgroundColor: "#646464",
+                              fontWeight: "bold",
+                            },
+                          }}
+                        >
+                          Organization
+                        </ToggleButton>
+                      </ToggleButtonGroup>
+
                       <Box component="div" noValidate sx={{ mt: 1 }}>
                         <Field
                           as={TextField}
@@ -127,7 +199,9 @@ export default function SignInSide() {
                           autoComplete="email"
                           autoFocus
                           variant="standard"
-                          error={touched.email && Boolean(errors.email)}
+                          error={
+                            (touched.email && Boolean(errors.email)) || setError
+                          }
                           helperText={touched.email && errors.email}
                         />
                         <Field
@@ -141,7 +215,10 @@ export default function SignInSide() {
                           id="password"
                           autoComplete="current-password"
                           variant="standard"
-                          error={touched.password && Boolean(errors.password)}
+                          error={
+                            (touched.password && Boolean(errors.password)) ||
+                            setError
+                          }
                           helperText={touched.password && errors.password}
                           InputProps={{
                             endAdornment: (
@@ -161,12 +238,7 @@ export default function SignInSide() {
                             ),
                           }}
                         />
-                        <FormControlLabel
-                          control={
-                            <Checkbox value="remember" color="primary" />
-                          }
-                          label="Remember me"
-                        />
+
                         <Button
                           type="submit"
                           fullWidth
@@ -182,9 +254,8 @@ export default function SignInSide() {
                               backgroundColor: "#087478", // Change the color on hover
                             },
                           }}
-                          disabled={isSubmitting}
                         >
-                          {isSubmitting ? "Submitting..." : "Sign In"}
+                          Sign In
                         </Button>
                         <Grid container sx={{ color: "gray" }}>
                           <Grid item xs>
@@ -217,6 +288,7 @@ export default function SignInSide() {
           </Grid>
         </Box>
       </Box>
+      <Loader openLoad={loading} />
     </ThemeProvider>
   );
 }
