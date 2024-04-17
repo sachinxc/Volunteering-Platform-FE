@@ -25,6 +25,10 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import * as Yup from "yup";
 import formImage from "../../assets/LandingPageImages/background3.jpg";
 
+import Loader from "../../components/Loading/Loading";
+import { useNavigate } from "react-router-dom";
+import { isEmpty } from "lodash";
+
 const countries = [
   "Sri Lanka",
   "United States",
@@ -59,6 +63,14 @@ const defaultTheme = createTheme();
 const Signup = () => {
   const [userType, setUser] = React.useState("Volunteer");
   const [showPassword, setShowPassword] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [errorList, setErrorList] = React.useState({
+    mobile: [],
+    nic: [],
+    password: [],
+    email: [],
+  });
+  const navigate = useNavigate();
 
   const changeUserType = (value) => {
     setUser(value);
@@ -71,6 +83,10 @@ const Signup = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+  // const getErrors = (er) => {
+  //   errorList.filter((er)=>er.)
+  // };
 
   const volunteerValues = {
     email: "",
@@ -97,12 +113,45 @@ const Signup = () => {
       ? validationVolunteerSchema
       : validationOrganizationSchema;
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    console.log(values);
-    setTimeout(() => {
-      alert("Form submitted successfully!");
-      setSubmitting(false);
-    }, 1000);
+  const handleSubmit = (values) => {
+    userType === "Volunteer" ? registerUser(values) : registerVolunteer(values);
+  };
+
+  const registerUser = async (values) => {
+    setLoading(true);
+    await http
+      .post("volunteer/register", values)
+      .then((res) => {
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        console.log(res.data.user);
+        setLoading(false);
+        navigate("/volunteer/dashboard");
+      })
+      .catch((error) => {
+        setLoading(false);
+        setErrorList(error.response.data.errors);
+        console.log(error);
+      });
+  };
+
+  const registerVolunteer = async (values) => {
+    setLoading(true);
+    await http
+      .post("organization/register", values)
+      .then((res) => {
+        localStorage.setItem("User", JSON.stringify(res.data.user));
+        console.log(res.data.user);
+        setLoading(false);
+        navigate("/signin");
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+  };
+
+  const getErrors = (er) => {
+    return isEmpty(errorList[er]) ? false : errorList[er][0];
   };
 
   return (
@@ -313,93 +362,224 @@ const Signup = () => {
                           label="Email Address"
                           autoComplete="email"
                           autoFocus
-                          error={touched.email && errors.email}
-                          helperText={touched.email && errors.email}
+                          error={
+                            (touched.email && errors.email) ||
+                            getErrors("email")
+                          }
+                          helperText={
+                            (touched.email && errors.email) ||
+                            getErrors("email")
+                          }
                           size="small" // Set size to small
                           sx={{ height: "50px" }} // Increase bottom margin
                         />
                       </Grid>
-                      <Grid
-                        container
-                        spacing={1}
-                        sx={{ marginBottom: "46px", height: "50px" }}
-                      >
-                        <Grid item xs={6}>
-                          <Field
-                            as={TextField}
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type={showPassword ? "text" : "password"}
-                            id="password"
-                            autoComplete="new-password"
-                            error={touched.password && errors.password}
-                            helperText={touched.password && errors.password}
-                            size="small" // Set size to small
-                            InputProps={{
-                              endAdornment: (
-                                <InputAdornment position="end">
-                                  <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={handleClickShowPassword}
-                                    onMouseDown={handleMouseDownPassword}
-                                  >
-                                    {showPassword ? (
-                                      <VisibilityOff />
-                                    ) : (
-                                      <Visibility />
-                                    )}
-                                  </IconButton>
-                                </InputAdornment>
-                              ),
-                            }}
-                          />
+
+                      <Box sx={{ margin: "5px 0" }}>
+                        <Grid container spacing={1} sx={{}}>
+                          <Grid item xs={12} md={6}>
+                            <Field
+                              as={TextField}
+                              margin="normal"
+                              required
+                              fullWidth
+                              name="password"
+                              label="Password"
+                              type={showPassword ? "text" : "password"}
+                              id="password"
+                              autoComplete="new-password"
+                              error={
+                                (touched.password && errors.password) ||
+                                getErrors("password")
+                              }
+                              helperText={
+                                (touched.password && errors.password) ||
+                                getErrors("password")
+                              }
+                              size="small" // Set size to small
+                              InputProps={{
+                                endAdornment: (
+                                  <InputAdornment position="end">
+                                    <IconButton
+                                      aria-label="toggle password visibility"
+                                      onClick={handleClickShowPassword}
+                                      onMouseDown={handleMouseDownPassword}
+                                    >
+                                      {showPassword ? (
+                                        <VisibilityOff />
+                                      ) : (
+                                        <Visibility />
+                                      )}
+                                    </IconButton>
+                                  </InputAdornment>
+                                ),
+                              }}
+                            />
+                          </Grid>
+                          <Grid item xs={12} md={6}>
+                            <Field
+                              as={TextField}
+                              margin="normal"
+                              required
+                              fullWidth
+                              name="confirmPassword"
+                              label="Confirm Password"
+                              type="password"
+                              id="confirmPassword"
+                              autoComplete="new-password"
+                              error={
+                                touched.confirmPassword &&
+                                errors.confirmPassword
+                              }
+                              helperText={
+                                touched.confirmPassword &&
+                                errors.confirmPassword
+                              }
+                              size="small" // Set size to small
+                            />
+                          </Grid>
                         </Grid>
-                        <Grid item xs={6}>
-                          <Field
-                            as={TextField}
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="confirmPassword"
-                            label="Confirm Password"
-                            type="password"
-                            id="confirmPassword"
-                            autoComplete="new-password"
-                            error={
-                              touched.confirmPassword && errors.confirmPassword
-                            }
-                            helperText={
-                              touched.confirmPassword && errors.confirmPassword
-                            }
-                            size="small" // Set size to small
-                          />
-                        </Grid>
-                      </Grid>
-                      <FormControl fullWidth size="small">
-                        <InputLabel id="demo-simple-select-label">
-                          Country
-                        </InputLabel>
+                      </Box>
+
+                      {userType === "Volunteer" ? (
+                        <Box sx={{ margin: "3px 0" }}>
+                          <Grid container spacing={1}>
+                            <Grid item xs={12} md={6}>
+                              <Field
+                                as={TextField}
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="nic"
+                                label="NIC"
+                                id="nic"
+                                autoComplete="nic"
+                                error={
+                                  (touched.nic && errors.nic) ||
+                                  getErrors("nic")
+                                }
+                                helperText={
+                                  (touched.nic && errors.nic) ||
+                                  getErrors("nic")
+                                }
+                                size="small"
+                              />
+                            </Grid>
+                            <Grid item xs={12} md={6}>
+                              <Field
+                                as={TextField}
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="mobile"
+                                label="Mobile"
+                                type="number"
+                                id="mobile"
+                                autoComplete="new-password"
+                                error={
+                                  (touched.mobile && errors.mobile) ||
+                                  getErrors("mobile")
+                                }
+                                helperText={
+                                  (touched.mobile && errors.mobile) ||
+                                  getErrors("mobile")
+                                }
+                                size="small"
+                              />
+                            </Grid>
+                          </Grid>
+                        </Box>
+                      ) : (
                         <Field
-                          as={Select}
-                          name="country"
-                          label="Country"
-                          value={values.country}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        >
-                          <MenuItem value="" disabled>
-                            Select Country
-                          </MenuItem>
-                          {countries.map((country, index) => (
-                            <MenuItem key={index} value={country}>
-                              {country}
+                          as={TextField}
+                          margin="normal"
+                          required
+                          fullWidth
+                          name="contact_no"
+                          label="Mobile"
+                          type="number"
+                          id="mobile"
+                          autoComplete="new-password"
+                          error={touched.contact_no && errors.contact_no}
+                          helperText={touched.contact_no && errors.contact_no}
+                          size="small"
+                        />
+                      )}
+
+                      {userType === "Volunteer" && (
+                        <Box sx={{ margin: "15px 0" }}>
+                          <Grid container spacing={1}>
+                            <Grid item xs={12} md={6}>
+                              <FormControl fullWidth size="small">
+                                <InputLabel id="demo-simple-select-label">
+                                  Select Gender
+                                </InputLabel>
+                                <Field
+                                  as={Select}
+                                  name="gender"
+                                  label="Select Gender"
+                                  value={values.gender}
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                >
+                                  <MenuItem value="" disabled>
+                                    Select Gender
+                                  </MenuItem>
+                                  <MenuItem value={1}>Male</MenuItem>
+                                  <MenuItem value={2}>Female</MenuItem>
+                                </Field>
+                              </FormControl>
+                            </Grid>
+
+                            <Grid item xs={12} md={6}>
+                              <Field
+                                as={TextField}
+                                // margin="normal"
+                                required
+                                fullWidth
+                                name="birth_of_date"
+                                label="Date of Birth"
+                                id="birth_of_date"
+                                autoComplete="new-password"
+                                error={
+                                  touched.birth_of_date && errors.birth_of_date
+                                }
+                                helperText={
+                                  touched.birth_of_date && errors.birth_of_date
+                                }
+                                size="small" // Set size to small
+                                type="date"
+                              />
+                            </Grid>
+                          </Grid>
+                        </Box>
+                      )}
+
+                      <Stack sx={{ margin: { md: "20px 0" } }}>
+                        <FormControl fullWidth size="small">
+                          <InputLabel id="demo-simple-select-label">
+                            Country
+                          </InputLabel>
+                          <Field
+                            as={Select}
+                            name="address"
+                            label="Country"
+                            value={values.address}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                          >
+                            <MenuItem value="" disabled>
+                              Select Country
                             </MenuItem>
-                          ))}
-                        </Field>
-                      </FormControl>
+                            {countries.map((country, index) => (
+                              <MenuItem key={index} value={country}>
+                                {country}
+                              </MenuItem>
+                            ))}
+                          </Field>
+                        </FormControl>
+                      </Stack>
+
                       <Button
                         onClick={submitForm}
                         fullWidth

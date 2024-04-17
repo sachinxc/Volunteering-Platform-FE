@@ -13,13 +13,14 @@ import { ORGANIZATION, VOLUNTEER } from "./constants";
 function App() {
   // Retrieve user data from localStorage
   const getUser = JSON.parse(localStorage.getItem("user"));
-  // const getUser = JSON.parse(localStorage.getItem("user"));
+
+  console.log(getUser, "volunteer");
 
   // Determine which routes to use based on user type
   const getRoutes = getUser
-    ? getUser.type === VOLUNTEER
+    ? getUser.user_type === VOLUNTEER
       ? volunteerRoutes
-      : getUser.type === ORGANIZATION
+      : getUser.user_type === ORGANIZATION
       ? organizationRoutes
       : defaultRouter
     : defaultRouter; // Fallback to default routes if user data is not available
