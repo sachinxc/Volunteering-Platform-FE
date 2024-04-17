@@ -16,7 +16,8 @@ import { IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
-import formImage from "../../assets/LandingPageImages/background3.jpg"; // Import the background image
+import formImage from "../../assets/LandingPageImages/background3.jpg";
+import { useNavigate } from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -27,13 +28,10 @@ const defaultTheme = createTheme();
 
 export default function SignInSide() {
   const [showPassword, setShowPassword] = React.useState(false); // Define showPassword state
+  const navigate = useNavigate();
 
   const handleSubmit = (values, { setSubmitting }) => {
-    console.log(values);
-    setTimeout(() => {
-      alert("Form submitted successfully!");
-      setSubmitting(false);
-    }, 1000);
+    navigate("/volunteer/dashboard");
   };
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);

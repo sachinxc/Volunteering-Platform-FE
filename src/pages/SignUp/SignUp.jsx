@@ -25,10 +25,10 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import * as Yup from "yup";
 import formImage from "../../assets/LandingPageImages/background3.jpg";
-import axios from "axios";
 import http from "../../http";
 import Loader from "../../components/Loading/Loading";
 import { useNavigate } from "react-router-dom";
+import { isEmpty } from "lodash";
 
 const countries = [
   "Sri Lanka",
@@ -70,6 +70,12 @@ const Signup = () => {
   const [userType, setUser] = React.useState("Volunteer");
   const [showPassword, setShowPassword] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const [errorList, setErrorList] = React.useState({
+    mobile: [],
+    nic: [],
+    password: [],
+    email: [],
+  });
   const navigate = useNavigate();
 
   const changeUserType = (value) => {
@@ -83,6 +89,10 @@ const Signup = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+  // const getErrors = (er) => {
+  //   errorList.filter((er)=>er.)
+  // };
 
   const volunteerValues = {
     email: "",
@@ -124,14 +134,13 @@ const Signup = () => {
     await http
       .post("volunteer/register", values)
       .then((res) => {
-        localStorage.setItem("User", JSON.stringify(res.data.user));
-        console.log(res.data.user);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
         setLoading(false);
         navigate("/signin");
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
+        setErrorList(error.response.data.errors);
       });
   };
 
@@ -141,14 +150,17 @@ const Signup = () => {
       .post("organization/register", values)
       .then((res) => {
         localStorage.setItem("User", JSON.stringify(res.data.user));
-        console.log(res.data.user);
         setLoading(false);
         navigate("/signin");
+        window.location.reload();
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
+  };
+
+  const getErrors = (er) => {
+    return isEmpty(errorList[er]) ? false : errorList[er][0];
   };
 
   return (
@@ -245,7 +257,6 @@ const Signup = () => {
                     handleBlur,
                   }) => (
                     <Form>
-                      {console.log(errors)}
                       <FormControl fullWidth sx={{ marginBottom: 7 }}>
                         <InputLabel id="demo-simple-select-label">
                           Choose your Account Type, I'm a
@@ -361,8 +372,14 @@ const Signup = () => {
                           label="Email Address"
                           autoComplete="email"
                           autoFocus
-                          error={touched.email && errors.email}
-                          helperText={touched.email && errors.email}
+                          error={
+                            (touched.email && errors.email) ||
+                            getErrors("email")
+                          }
+                          helperText={
+                            (touched.email && errors.email) ||
+                            getErrors("email")
+                          }
                           size="small" // Set size to small
                         />
                       </Grid>
@@ -380,8 +397,14 @@ const Signup = () => {
                               type={showPassword ? "text" : "password"}
                               id="password"
                               autoComplete="new-password"
-                              error={touched.password && errors.password}
-                              helperText={touched.password && errors.password}
+                              error={
+                                (touched.password && errors.password) ||
+                                getErrors("password")
+                              }
+                              helperText={
+                                (touched.password && errors.password) ||
+                                getErrors("password")
+                              }
                               size="small" // Set size to small
                               InputProps={{
                                 endAdornment: (
@@ -440,8 +463,14 @@ const Signup = () => {
                                 label="NIC"
                                 id="nic"
                                 autoComplete="nic"
-                                error={touched.nic && errors.nic}
-                                helperText={touched.nic && errors.nic}
+                                error={
+                                  (touched.nic && errors.nic) ||
+                                  getErrors("nic")
+                                }
+                                helperText={
+                                  (touched.nic && errors.nic) ||
+                                  getErrors("nic")
+                                }
                                 size="small"
                               />
                             </Grid>
@@ -456,8 +485,14 @@ const Signup = () => {
                                 type="number"
                                 id="mobile"
                                 autoComplete="new-password"
-                                error={touched.mobile && errors.mobile}
-                                helperText={touched.mobile && errors.mobile}
+                                error={
+                                  (touched.mobile && errors.mobile) ||
+                                  getErrors("mobile")
+                                }
+                                helperText={
+                                  (touched.mobile && errors.mobile) ||
+                                  getErrors("mobile")
+                                }
                                 size="small"
                               />
                             </Grid>
