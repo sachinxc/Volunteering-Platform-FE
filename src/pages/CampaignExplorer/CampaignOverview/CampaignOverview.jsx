@@ -13,11 +13,12 @@ import {
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FavoriteIcon from "@mui/icons-material/Favorite"; // Import the heart icon
 import campaignImage from "../../../assets/CampaignImages/dog.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function CampaignOverview() {
   // Dummy like count for demonstration
   const likeCount = 10;
+  const navigate = useNavigate();
 
   return (
     <div
@@ -46,19 +47,19 @@ function CampaignOverview() {
           },
         }}
       >
-        <Link to="/campaignexplorer">
-          <IconButton
-            sx={{
-              color: "#493536",
-              position: "absolute",
-              top: "40px", // Adjust top position for responsiveness
-              left: "25px", // Adjust left position for responsiveness
-              //fontSize: "40px", // Adjust font size for responsiveness
-            }}
-          >
-            <ArrowBackIcon />
-          </IconButton>
-        </Link>
+        <IconButton
+          onClick={() => window.history.back()}
+          sx={{
+            color: "#493536",
+            position: "absolute",
+            top: "40px", // Adjust top position for responsiveness
+            left: "25px", // Adjust left position for responsiveness
+            //fontSize: "40px", // Adjust font size for responsiveness
+          }}
+        >
+          <ArrowBackIcon />
+        </IconButton>
+
         {/* Heart icon for like count */}
         <IconButton
           sx={{

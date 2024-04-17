@@ -16,6 +16,7 @@ import {
   IconButton,
   InputAdornment,
   Box,
+  Stack,
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import CorporateFareIcon from "@mui/icons-material/CorporateFare";
@@ -24,7 +25,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import * as Yup from "yup";
 import formImage from "../../assets/LandingPageImages/background3.jpg";
-
+import http from "../../http";
 import Loader from "../../components/Loading/Loading";
 import { useNavigate } from "react-router-dom";
 import { isEmpty } from "lodash";
@@ -39,23 +40,28 @@ const countries = [
 
 const validationVolunteerSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("required"),
-  password: Yup.string().required("required"),
-  firstName: Yup.string().required("required"),
-  lastName: Yup.string().required("required"),
+  password: Yup.string().required("required").min(6),
+  first_name: Yup.string().required("required"),
+  last_name: Yup.string().required("required"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("required"),
-  country: Yup.string().required("required"),
+  address: Yup.string().required("required"),
+  nic: Yup.string().required("required"),
+  mobile: Yup.string().required("required"),
+  birth_of_date: Yup.string().required("required"),
+  gender: Yup.string().required("required"),
 });
 
 const validationOrganizationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("required"),
   password: Yup.string().required("required"),
-  organizationName: Yup.string().required("required"),
+  organization_name: Yup.string().required("required"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("required"),
-  country: Yup.string().required("required"),
+  address: Yup.string().required("required"),
+  contact_no: Yup.string().required("required"),
 });
 
 const defaultTheme = createTheme();
@@ -90,19 +96,25 @@ const Signup = () => {
 
   const volunteerValues = {
     email: "",
+    first_name: "",
+    last_name: "",
     password: "",
-    firstName: "",
-    lastName: "",
     confirmPassword: "",
     country: "",
+    news_letter_sub: true,
+    birth_of_date: "",
+    mobile: "",
+    gender: "",
+    nic: "",
   };
 
   const organizationValues = {
     email: "",
     password: "",
-    organizationName: "",
+    organization_name: "",
     confirmPassword: "",
-    country: "",
+    address: "",
+    contact_no: "",
   };
 
   const initialValues =
@@ -248,6 +260,7 @@ const Signup = () => {
                     handleBlur,
                   }) => (
                     <Form>
+                      {console.log(errors)}
                       <FormControl fullWidth sx={{ marginBottom: 7 }}>
                         <InputLabel id="demo-simple-select-label">
                           Choose your Account Type, I'm a
@@ -292,40 +305,40 @@ const Signup = () => {
                       {userType === "Volunteer" ? (
                         <>
                           <Grid container spacing={1}>
-                            <Grid item xs={6}>
+                            <Grid item xs={12} md={6}>
                               <Field
                                 as={TextField}
                                 margin="normal"
                                 required
                                 fullWidth
-                                id="firstName"
-                                name="firstName"
+                                id="first_name"
+                                name="first_name"
                                 label="First Name"
                                 autoComplete="given-name"
                                 autoFocus
-                                error={touched.firstName && errors.firstName}
+                                error={touched.first_name && errors.first_name}
                                 helperText={
-                                  touched.firstName && errors.firstName
+                                  touched.first_name && errors.first_name
                                 }
                                 size="small" // Set size to small
-                                sx={{ height: "50px" }} // Increase bottom margin
                               />
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={12} md={6}>
                               <Field
                                 as={TextField}
                                 margin="normal"
                                 required
                                 fullWidth
-                                id="lastName"
-                                name="lastName"
+                                id="last_name"
+                                name="last_name"
                                 label="Last Name"
                                 autoComplete="family-name"
                                 autoFocus
-                                error={touched.lastName && errors.lastName}
-                                helperText={touched.lastName && errors.lastName}
+                                error={touched.last_name && errors.last_name}
+                                helperText={
+                                  touched.last_name && errors.last_name
+                                }
                                 size="small" // Set size to small
-                                sx={{ height: "50px" }} // Increase bottom margin
                               />
                             </Grid>
                           </Grid>
@@ -336,19 +349,20 @@ const Signup = () => {
                           margin="normal"
                           required
                           fullWidth
-                          id="organizationName"
-                          name="organizationName"
+                          id="organization_name"
+                          name="organization_name"
                           label="Organization's Name"
                           autoComplete="organization"
                           autoFocus
                           error={
-                            touched.organizationName && errors.organizationName
+                            touched.organization_name &&
+                            errors.organization_name
                           }
                           helperText={
-                            touched.organizationName && errors.organizationName
+                            touched.organization_name &&
+                            errors.organization_name
                           }
                           size="small" // Set size to small
-                          sx={{ height: "50px" }} // Increase bottom margin
                         />
                       )}
                       <Grid item xs={12}>
@@ -371,7 +385,6 @@ const Signup = () => {
                             getErrors("email")
                           }
                           size="small" // Set size to small
-                          sx={{ height: "50px" }} // Increase bottom margin
                         />
                       </Grid>
 
@@ -595,9 +608,8 @@ const Signup = () => {
                             backgroundColor: "#087478", // Change the color on hover
                           },
                         }}
-                        disabled={isSubmitting}
                       >
-                        {isSubmitting ? "Submitting..." : "Create"}
+                        Create
                       </Button>
                     </Form>
                   )}
@@ -607,6 +619,7 @@ const Signup = () => {
           </Grid>
         </Box>
       </Box>
+      <Loader openLoad={loading} />
     </ThemeProvider>
   );
 };
