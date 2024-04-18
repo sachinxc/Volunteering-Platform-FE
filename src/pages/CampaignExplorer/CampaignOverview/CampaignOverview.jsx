@@ -242,12 +242,12 @@ function CampaignOverview() {
               color: "#493536",
               fontWeight: "bold",
               fontSize: "17px",
-              backgroundColor: "#42ce9f",
-              width: "200px", // Adjust the width as needed
+              backgroundColor: "#e54081",
+              width: "250px", // Adjust the width as needed
               height: "45px", // Adjust the height as needed
             }}
           >
-            View Testimonials!
+            View Testimonials
           </Button>
         </Link>
       </Box>
