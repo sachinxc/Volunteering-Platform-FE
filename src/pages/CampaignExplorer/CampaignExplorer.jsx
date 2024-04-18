@@ -3,9 +3,11 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import Typography from "@mui/material/Typography";
+import { Image } from "@mui/icons-material";
 import {
   CssBaseline,
   FormControl,
@@ -20,21 +22,72 @@ import {
 
 import Pagination from "@mui/material/Pagination";
 import { Link } from "react-router-dom";
+import campaign1Image from "../../assets/CampaignImages/dog.jpg";
+import PlaceIcon from "@mui/icons-material/Place";
+import CategoryIcon from "@mui/icons-material/Category";
+import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
+import SchoolIcon from "@mui/icons-material/School";
 
 const OpportunityCard = (props) => {
   return (
     <Card sx={{ borderRadius: "20px" }}>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {props.cardData.category}
-        </Typography>
-        <Typography variant="h5" component="div">
-          {props.cardData.title}
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {props.cardData.location}
-        </Typography>
-        <Typography variant="body2">{props.cardData.skillLevel}</Typography>
+      <Typography
+        sx={{
+          fontSize: 16,
+          fontWeight: "bold",
+          display: "flex",
+          justifyContent: "center",
+          px: 2,
+          py: 1,
+        }}
+      >
+        {props.cardData.title}
+      </Typography>
+
+      <CardMedia
+        component="img"
+        alt="dog"
+        height="140"
+        image={campaign1Image}
+      />
+      <CardContent sx={{ p: 0 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            mt: 1,
+            width: "100%",
+          }}
+        >
+          <Typography sx={{ fontSize: 13, mr: 1 }} color="text.secondary">
+            <CategoryIcon sx={{ fontSize: 13, mr: 0.5 }} />
+            {props.cardData.category}
+          </Typography>
+
+          <Typography sx={{ fontSize: 13 }} color="text.secondary">
+            <SchoolIcon sx={{ fontSize: 13, mr: 0.5 }} />
+            {props.cardData.skillLevel}
+          </Typography>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            width: "100%",
+            mt: 1,
+          }}
+        >
+          <Typography sx={{ fontSize: 13, mr: 1 }} color="text.secondary">
+            <AccessTimeFilledIcon sx={{ fontSize: 13, mr: 0.5 }} />
+            {props.cardData.duration}
+          </Typography>
+
+          <Typography sx={{ fontSize: 13 }} color="text.secondary">
+            <PlaceIcon sx={{ fontSize: 13, mr: 0.5 }} />
+            {props.cardData.location}
+          </Typography>
+        </Box>
       </CardContent>
       <CardActions sx={{ justifyContent: "center" }}>
         <Link to={`/campaignoverview/${props.cardData.id}`}>
@@ -46,7 +99,7 @@ const OpportunityCard = (props) => {
               fontWeight: "bold",
               border: "1px solid black",
               borderRadius: "10px",
-              padding: "5px",
+              mb: 1,
             }}
           >
             View
@@ -61,10 +114,12 @@ const CampaignExplorer = () => {
   const campaigns = [
     {
       id: 1,
-      title: "Campaign 1",
+      title: "Rescue injured dogs",
       category: "Humanitarian",
       location: "New York",
       skillLevel: "Beginner",
+      duration: "Long Term",
+      image: "dog",
     },
     {
       id: 2,
@@ -375,63 +430,7 @@ const CampaignExplorer = () => {
                   <MenuItem value={30}>Long Term</MenuItem>
                 </Select>
               </FormControl>
-              <FormControl sx={{ m: 1, minWidth: 125 }} size="small">
-                <InputLabel
-                  id="demo-select-small-label"
-                  sx={{ color: "black" }}
-                >
-                  Location
-                </InputLabel>
-                <Select
-                  labelId="demo-select-small-label"
-                  id="demo-select-small"
-                  // value={age}
-                  label="Location"
-                  // onChange={handleChange}
-                >
-                  <MenuItem value="">
-                    <em>All Locations</em>
-                  </MenuItem>
-                  <MenuItem value={10}>Kandy Sri Lanka</MenuItem>
-                  <MenuItem value={20}>Colombo Sri Lanka</MenuItem>
-                  <MenuItem value={30}>Jaffna Sri Lanka</MenuItem>
-                </Select>
-              </FormControl>
-              <FormControl sx={{ m: 1, minWidth: 125 }} size="small">
-                <InputLabel
-                  id="demo-select-small-label"
-                  sx={{ color: "black" }}
-                >
-                  Date
-                </InputLabel>
-                <Select
-                  labelId="demo-select-small-label"
-                  id="demo-select-small"
-                  // value={age}
-                  label="Date"
-                  // onChange={handleChange}
-                >
-                  <MenuItem value="">
-                    <em>All Dates</em>
-                  </MenuItem>
-                  <MenuItem value={10}>This month</MenuItem>
-                  <MenuItem value={20}>This Year</MenuItem>
-                  <MenuItem value={30}>Upcoming</MenuItem>
-                </Select>
-              </FormControl>
-              <FormControl sx={{ m: 1, minWidth: 125 }} size="small">
-                <InputLabel id="search-select-label" sx={{ color: "black" }}>
-                  Search
-                </InputLabel>
-                <InputBase
-                  sx={{
-                    backgroundColor: "white",
-                    padding: "5px",
-                  }}
-                  placeholder="Search by keywords"
-                  inputProps={{ "aria-label": "Search by keywords" }}
-                />
-              </FormControl>
+
               {/* Add more filter components as needed */}
               <Button
                 variant="contained"
@@ -439,11 +438,13 @@ const CampaignExplorer = () => {
                 sx={{
                   m: 1,
                   backgroundColor: "#2ab6bb",
+                  fontWeight: "bold",
 
                   boxShadow: "none",
                 }}
               >
-                <SearchIcon sx={{ color: "black" }} />
+                <SearchIcon sx={{ color: "white", mr: 1 }} />
+                Search
               </Button>
             </Grid>
           </Grid>
@@ -459,7 +460,7 @@ const CampaignExplorer = () => {
         >
           <Grid xs={12} md={12}>
             <Box component="form" noValidate sx={{ mt: 3 }}>
-              <Grid container spacing={2}>
+              <Grid container spacing={3}>
                 {displayedCampaigns.map((campaign) => (
                   <Grid item xs={12} sm={6} md={3} key={campaign.id}>
                     <OpportunityCard cardData={campaign} />

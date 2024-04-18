@@ -55,19 +55,6 @@ const RegistrationForm = () => {
         marginBottom: "100px",
       }}
     >
-      <IconButton
-        onClick={() => window.history.back()}
-        sx={{
-          color: "#493536",
-          position: "absolute",
-          top: "40px", // Adjust top position for responsiveness
-          left: "25px", // Adjust left position for responsiveness
-          //fontSize: "40px", // Adjust font size for responsiveness
-        }}
-      >
-        <ArrowBackIcon />
-      </IconButton>
-
       <Grid
         container
         spacing={2}
@@ -84,6 +71,18 @@ const RegistrationForm = () => {
         }}
       >
         <Grid item xs={12} sx={{ m: 5 }}>
+          <IconButton
+            onClick={() => window.history.back()}
+            sx={{
+              color: "#493536",
+              //position: "relative",
+              top: "3px", // Adjust top position for responsiveness
+              left: "-180px", // Adjust left position for responsiveness
+              fontSize: "40px", // Adjust font size for responsiveness
+            }}
+          >
+            <ArrowBackIcon />
+          </IconButton>
           <Typography variant="h4" align="center" sx={{ fontWeight: "bold" }}>
             Campaign Registration
           </Typography>
