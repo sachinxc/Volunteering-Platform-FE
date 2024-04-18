@@ -34,7 +34,7 @@ const OpportunityCard = (props) => {
       sx={{
         borderRadius: "20px",
         border: "solid 1px black",
-        backgroundColor: "#e1f5ef",
+        backgroundColor: "#e6f7f0",
       }}
     >
       <Typography
