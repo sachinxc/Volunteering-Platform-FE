@@ -50,8 +50,9 @@ const RegistrationForm = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-
+        paddingTop: "20px",
         marginTop: "100px",
+        marginBottom: "100px",
       }}
     >
       <IconButton
