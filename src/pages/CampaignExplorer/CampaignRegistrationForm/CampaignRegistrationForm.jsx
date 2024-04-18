@@ -72,9 +72,9 @@ const RegistrationForm = () => {
           spacing={2}
           sx={{
             display: "flex",
-            alignItems: "left",
-            flexDirection: "column",
-            width: "90%",
+            //alignItems: "center",
+            //flexDirection: "column",
+            width: "80%",
           }}
         >
           <Grid item xs={12} sx={{ m: 5 }}>
@@ -82,13 +82,13 @@ const RegistrationForm = () => {
               Campaign Registration
             </Typography>
           </Grid>
-          <Grid item xs={10} sx={{ m: 1 }}>
-            <Typography variant="sm" align="left">
-              Tell us about your availability of time in general:
+          <Grid item xs={10} sx={{}}>
+            <Typography variant="sm" align="center">
+              Tell us about your time availability in general:
             </Typography>
           </Grid>
-          <Grid item xs={10} sx={{ m: 1 }}>
-            <Typography variant="sm" align="left" sx={{ mr: 3 }}>
+          <Grid item xs={10}>
+            <Typography variant="sm" align="center" sx={{ mr: 3 }}>
               Week Days:
             </Typography>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -105,7 +105,7 @@ const RegistrationForm = () => {
               />
             </LocalizationProvider>
           </Grid>
-          <Grid item xs={10} sx={{ m: 1 }}>
+          <Grid item xs={10}>
             <Typography variant="sm" align="left" sx={{ mr: 3 }}>
               Week Ends:
             </Typography>
@@ -123,12 +123,13 @@ const RegistrationForm = () => {
               />
             </LocalizationProvider>
           </Grid>
-          <Grid item xs={10} sx={{ m: 1 }}>
-            <Typography variant="sm" align="left">
+          <Grid item xs={10} sx={{}}>
+            <Typography variant="sm" align="center">
               Briefly describe why you chose this campaign and state any
               relevant qualifications or experiences you have:
             </Typography>
-
+          </Grid>
+          <Grid item xs={10} sx={{}}>
             <TextField
               name="info"
               fullWidth
@@ -138,7 +139,7 @@ const RegistrationForm = () => {
             />
           </Grid>
 
-          <Grid item xs={10} sx={{ m: 1 }}>
+          <Grid item xs={10} sx={{}}>
             <FormControlLabel
               control={
                 <Checkbox
@@ -150,8 +151,22 @@ const RegistrationForm = () => {
               label="I confirm that the above information provided by me is accurate."
             />
           </Grid>
-          <Grid item xs={10} sx={{ m: 1 }}>
-            <Button variant="contained" color="primary" onClick={handleSubmit}>
+          <Grid item xs={10} sx={{}}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleSubmit}
+              sx={{
+                marginTop: "10px",
+                marginBottom: "40px",
+                color: "#493536",
+                fontWeight: "bold",
+                fontSize: "17px",
+                backgroundColor: "#42ce9f",
+                width: "200px", // Adjust the width as needed
+                height: "45px", // Adjust the height as needed
+              }}
+            >
               Submit
             </Button>
           </Grid>
