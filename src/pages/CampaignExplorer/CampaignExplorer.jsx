@@ -107,6 +107,9 @@ const OpportunityCard = (props) => {
               border: "1px solid black",
               borderRadius: "10px",
               mb: 1,
+              "&:hover": {
+                backgroundColor: "silver",
+              },
             }}
           >
             View
@@ -450,7 +453,7 @@ const CampaignExplorer = () => {
                   m: 1,
                   backgroundColor: "#2ab6bb",
                   fontWeight: "bold",
-                  border: "solid 1px black",
+                  border: "solid 2px white",
                   boxShadow: "none",
                 }}
               >
