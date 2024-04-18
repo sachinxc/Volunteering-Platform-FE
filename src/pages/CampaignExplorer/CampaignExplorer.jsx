@@ -30,7 +30,13 @@ import SchoolIcon from "@mui/icons-material/School";
 
 const OpportunityCard = (props) => {
   return (
-    <Card sx={{ borderRadius: "20px" }}>
+    <Card
+      sx={{
+        borderRadius: "20px",
+        border: "solid 1px black",
+        backgroundColor: "#e1f5ef",
+      }}
+    >
       <Typography
         sx={{
           fontSize: 16,
@@ -39,6 +45,7 @@ const OpportunityCard = (props) => {
           justifyContent: "center",
           px: 2,
           py: 1,
+          color: "#493536",
         }}
       >
         {props.cardData.title}
@@ -75,7 +82,7 @@ const OpportunityCard = (props) => {
             display: "flex",
             justifyContent: "center",
             width: "100%",
-            mt: 1,
+            mt: 0.5,
           }}
         >
           <Typography sx={{ fontSize: 13, mr: 1 }} color="text.secondary">
@@ -369,7 +376,11 @@ const CampaignExplorer = () => {
           sm={12}
           md={10}
           component={Paper}
-          sx={{ p: 4, backgroundColor: "#ddeee4", borderRadius: "20px" }}
+          sx={{
+            p: 4,
+            backgroundColor: "#ddeee4",
+            borderRadius: "20px",
+          }}
         >
           <Grid container spacing={2} alignItems="center">
             {/* Filter components */}
@@ -439,7 +450,7 @@ const CampaignExplorer = () => {
                   m: 1,
                   backgroundColor: "#2ab6bb",
                   fontWeight: "bold",
-
+                  border: "solid 1px black",
                   boxShadow: "none",
                 }}
               >
@@ -456,7 +467,12 @@ const CampaignExplorer = () => {
           sm={12}
           md={10}
           component={Paper}
-          sx={{ p: 4, mt: 1, backgroundColor: "#ddeee4", borderRadius: "20px" }}
+          sx={{
+            p: 4,
+            mt: 1,
+            backgroundColor: "#ddeee4",
+            borderRadius: "20px",
+          }}
         >
           <Grid xs={12} md={12}>
             <Box component="form" noValidate sx={{ mt: 3 }}>
