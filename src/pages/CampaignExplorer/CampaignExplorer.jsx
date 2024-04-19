@@ -27,6 +27,7 @@ import PlaceIcon from "@mui/icons-material/Place";
 import CategoryIcon from "@mui/icons-material/Category";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import SchoolIcon from "@mui/icons-material/School";
+import "./CampaignExplorer.css"; // Import CSS file for custom animations
 
 const OpportunityCard = (props) => {
   return (
@@ -353,7 +354,7 @@ const CampaignExplorer = () => {
   );
 
   return (
-    <div>
+    <div className="explorer">
       <CssBaseline />
       <Grid
         container
