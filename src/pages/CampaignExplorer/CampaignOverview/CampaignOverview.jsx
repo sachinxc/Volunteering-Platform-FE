@@ -13,12 +13,16 @@ import {
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FavoriteIcon from "@mui/icons-material/Favorite"; // Import the heart icon
 import campaignImage from "../../../assets/CampaignImages/dog.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { convertDate } from "../../../helpers/helpers";
 
 function CampaignOverview() {
   // Dummy like count for demonstration
   const likeCount = 10;
   const navigate = useNavigate();
+  const getCampaign = JSON.parse(localStorage.getItem("campaign"));
+
+  console.log(getCampaign, "getCampaign");
 
   return (
     <div
@@ -84,7 +88,7 @@ function CampaignOverview() {
           color="#493536"
           sx={{ marginBottom: "40px", marginTop: "40px" }} // Adding margin bottom to create space
         >
-          Rescue Street Dogs
+          {getCampaign.campaign_title}
         </Typography>
 
         <Box
@@ -128,19 +132,19 @@ function CampaignOverview() {
             >
               <CardContent>
                 <Typography variant="body1" gutterBottom fontWeight="bold">
-                  Category: Animal Welfare
+                  Category: {getCampaign?.categories}
                 </Typography>
                 <Typography variant="body1" gutterBottom fontWeight="bold">
-                  Location: Galle, Sri Lanka
+                  Location: {getCampaign?.location}
                 </Typography>
                 <Typography variant="body1" gutterBottom fontWeight="bold">
-                  Duration: Long Term
+                  Duration: {getCampaign?.duration}
                 </Typography>
                 <Typography variant="body1" gutterBottom fontWeight="bold">
-                  Skill Level: Beginner
+                  Skill Level: {getCampaign?.skill}
                 </Typography>
                 <Typography variant="body1" gutterBottom fontWeight="bold">
-                  Date: 24.05.2024
+                  Date: {convertDate(getCampaign?.date)}
                 </Typography>
                 <Typography variant="body1" gutterBottom fontWeight="bold">
                   Offered By: Friendly Paws
@@ -162,19 +166,7 @@ function CampaignOverview() {
             color="#493536"
             fontWeight="bold"
           >
-            Overview
-          </Typography>
-          <Typography
-            variant="body1"
-            gutterBottom
-            color="#493536"
-            sx={{ marginBottom: "20px" }}
-          >
-            Join our heartfelt mission to rescue and provide sanctuary for our
-            loyal companions. Our dog rescue campaign aims to offer safety,
-            love, and a second chance to furry friends in need. Together, let's
-            create a community where every tail wags with joy and every bark
-            echoes hope.
+            {getCampaign?.overview}
           </Typography>
         </Box>
         <Box
@@ -193,63 +185,55 @@ function CampaignOverview() {
             Objectives
           </Typography>
           <List>
-            <ListItem>
-              <ListItemText
-                primary="- Relocate them to safer areas"
-                color="#493536"
-              />
-            </ListItem>
-            <ListItem>
-              <ListItemText
-                primary="- Give them medical treatments"
-                color="#493536"
-              />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="- Give them food" color="#493536" />
-            </ListItem>
-
-            {/* Add more objectives as needed */}
+            {getCampaign?.objectives.map((o) => (
+              <ListItem>
+                <ListItemText
+                  primary={`- ${o?.objective_title}`}
+                  color="#493536"
+                />
+              </ListItem>
+            ))}
           </List>
         </Box>
         {/* Button */}
 
-        <Link to="/campaignregistrationform">
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{
-              marginTop: "10px",
-              marginBottom: "40px",
-              color: "#493536",
-              fontWeight: "bold",
-              fontSize: "17px",
-              backgroundColor: "#42ce9f",
-              width: "200px", // Adjust the width as needed
-              height: "45px", // Adjust the height as needed
-            }}
-          >
-            I want to join!
-          </Button>
-        </Link>
-        <Link to="/testimonials">
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{
-              marginTop: "10px",
-              marginBottom: "40px",
-              color: "#493536",
-              fontWeight: "bold",
-              fontSize: "17px",
-              backgroundColor: "#e54081",
-              width: "250px", // Adjust the width as needed
-              height: "45px", // Adjust the height as needed
-            }}
-          >
-            View Testimonials
-          </Button>
-        </Link>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() =>
+            navigate(`/campaignregistrationform/${getCampaign?.id}`)
+          }
+          sx={{
+            marginTop: "10px",
+            marginBottom: "40px",
+            color: "#493536",
+            fontWeight: "bold",
+            fontSize: "17px",
+            backgroundColor: "#42ce9f",
+            width: "200px", // Adjust the width as needed
+            height: "45px", // Adjust the height as needed
+          }}
+        >
+          I want to join!
+        </Button>
+
+        <Button
+          onClick={() => navigate(`/testimonials/${getCampaign?.id}`)}
+          variant="contained"
+          color="primary"
+          sx={{
+            marginTop: "10px",
+            marginBottom: "40px",
+            color: "#493536",
+            fontWeight: "bold",
+            fontSize: "17px",
+            backgroundColor: "#e54081",
+            width: "250px", // Adjust the width as needed
+            height: "45px", // Adjust the height as needed
+          }}
+        >
+          View Testimonials
+        </Button>
       </Box>
     </div>
   );

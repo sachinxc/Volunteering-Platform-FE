@@ -7,176 +7,325 @@ import {
   IconButton,
   Button,
   Box,
-  Checkbox,
-  FormControlLabel,
+  Stack,
 } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { VOLUNTEER } from "../../../constants";
+import { getToken } from "../../../helpers/helpers";
+import http from "../../../http";
+import Loader from "../../../components/Loading/Loading";
+import { Field, Form, Formik } from "formik";
+import * as Yup from "yup";
+import { useNavigate, useParams } from "react-router-dom";
 
 const RegistrationForm = () => {
-  const [formData, setFormData] = useState({
-    phoneNumber: "",
-    qualifications: "",
-    backgroundCheck: false,
-    dayTimes: {
-      Weekdays: { start: null, end: null },
-      Weekends: { start: null, end: null },
-    },
-  });
+  const [loading, setLoading] = useState(false);
+  const { id } = useParams();
 
-  const handleTimeChange = (day, timeType) => (date) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      dayTimes: {
-        ...prevData.dayTimes,
-        [day]: {
-          ...prevData.dayTimes[day],
-          [timeType]: date,
-        },
-      },
-    }));
+  const navigate = useNavigate();
+
+  const initialValues = {
+    qualifications: "",
+    week_days_start_time: "00:00",
+    week_days_end_time: "00:00",
+    week_end_days_start_time: "00:00",
+    week_end_days_end_time: "00:00",
+    campaign_id: id,
   };
 
-  const handleSubmit = () => {
-    // Handle form submission
-    console.log(formData);
+  const validationSchema = Yup.object().shape({
+    qualifications: Yup.string().required("Description are required"),
+    week_days_start_time: Yup.string().required("Start time is required"),
+    week_days_end_time: Yup.string().required("End time is required"),
+    week_end_days_start_time: Yup.string().required("Start time is required"),
+    week_end_days_end_time: Yup.string().required("End time is required"),
+  });
+
+  const handleSubmit = async (values) => {
+    await http
+      .post(`volunteer/campaign/register?token=${getToken()}`, values)
+      .then((res) => {
+        setLoading(false);
+        localStorage.removeItem("campRegister");
+      })
+      .catch((error) => {
+        setLoading(false);
+      });
+  };
+
+  const isUserAvailable = JSON.parse(localStorage.getItem("user"));
+  const isUserVolunteer =
+    isUserAvailable && isUserAvailable?.user_type === VOLUNTEER;
+
+  const signInNecessory = () => {
+    const currentUrl = window.location.href;
+    localStorage.setItem("campRegister", JSON.stringify(currentUrl));
+    navigate("/signin");
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        paddingTop: "20px",
-        marginTop: "100px",
-        marginBottom: "100px",
-      }}
+    <Stack
+      sx={{ justifyContent: "center", alignItems: "center", marginTop: "20px" }}
     >
-      <Grid
-        container
-        spacing={2}
-        direction="column"
-        alignItems="center"
-        sx={{
-          backgroundColor: "#ddeee4",
-          borderRadius: 8,
-          p: 2, // Adjust padding
-          width: "60%", // Adjust width of the box
-          "@media (max-width: 1200px)": {
-            width: "90%", // Adjust width to 90% on mobile screens
-          },
-        }}
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
       >
-        <Grid item xs={12} sx={{ m: 5 }}>
-          <IconButton
-            onClick={() => window.history.back()}
-            sx={{
-              color: "#493536",
-              //position: "relative",
-              top: "3px", // Adjust top position for responsiveness
-              left: "-180px", // Adjust left position for responsiveness
-              fontSize: "40px", // Adjust font size for responsiveness
-            }}
-          >
-            <ArrowBackIcon />
-          </IconButton>
-          <Typography variant="h4" align="center" sx={{ fontWeight: "bold" }}>
-            Campaign Registration
-          </Typography>
-        </Grid>
-        <Grid item xs={10} sx={{ width: "80%" }}>
-          <Typography variant="sm" align="left">
-            Tell us about your time availability in general:
-          </Typography>
-        </Grid>
-        <Grid item xs={10} sx={{ width: "80%" }}>
-          <Typography variant="sm" align="center" sx={{ mr: 1 }}>
-            Week Days:
-          </Typography>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <TimePicker
-              label="Starting from"
-              value={formData.dayTimes["Weekdays"].start}
-              onChange={handleTimeChange("Weekdays", "start")}
-              sx={{ mr: 1 }}
-            />
-            <TimePicker
-              label="Until"
-              value={formData.dayTimes["Weekdays"].end}
-              onChange={handleTimeChange("Weekdays", "end")}
-            />
-          </LocalizationProvider>
-        </Grid>
-        <Grid item xs={10} sx={{ width: "80%" }}>
-          <Typography variant="sm" align="center" sx={{ mr: 1 }}>
-            Week Ends:
-          </Typography>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <TimePicker
-              label="Starting from"
-              value={formData.dayTimes["Weekends"].start}
-              onChange={handleTimeChange("Weekends", "start")}
-              sx={{ mr: 1 }}
-            />
-            <TimePicker
-              label="Until"
-              value={formData.dayTimes["Weekends"].end}
-              onChange={handleTimeChange("Weekends", "end")}
-            />
-          </LocalizationProvider>
-        </Grid>
-        <Grid item xs={10} sx={{ width: "80%" }}>
-          <Typography variant="sm" align="left">
-            Briefly describe why you chose this campaign and state any relevant
-            qualifications or experiences you have:
-          </Typography>
-        </Grid>
-        <Grid item xs={10} sx={{ width: "80%" }}>
-          <TextField
-            name="info"
-            fullWidth
-            multiline
-            rows={4}
-            value={formData.qualifications}
-          />
-        </Grid>
+        {({
+          isSubmitting,
+          errors,
+          touched,
+          submitForm,
+          values,
+          handleChange,
+          handleBlur,
+        }) => (
+          <Form>
+            <Stack
+              sx={{
+                p: "40px",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: "20px",
+              }}
+            >
+              <Box sx={{ width: { md: "70%", sm: "100%" } }}>
+                <Grid
+                  container
+                  sx={{
+                    backgroundColor: "#ddeee4",
+                    borderRadius: 8,
+                    padding: "20px",
+                    gap: "10px",
+                  }}
+                >
+                  <Grid item md={12}>
+                    <IconButton
+                      onClick={() => window.history.back()}
+                      sx={{
+                        color: "#493536",
+                        top: "3px",
+                        left: "-180px",
+                        fontSize: "40px",
+                      }}
+                    >
+                      <ArrowBackIcon />
+                    </IconButton>
+                    <Typography
+                      variant="h4"
+                      align="center"
+                      sx={{ fontWeight: "bold" }}
+                    >
+                      Campaign Registration
+                    </Typography>
+                  </Grid>
+                  <Grid item md={12} xs={10}>
+                    <Typography
+                      variant="h7"
+                      align="left"
+                      sx={{ fontWeight: "bold" }}
+                    >
+                      Tell us about your time availability in general:
+                    </Typography>
+                  </Grid>
+                  <Grid item md={12}>
+                    <Typography variant="sm" align="center" sx={{ mr: 1 }}>
+                      Week Days:
+                    </Typography>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <Stack
+                        sx={{
+                          flexDirection: { md: "row", sm: "column" },
+                          gap: "10px",
+                          width: "100%",
+                        }}
+                      >
+                        <Field
+                          as={TextField}
+                          type={"time"}
+                          margin="normal"
+                          required
+                          fullWidth
+                          id="organization_name"
+                          name="week_days_start_time"
+                          label="Starting from"
+                          autoComplete="organization"
+                          autoFocus
+                          error={
+                            touched.week_days_start_time &&
+                            errors.week_days_start_time
+                          }
+                          helperText={
+                            touched.week_days_start_time &&
+                            errors.week_days_start_time
+                          }
+                        />
 
-        <Grid item xs={10} sx={{ width: "80%" }}>
-          <FormControlLabel
-            control={
-              <Checkbox
-                color="primary"
-                name="backgroundCheck"
-                checked={formData.backgroundCheck}
-              />
-            }
-            label="I confirm that the above information provided by me is accurate."
-          />
-        </Grid>
-        <Grid item xs={10}>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleSubmit}
-            sx={{
-              marginTop: "10px",
-              marginBottom: "40px",
-              color: "#493536",
-              fontWeight: "bold",
-              fontSize: "17px",
-              backgroundColor: "#42ce9f",
-              width: "200px", // Adjust the width as needed
-              height: "45px", // Adjust the height as needed
-            }}
-          >
-            Submit
-          </Button>
-        </Grid>
-      </Grid>
-    </Box>
+                        <Field
+                          as={TextField}
+                          type={"time"}
+                          margin="normal"
+                          required
+                          fullWidth
+                          id="organization_name"
+                          name="week_days_end_time"
+                          label="Until"
+                          autoComplete="organization"
+                          autoFocus
+                          error={
+                            touched.week_days_end_time &&
+                            errors.week_days_end_time
+                          }
+                          helperText={
+                            touched.week_days_end_time &&
+                            errors.week_days_end_time
+                          }
+                        />
+                      </Stack>
+                    </LocalizationProvider>
+                  </Grid>
+                  <Grid item md={12}>
+                    <Typography variant="sm" align="center" sx={{ mr: 1 }}>
+                      Week Ends:
+                    </Typography>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <Stack
+                        sx={{
+                          flexDirection: { md: "row", sm: "column" },
+                          gap: "10px",
+                          width: "100%",
+                        }}
+                      >
+                        <Field
+                          as={TextField}
+                          margin="normal"
+                          required
+                          type={"time"}
+                          fullWidth
+                          id="organization_name"
+                          name="week_end_days_start_time"
+                          label="Starting from"
+                          autoComplete="organization"
+                          autoFocus
+                          error={
+                            touched.week_end_days_start_time &&
+                            errors.week_end_days_start_time
+                          }
+                          helperText={
+                            touched.week_end_days_start_time &&
+                            errors.week_end_days_start_time
+                          }
+                        />
+
+                        <Field
+                          as={TextField}
+                          margin="normal"
+                          type={"time"}
+                          required
+                          fullWidth
+                          id="organization_name"
+                          name="week_end_days_end_time"
+                          label="Until"
+                          autoComplete="organization"
+                          autoFocus
+                          error={
+                            touched.week_end_days_end_time &&
+                            errors.week_end_days_end_time
+                          }
+                          helperText={
+                            touched.week_end_days_end_time &&
+                            errors.week_end_days_end_time
+                          }
+                        />
+                      </Stack>
+                    </LocalizationProvider>
+                  </Grid>
+
+                  <Grid item md={12}>
+                    <Typography variant="sm" align="left">
+                      Briefly describe why you chose this campaign and state any
+                      relevant qualifications or experiences you have:
+                    </Typography>
+                  </Grid>
+
+                  <Grid item md={12}>
+                    <Field
+                      as={TextField}
+                      margin="normal"
+                      required
+                      fullWidth
+                      id="organization_name"
+                      name="qualifications"
+                      label="Description"
+                      autoComplete="organization"
+                      autoFocus
+                      rows={4}
+                      multiline
+                      error={touched.qualifications && errors.qualifications}
+                      helperText={
+                        touched.qualifications && errors.qualifications
+                      }
+                    />
+                  </Grid>
+
+                  <Grid item md={12}>
+                    <Stack
+                      sx={{ justifyContent: "center", alignItems: "center" }}
+                    >
+                      {isUserVolunteer ? (
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={submitForm}
+                          sx={{
+                            marginTop: "10px",
+                            marginBottom: "40px",
+                            color: "#493536",
+                            fontWeight: "bold",
+                            fontSize: "17px",
+                            backgroundColor: "#42ce9f",
+                            width: "200px",
+                            height: "45px",
+                          }}
+                        >
+                          Submit
+                        </Button>
+                      ) : (
+                        ""
+                      )}
+                    </Stack>
+                  </Grid>
+                </Grid>
+              </Box>
+            </Stack>
+          </Form>
+        )}
+      </Formik>
+      {!isUserVolunteer && (
+        <Button
+          variant="contained"
+          color="primary"
+          sx={{
+            marginTop: "10px",
+            marginBottom: "40px",
+            color: "#493536",
+            fontWeight: "bold",
+            fontSize: "17px",
+            backgroundColor: "#42ce9f",
+            width: "200px",
+            height: "45px",
+          }}
+          onClick={signInNecessory}
+        >
+          SignIn
+        </Button>
+      )}
+
+      <Loader openLoad={loading} />
+    </Stack>
   );
 };
 

@@ -25,6 +25,7 @@ import About from "../pages/About/About";
 import MainLayout from "../layout/MainLayout";
 import Signin from "./../pages/SignIn/SignIn";
 import Events from "../pages/VolunteersPanel/Events/Events";
+import EventsView from "../components/EventsView/EventsView";
 // un-authenticated
 export const defaultRouter = createBrowserRouter([
   {
@@ -61,7 +62,7 @@ export const defaultRouter = createBrowserRouter([
       },
       {
         element: <CampaignOverview />,
-        path: "/campaignoverview/",
+        path: "/campaignoverview/:id",
       },
       {
         element: <Testimonials />,
@@ -69,7 +70,7 @@ export const defaultRouter = createBrowserRouter([
       },
       {
         element: <CampaignRegistrationForm />,
-        path: "/campaignregistrationform/",
+        path: "/campaignregistrationform/:id",
       },
     ],
   },
@@ -99,6 +100,10 @@ export const volunteerRoutes = createBrowserRouter([
       {
         element: <Events />,
         path: "/volunteer/events",
+      },
+      {
+        element: <EventsView />,
+        path: "/volunteer/events/view/:id",
       },
       {
         element: <PageNotFound />,
@@ -146,7 +151,10 @@ export const volunteerRoutes = createBrowserRouter([
         element: <RegisterEvent />,
         path: "/campaignexplorer/:id/register",
       },
-
+      {
+        element: <CampaignRegistrationForm />,
+        path: "/campaignregistrationform/:id",
+      },
       {
         element: <PageNotFound />,
         path: "*",

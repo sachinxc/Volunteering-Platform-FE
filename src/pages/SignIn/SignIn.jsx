@@ -36,7 +36,7 @@ const validationSchema = Yup.object().shape({
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
-  const [showPassword, setShowPassword] = React.useState(false); // Define showPassword state
+  const [showPassword, setShowPassword] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [userType, setUser] = React.useState("Volunteer");
   const [setError, setErrorList] = React.useState(false);
@@ -47,6 +47,8 @@ export default function SignInSide() {
     event.preventDefault();
   };
 
+  const getSavedRoutes = JSON.parse(localStorage.getItem("campRegister"));
+
   const loginUser = async (values) => {
     setLoading(true);
     await http
@@ -54,7 +56,16 @@ export default function SignInSide() {
       .then((res) => {
         setLoading(false);
         localStorage.setItem("user", JSON.stringify(res.data.user));
-        window.location.href = "/volunteer/dashboard";
+        localStorage.setItem(
+          "token",
+          JSON.stringify(res.data.authorisation?.token)
+        );
+
+        if (getSavedRoutes) {
+          window.location.href = getSavedRoutes;
+        } else {
+          window.location.href = "/volunteer/dashboard";
+        }
       })
       .catch((error) => {
         setLoading(false);
