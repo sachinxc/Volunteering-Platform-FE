@@ -25,21 +25,10 @@ http.interceptors.response.use(
   },
   (error) => {
     if (error.response) {
-      if (error.response.status === 401 || error.response.status === 403) {
-        // const router = useRouter();
-        // Rstore.dispatch(logout())
-        //   .then(() => {
-        //     console.log(error.response, "errorhhtp");
-        //     window.location.replace("/signin");
-        //     // router.push(
-        //     //   {
-        //     //     pathname: "/signin",
-        //     //     query: { name: "session" },
-        //     //   },
-        //     //   "/signin"
-        //     // );
-        //   })
-        //   .catch(() => console.log("something went wrong"));
+      if (error.response.status === 401) {
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        window.location.href = "/signin";
       }
     }
 
