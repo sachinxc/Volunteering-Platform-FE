@@ -146,7 +146,10 @@ export const volunteerRoutes = createBrowserRouter([
         element: <RegisterEvent />,
         path: "/campaignexplorer/:id/register",
       },
-
+      {
+        element: <CampaignRegistrationForm />,
+        path: "/campaignregistrationform/",
+      },
       {
         element: <PageNotFound />,
         path: "*",
