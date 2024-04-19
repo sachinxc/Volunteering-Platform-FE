@@ -28,6 +28,7 @@ http.interceptors.response.use(
       if (error.response.status === 401) {
         localStorage.removeItem("user");
         localStorage.removeItem("token");
+        localStorage.removeItem("viewEvent");
         window.location.href = "/signin";
       }
     }
