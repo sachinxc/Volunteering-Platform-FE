@@ -212,8 +212,8 @@ const CampaignExplorer = () => {
         >
           <Grid container spacing={2} alignItems="center">
             {/* Filter components */}
-            <Grid item xs={11} md={11}>
-              <FormControl sx={{ m: 1, minWidth: 125 }} size="small">
+            <Grid item xs={12} md={4}>
+              <FormControl sx={{ m: 1, minWidth: 125 }} size="small" fullWidth>
                 <InputLabel id="category-select-label" sx={{ color: "black" }}>
                   Category
                 </InputLabel>
@@ -231,7 +231,9 @@ const CampaignExplorer = () => {
                   <MenuItem value={"Animals"}>Animal Welfare</MenuItem>
                 </Select>
               </FormControl>
-              <FormControl sx={{ m: 1, minWidth: 125 }} size="small">
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <FormControl sx={{ m: 1, minWidth: 125 }} size="small" fullWidth>
                 <InputLabel id="skill-select-label" sx={{ color: "black" }}>
                   Skill
                 </InputLabel>
@@ -249,7 +251,9 @@ const CampaignExplorer = () => {
                   <MenuItem value={"Advanced"}>Advanced</MenuItem>
                 </Select>
               </FormControl>
-              <FormControl sx={{ m: 1, minWidth: 125 }} size="small">
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <FormControl sx={{ m: 1, minWidth: 125 }} size="small" fullWidth>
                 <InputLabel
                   id="demo-select-small-label"
                   sx={{ color: "black" }}
@@ -270,22 +274,6 @@ const CampaignExplorer = () => {
                   <MenuItem value={30}>Long Term</MenuItem>
                 </Select>
               </FormControl>
-
-              {/* Add more filter components as needed */}
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{
-                  m: 1,
-                  backgroundColor: "#2ab6bb",
-                  fontWeight: "bold",
-                  border: "solid 2px white",
-                  boxShadow: "none",
-                }}
-              >
-                <SearchIcon sx={{ color: "white", mr: 1 }} />
-                Search
-              </Button>
             </Grid>
           </Grid>
         </Grid>
