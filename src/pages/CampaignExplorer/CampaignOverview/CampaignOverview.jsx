@@ -13,7 +13,7 @@ import {
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FavoriteIcon from "@mui/icons-material/Favorite"; // Import the heart icon
 import campaignImage from "../../../assets/CampaignImages/dog.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { convertDate } from "../../../helpers/helpers";
 
 function CampaignOverview() {

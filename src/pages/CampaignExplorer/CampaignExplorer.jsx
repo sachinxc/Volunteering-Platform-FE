@@ -5,14 +5,11 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
-import SearchIcon from "@mui/icons-material/Search";
 import Typography from "@mui/material/Typography";
-import { Image } from "@mui/icons-material";
 import {
   CssBaseline,
   FormControl,
   Grid,
-  InputBase,
   InputLabel,
   MenuItem,
   Paper,
@@ -21,7 +18,6 @@ import {
 } from "@mui/material";
 
 import Pagination from "@mui/material/Pagination";
-import { Link } from "react-router-dom";
 import campaign1Image from "../../assets/CampaignImages/dog.jpg";
 import PlaceIcon from "@mui/icons-material/Place";
 import CategoryIcon from "@mui/icons-material/Category";
@@ -185,7 +181,7 @@ const CampaignExplorer = () => {
   }, []);
 
   return (
-    <div>
+    <div className="explorer">
       <CssBaseline />
       <Grid
         container

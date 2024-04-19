@@ -1,0 +1,14 @@
+.explorer {
+  animation: slideIn 1s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px); /* Start position */
+    opacity: 0; /* Start opacity */
+  }
+  to {
+    transform: translateY(0); /* End position */
+    opacity: 1; /* End opacity */
+  }
+}
