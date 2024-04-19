@@ -12,9 +12,10 @@ import {
   Pagination,
 } from "@mui/material";
 import SelectMenu from "../../../../components/SelectMenu/SelectMenu";
-// import { campaigns } from "../../../../DummyData/campaigns";
 import { Link } from "react-router-dom";
 import http from "../../../../http";
+import { getToken } from "../../../../helpers/helpers";
+import CampaignCard from './../../../../components/CampaignCard/CampaignCard';
 
 const CampaignList = () => {
   const filterList = [
@@ -123,7 +124,7 @@ const CampaignList = () => {
   const [loading, setLoading] = React.useState(false);
 
   useEffect(() => {
-    getOpportunities();
+    getCampaigns();
   }, []);
 
   const handleChangePage = (event, newPage) => {
@@ -146,28 +147,13 @@ const CampaignList = () => {
     }
   };
 
-  const getOpportunities = async (values) => {
-    console.log("*****************");
-    setLoading(true);
-    await http
-      .get("organization/campaign", values)
-      .then((res) => {
-        setLoading(false);
-        // setCampaigns(res.data.campaigns);
-        // setDisplayedCampaigns(res.data.campaigns);
-      })
-      .catch((error) => {
-        setLoading(false);
-      });
-  };
-
   const getCampaigns = async (newPage) => {
     setLoading(true);
     await http
-      .get(volunteer/campaign?token=${getToken()}&page=${newPage})
+      .get(`volunteer/campaign?token=${getToken()}&page=${newPage}`)
       .then((res) => {
         setLoading(false);
-        setData(transformEventData(res.data.campaigns.data));
+        setCampaigns(res.data.campaigns.data);
       })
       .catch((error) => {
         setLoading(false);
@@ -265,24 +251,24 @@ const CampaignList = () => {
                 color="primary"
               />
               <Grid container spacing={2}>
-                {/* {campaigns.map((Obj) => (
+                {campaigns.map((Obj) => (
                   <Grid item xs={12} sm={12} md={6} lg={4}>
                     {" "}
                     <CampaignCard
-                      title={Obj.title}
+                      title={Obj.campaign_title}
                       subheader={Obj.date}
                       image={Obj.image}
                       category={Obj.category}
                       location={Obj.location}
-                      skillLevel={Obj.skillLevel}
-                      description={Obj.description}
+                      skillLevel={Obj.skill}
+                      description={Obj.overview}
                       handleViewAll={() => {
                         handleOpen();
                         setViewSingleCampaign(Obj);
                       }}
                     />
                   </Grid>
-                ))} */}
+                ))}
               </Grid>
             </Box>
           </Grid>

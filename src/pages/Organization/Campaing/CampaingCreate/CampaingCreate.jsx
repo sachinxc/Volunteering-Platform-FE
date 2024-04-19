@@ -22,6 +22,8 @@ import DateInput from "../../../../components/DateInput/DateInput";
 import CustomTextarea from "../../../../components/Textarea/Textarea";
 import ChipsArray from "../../../../components/ChipsArray/ChipsArray";
 import * as Yup from "yup";
+import http from "../../../../http";
+import { getToken } from "../../../../helpers/helpers";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -64,29 +66,20 @@ const CampaignCreate = () => {
   };
 
   const [value, setValue] = React.useState(dayjs("2022-04-17"));
-  const [chipData, setChipData] = React.useState([
-    { key: 0, label: "Angular" },
-    { key: 1, label: "jQuery" },
-    { key: 2, label: "Polymer" },
-    { key: 3, label: "React" },
-    { key: 4, label: "Vue.js" },
-  ]);
+  const [chipData, setChipData] = React.useState([]);
 
   const initialValues = campaignValues;
 
   const validationSchema = validationCampaignSchema;
 
   const handleSubmit = (values) => {
-    console.log("===============values===================");
-    console.log(values);
-    // registerCampaign(values);
-    console.log(campaignValues);
+    registerCampaign(values);
   };
 
   const registerCampaign = async (values) => {
     setLoading(true);
     await http
-      .post("volunteer/register", values)
+      .post(`volunteer/campaign?token=${getToken()}`,values)
       .then((res) => {
         setLoading(false);
       })
