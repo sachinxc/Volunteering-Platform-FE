@@ -15,7 +15,7 @@ const CampaignCard = (props) => {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {props.title.charAt(0)}
+            {props.title?.charAt(0)}
           </Avatar>
         }
         title={props.title}
@@ -28,7 +28,7 @@ const CampaignCard = (props) => {
         alt="Paella dish"
       />
       <CardContent>
-        <Chip label={props.skillLevel} />
+        {props.skillLevel ? <Chip label={props.skillLevel} /> : null}
         <Typography variant="body2" sx={{ color: "black" }}>
           {props.description}
         </Typography>

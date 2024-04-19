@@ -30,7 +30,7 @@ const OrganizationDashboard = () => {
   useEffect(() => {
     // Function to be executed after every 1000 milliseconds (1 second)
     const interval = setInterval(() => {
-      setTimeValues(Timer(new Date("2024-04-07T12:00:00")));
+      setTimeValues(Timer(new Date("2024-04-27T12:00:00")));
     }, 1000);
 
     // Cleanup function to clear the interval when the component unmounts
