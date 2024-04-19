@@ -38,12 +38,8 @@ const VisuallyHiddenInput = styled("input")({
 const validationCampaignSchema = Yup.object().shape({
   campaign_title: Yup.string().required("campaign title is required"),
   location: Yup.string().required("required"),
-  categories: Yup.string().required("required"),
   skill: Yup.string().required("required"),
   duration: Yup.string().required("required"),
-  date: Yup.date()
-    .required("Date is required")
-    .min(new Date(), "Date must be in the future"),
 });
 
 const CampaignCreate = () => {
@@ -150,7 +146,9 @@ const CampaignCreate = () => {
                   handleBlur,
                 }) => (
                   <Form>
-                    {/* Left side form fields */}
+                  {
+                    console.log(errors)
+                  }
                     <Grid container spacing={2}>
                       <Grid item xs={12} sm={12} md={6} sx={{ px: 2 }}>
                         <Grid container spacing={2}>
@@ -323,10 +321,7 @@ const CampaignCreate = () => {
                               fullWidth
                               variant="contained"
                               sx={{ mt: 3, mb: 2 }}
-                              onClick={() => {
-                                console.log(values);
-                              }}
-                            >
+                              onClick={submitForm}>
                               Create Campaign
                             </Button>
                           </Grid>

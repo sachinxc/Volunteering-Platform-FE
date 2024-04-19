@@ -1,25 +1,20 @@
-import React from "react";
+import React,{ useEffect } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import Divider from "@mui/material/Divider";
 import {
   Box,
   CssBaseline,
-  FormControl,
   Grid,
   Button,
   IconButton,
   InputBase,
-  InputLabel,
-  MenuItem,
   Paper,
-  Select,
   Pagination,
 } from "@mui/material";
-import CampaignCard from "../../../../components/CampaignCard/CampaignCard";
 import SelectMenu from "../../../../components/SelectMenu/SelectMenu";
-import { campaigns } from "../../../../DummyData/campaigns";
+// import { campaigns } from "../../../../DummyData/campaigns";
 import { Link } from "react-router-dom";
-import CustomModal from "../../../../components/Modal/Modal";
+import http from "../../../../http";
 
 const CampaignList = () => {
   const filterList = [
@@ -112,12 +107,77 @@ const CampaignList = () => {
 
   const [open, setOpen] = React.useState(false);
   const [viewSingleCampaign, setViewSingleCampaign] = React.useState(null);
+  const [campaigns, setCampaigns] = React.useState([]);
 
-  //   Open Custom Modal
-  const handleOpen = () => setOpen(true);
+  const [page, setPage] = React.useState(1);
+  const [filters, setSelectedFilters] = React.useState({
+    categories: "All",
+    skill: "All",
+    duration: "All",
+  });
+  const [displayedCampaigns, setDisplayedCampaigns] = React.useState([]);
 
-  //   Close Custom Modal
-  const handleClose = () => setOpen(false);
+  const cardsPerPage = 8;
+  const totalNumPages = Math.ceil(displayedCampaigns.length / cardsPerPage);
+
+  const [loading, setLoading] = React.useState(false);
+
+  useEffect(() => {
+    getOpportunities();
+  }, []);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const onChangeCategory = (e) => {
+    setPage(1);
+    const { name, value } = e.target; // Destructure name and value from event target
+    setSelectedFilters((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+
+    if (value === "All") {
+      setDisplayedCampaigns([...campaigns]);
+    } else {
+      const list = campaigns.filter((camp) => camp[name] === value);
+      setDisplayedCampaigns([...list]);
+    }
+  };
+
+  const getOpportunities = async (values) => {
+    console.log("*****************");
+    setLoading(true);
+    await http
+      .get("organization/campaign", values)
+      .then((res) => {
+        setLoading(false);
+        // setCampaigns(res.data.campaigns);
+        // setDisplayedCampaigns(res.data.campaigns);
+      })
+      .catch((error) => {
+        setLoading(false);
+      });
+  };
+
+  const getCampaigns = async (newPage) => {
+    setLoading(true);
+    await http
+      .get(volunteer/campaign?token=${getToken()}&page=${newPage})
+      .then((res) => {
+        setLoading(false);
+        setData(transformEventData(res.data.campaigns.data));
+      })
+      .catch((error) => {
+        setLoading(false);
+      });
+  };
+    //   Open Custom Modal
+    const handleOpen = () => setOpen(true);
+
+    //   Close Custom Modal
+    const handleClose = () => setOpen(false);
 
   return (
     <Grid>
@@ -205,7 +265,7 @@ const CampaignList = () => {
                 color="primary"
               />
               <Grid container spacing={2}>
-                {campaigns.map((Obj) => (
+                {/* {campaigns.map((Obj) => (
                   <Grid item xs={12} sm={12} md={6} lg={4}>
                     {" "}
                     <CampaignCard
@@ -222,14 +282,14 @@ const CampaignList = () => {
                       }}
                     />
                   </Grid>
-                ))}
+                ))} */}
               </Grid>
             </Box>
           </Grid>
         </Grid>
       </Grid>
 
-      <CustomModal
+      {/* <CustomModal
         open={open}
         handleOpen={handleOpen}
         handleClose={handleClose}
@@ -246,7 +306,7 @@ const CampaignList = () => {
             setViewSingleCampaign(campaigns[0]);
           }}
         />
-      />
+      /> */}
     </Grid>
   );
 };
