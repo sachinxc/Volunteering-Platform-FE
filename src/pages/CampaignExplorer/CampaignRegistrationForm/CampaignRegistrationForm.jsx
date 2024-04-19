@@ -7,19 +7,16 @@ import {
   IconButton,
   Button,
   Box,
-  Checkbox,
-  FormControlLabel,
   Stack,
 } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { VOLUNTEER } from "../../../constants";
 import { getToken } from "../../../helpers/helpers";
 import http from "../../../http";
 import Loader from "../../../components/Loading/Loading";
-import { Field, Form, Formik, useFormik } from "formik";
+import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -48,7 +45,7 @@ const RegistrationForm = () => {
 
   const handleSubmit = async (values) => {
     await http
-      .post(`volunteer/campaign/register?${getToken()}`, values)
+      .post(`volunteer/campaign/register?token=${getToken()}`, values)
       .then((res) => {
         setLoading(false);
         localStorage.removeItem("campRegister");
