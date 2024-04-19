@@ -54,7 +54,11 @@ export default function SignInSide() {
       .then((res) => {
         setLoading(false);
         localStorage.setItem("user", JSON.stringify(res.data.user));
-        window.location.href = "/volunteer/dashboard";
+        localStorage.setItem(
+          "token",
+          JSON.stringify(res.data.authorisation?.token)
+        );
+        // window.location.href = "/volunteer/dashboard";
       })
       .catch((error) => {
         setLoading(false);
@@ -70,7 +74,7 @@ export default function SignInSide() {
         setLoading(false);
         setErrorList(false);
         localStorage.setItem("user", JSON.stringify(res.data.user));
-        window.location.href = "/organization/dashboard";
+        // window.location.href = "/organization/dashboard";
       })
       .catch((error) => {
         setLoading(false);
