@@ -61,7 +61,7 @@ export const defaultRouter = createBrowserRouter([
       },
       {
         element: <CampaignOverview />,
-        path: "/campaignoverview/",
+        path: "/campaignoverview/:id",
       },
       {
         element: <Testimonials />,
@@ -69,7 +69,7 @@ export const defaultRouter = createBrowserRouter([
       },
       {
         element: <CampaignRegistrationForm />,
-        path: "/campaignregistrationform/",
+        path: "/campaignregistrationform/:id",
       },
     ],
   },
@@ -148,7 +148,7 @@ export const volunteerRoutes = createBrowserRouter([
       },
       {
         element: <CampaignRegistrationForm />,
-        path: "/campaignregistrationform/",
+        path: "/campaignregistrationform/:id",
       },
       {
         element: <PageNotFound />,

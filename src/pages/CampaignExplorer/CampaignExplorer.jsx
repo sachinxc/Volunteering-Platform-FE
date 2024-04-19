@@ -30,8 +30,16 @@ import SchoolIcon from "@mui/icons-material/School";
 import http from "../../http";
 import Loader from "../../components/Loading/Loading";
 import { isEmpty } from "lodash";
+import { useNavigate } from "react-router-dom";
 
 const OpportunityCard = (props) => {
+  const navigate = useNavigate();
+
+  const movetoOverView = (camp) => {
+    localStorage.setItem("campaign", JSON.stringify(camp));
+    navigate(`/campaignoverview/${camp.id}`);
+  };
+
   return (
     <Card
       sx={{
@@ -90,7 +98,7 @@ const OpportunityCard = (props) => {
         >
           <Typography sx={{ fontSize: 13, mr: 1 }} color="text.secondary">
             <AccessTimeFilledIcon sx={{ fontSize: 13, mr: 0.5 }} />
-            {props.cardData.start_time}
+            {props.cardData.duration}
           </Typography>
 
           <Typography sx={{ fontSize: 13 }} color="text.secondary">
@@ -100,24 +108,23 @@ const OpportunityCard = (props) => {
         </Box>
       </CardContent>
       <CardActions sx={{ justifyContent: "center" }}>
-        <Link to={`/campaignoverview/${props.cardData.id}`}>
-          <Button
-            size="small"
-            sx={{
-              fontSize: "12px",
-              color: "black",
-              fontWeight: "bold",
-              border: "1px solid black",
-              borderRadius: "10px",
-              mb: 1,
-              "&:hover": {
-                backgroundColor: "silver",
-              },
-            }}
-          >
-            View
-          </Button>
-        </Link>
+        <Button
+          size="small"
+          sx={{
+            fontSize: "12px",
+            color: "black",
+            fontWeight: "bold",
+            border: "1px solid black",
+            borderRadius: "10px",
+            mb: 1,
+            "&:hover": {
+              backgroundColor: "silver",
+            },
+          }}
+          onClick={() => movetoOverView(props.cardData)}
+        >
+          View
+        </Button>
       </CardActions>
     </Card>
   );
