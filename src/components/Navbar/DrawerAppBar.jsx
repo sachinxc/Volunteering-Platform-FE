@@ -25,22 +25,18 @@ const navItems = [
     routLink: "/campaignexplorer",
     isButton: true, // Add a property to specify if the item is a button
   },
-
   {
     title: "Sign Up",
     routLink: "/signup",
   },
-
   {
     title: "About",
     routLink: "/about",
   },
-
   {
     title: "Sign In",
     routLink: "/signin",
   },
-
   {
     title: "Home",
     routLink: "/home",
@@ -58,28 +54,6 @@ function DrawerAppBar(props) {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-
-  /*mobile view */
-  const drawer = (
-    <Box
-      onClick={handleDrawerToggle}
-      sx={{ textAlign: "center", background: "#46c882" }}
-    >
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Helping Hands
-      </Typography>
-      <Divider />
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center", color: "white" }}>
-              <ListItemText primary={item.title} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
@@ -111,7 +85,14 @@ function DrawerAppBar(props) {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            sx={{
+              flexGrow: 1,
+              display: {
+                xs: "none",
+                sm: "block",
+                fontWeight: "bold",
+              },
+            }}
           >
             Helping Hands
           </Typography>
@@ -168,7 +149,29 @@ function DrawerAppBar(props) {
             },
           }}
         >
-          {drawer}
+          <Box
+            onClick={handleDrawerToggle}
+            sx={{ textAlign: "center", background: "#389e7f" }}
+          >
+            <Typography variant="h6" sx={{ my: 2, color: "white" }}>
+              Helping Hands
+            </Typography>
+            <Divider />
+            <List>
+              {navItems.map((item) => (
+                <ListItem key={item.title} disablePadding>
+                  <Link
+                    to={item.routLink}
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    <ListItemButton sx={{ textAlign: "center" }}>
+                      <ListItemText primary={item.title} />
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+              ))}
+            </List>
+          </Box>
         </Drawer>
       </nav>
     </>
