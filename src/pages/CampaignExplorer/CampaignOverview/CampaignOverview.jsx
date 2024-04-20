@@ -11,13 +11,12 @@ import {
   CardContent,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import FavoriteIcon from "@mui/icons-material/Favorite"; // Import the heart icon
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import campaignImage from "../../../assets/CampaignImages/dog.jpg";
 import { useNavigate } from "react-router-dom";
 import { convertDate } from "../../../helpers/helpers";
 
 function CampaignOverview() {
-  // Dummy like count for demonstration
   const likeCount = 10;
   const navigate = useNavigate();
   const getCampaign = JSON.parse(localStorage.getItem("campaign"));
@@ -31,23 +30,23 @@ function CampaignOverview() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        paddingTop: "20px", // Add padding top to create space between navbar and white box
+        paddingTop: "20px",
       }}
     >
       <Box
         sx={{
           backgroundColor: "#ddeee4",
           borderRadius: 8,
-          p: 2, // Adjust padding
-          width: "55%", // Adjust width of the box
-          marginTop: "100px", // Add margin top to create space between navbar and white box
-          position: "relative", // Position relative for absolute positioning of grid container
-          display: "flex", // Ensure flex display to control child elements
-          flexDirection: "column", // Arrange children in column layout
-          alignItems: "center", // Align items to the center horizontally
+          p: 2,
+          width: "55%",
+          marginTop: "100px",
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
           marginBottom: "100px",
           "@media (max-width: 1200px)": {
-            width: "90%", // Adjust width to 90% on mobile screens
+            width: "90%",
           },
         }}
       >
@@ -56,22 +55,19 @@ function CampaignOverview() {
           sx={{
             color: "#493536",
             position: "absolute",
-            top: "40px", // Adjust top position for responsiveness
-            left: "25px", // Adjust left position for responsiveness
-            //fontSize: "40px", // Adjust font size for responsiveness
+            top: "40px",
+            left: "25px",
           }}
         >
           <ArrowBackIcon />
         </IconButton>
 
-        {/* Heart icon for like count */}
         <IconButton
           sx={{
-            color: "red", // Set color to red
+            color: "red",
             position: "absolute",
-            top: "40px", // Adjust top position for responsiveness
-            right: "25px", // Adjust right position for responsiveness
-            //fontSize: "40px", // Adjust font size for responsiveness
+            top: "40px",
+            right: "25px",
           }}
         >
           <FavoriteIcon />
@@ -86,7 +82,7 @@ function CampaignOverview() {
           gutterBottom
           fontWeight="bold"
           color="#493536"
-          sx={{ marginBottom: "40px", marginTop: "40px" }} // Adding margin bottom to create space
+          sx={{ marginBottom: "40px", marginTop: "40px" }}
         >
           {getCampaign.campaign_title}
         </Typography>
@@ -94,15 +90,15 @@ function CampaignOverview() {
         <Box
           sx={{
             display: "flex",
-            flexDirection: "column", // Change to column layout for responsiveness
+            flexDirection: "column",
             alignItems: "center",
             width: "100%",
           }}
         >
           <Box
             sx={{
-              width: "90%", // Adjust width for responsiveness
-              marginBottom: "30px", // Add margin bottom for spacing
+              width: "90%",
+              marginBottom: "30px",
             }}
           >
             <img
@@ -117,7 +113,7 @@ function CampaignOverview() {
 
           <Box
             sx={{
-              width: "90%", // Adjust width for responsiveness
+              width: "90%",
               textAlign: "left",
             }}
           >
@@ -126,7 +122,7 @@ function CampaignOverview() {
                 borderRadius: "20px",
                 color: "#493536",
                 backgroundColor: "#cce5db",
-                boxShadow: "none", // Remove the shadow
+                boxShadow: "none",
                 marginBottom: "30px",
               }}
             >
@@ -155,9 +151,9 @@ function CampaignOverview() {
         </Box>
         <Box
           sx={{
-            width: "90%", // Adjust width for responsiveness
+            width: "90%",
             textAlign: "left",
-            marginBottom: "20px", // Add margin bottom for spacing
+            marginBottom: "20px",
           }}
         >
           <Typography
@@ -171,9 +167,9 @@ function CampaignOverview() {
         </Box>
         <Box
           sx={{
-            width: "90%", // Adjust width for responsiveness
+            width: "90%",
             textAlign: "left",
-            marginBottom: "20px", // Add margin bottom for spacing
+            marginBottom: "20px",
           }}
         >
           <Typography
@@ -195,7 +191,6 @@ function CampaignOverview() {
             ))}
           </List>
         </Box>
-        {/* Button */}
 
         <Button
           variant="contained"
@@ -210,8 +205,8 @@ function CampaignOverview() {
             fontWeight: "bold",
             fontSize: "17px",
             backgroundColor: "#42ce9f",
-            width: "200px", // Adjust the width as needed
-            height: "45px", // Adjust the height as needed
+            width: "200px",
+            height: "45px",
           }}
         >
           I want to join!
@@ -228,8 +223,8 @@ function CampaignOverview() {
             fontWeight: "bold",
             fontSize: "17px",
             backgroundColor: "#e54081",
-            width: "250px", // Adjust the width as needed
-            height: "45px", // Adjust the height as needed
+            width: "250px",
+            height: "45px",
           }}
         >
           View Testimonials
