@@ -23,7 +23,7 @@ const navItems = [
   {
     title: "Explore Volunteering",
     routLink: "/campaignexplorer",
-    isButton: true, // Add a property to specify if the item is a button
+    isButton: true,
   },
   {
     title: "Sign Up",
@@ -58,7 +58,6 @@ function DrawerAppBar(props) {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
-  /*nav bar background color*/
   return (
     <>
       <AppBar
@@ -138,7 +137,7 @@ function DrawerAppBar(props) {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: "block", sm: "none" },
@@ -179,10 +178,6 @@ function DrawerAppBar(props) {
 }
 
 DrawerAppBar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 
