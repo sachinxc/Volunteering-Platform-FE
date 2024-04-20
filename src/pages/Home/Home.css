@@ -1,24 +1,24 @@
 .main-text,
 .button-container {
-  animation: fadeIn 1s ease-in-out; /* Apply animation to main text */
+  animation: fadeIn 1s ease-in-out; /* Applying animation to the class main text */
 }
 
 @keyframes slideIn {
   from {
-    transform: translateY(-50px); /* Start position */
-    opacity: 0; /* Start opacity */
+    transform: translateY(-50px);
+    opacity: 0;
   }
   to {
-    transform: translateY(0); /* End position */
-    opacity: 1; /* End opacity */
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
 @keyframes fadeIn {
   from {
-    opacity: 0; /* Start opacity */
+    opacity: 0;
   }
   to {
-    opacity: 1; /* End opacity */
+    opacity: 1;
   }
 }

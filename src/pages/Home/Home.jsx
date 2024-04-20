@@ -5,8 +5,8 @@ import BannerImage2 from "../../assets/LandingPageImages/background2.png";
 import BannerImage3 from "../../assets/LandingPageImages/background3.jpg";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import { Instagram, Twitter, Facebook } from "@mui/icons-material"; // Import social media icons
-import "./Home.css"; // Import CSS file for custom animations
+import { Instagram, Twitter, Facebook } from "@mui/icons-material";
+import "./Home.css"; // Importing CSS file that has the animations
 
 const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -17,7 +17,7 @@ const Home = () => {
       setCurrentImageIndex(
         (prevIndex) => (prevIndex + 1) % bannerImages.length
       );
-    }, 6000); // Change the image every 6 seconds (6000 milliseconds)
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [bannerImages.length]);
@@ -31,7 +31,7 @@ const Home = () => {
         backgroundImage: `url(${bannerImages[currentImageIndex]})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        transition: "background-image 2s ease-in-out", // Apply transition effect
+        transition: "background-image 2s ease-in-out", // Applying the transition effect
       }}
     >
       <Container>
@@ -44,7 +44,7 @@ const Home = () => {
         >
           <Grid item className="main-text">
             {" "}
-            {/* Apply animation class */}
+            {/* Applying animations to the below class */}
             <Typography
               variant="h1"
               component="h1"
@@ -78,7 +78,7 @@ const Home = () => {
                   color: "white",
                   fontWeight: "bold",
                   border: "2px solid white",
-                  backdropFilter: "blur(20px)", // Apply backdrop filter to blur background
+                  backdropFilter: "blur(20px)",
                   marginBottom: "40px",
                 }}
               >
@@ -88,7 +88,7 @@ const Home = () => {
           </Grid>
         </Grid>
       </Container>
-      {/* Footer with Social Media Icons */}
+      {/* Footer */}
       <Grid
         container
         justifyContent="flex-end"
