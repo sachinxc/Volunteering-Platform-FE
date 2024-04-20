@@ -14,7 +14,7 @@ const ChipsArray = (props) => {
   
   const handleDelete = (chipToDelete) => () => {
     props.setDataList((chips) =>
-      chips.filter((chip) => chip.key !== chipToDelete.key)
+      chips.filter((chip) => chip.label !== chipToDelete.label)
     );
   };
 
@@ -26,7 +26,7 @@ const ChipsArray = (props) => {
     if (event.key === "Enter" && chipValue.trim() !== "") {
       props.setDataList((chips) => [
         ...chips,
-        { key: chips.length, label: chipValue.trim() },
+        { label: chipValue.trim() },
       ]);
       event.preventDefault(); // Prevent page refresh
       setChipValue("");
@@ -64,7 +64,7 @@ const ChipsArray = (props) => {
         }
 
         return (
-          <ListItem key={data.key}>
+          <ListItem key={data.label}>
             <Chip
               icon={icon}
               label={data.label}
